@@ -1,15 +1,17 @@
 # pilotless
 
-Automating away the first manager.
+The status meeting, without the meeting. pilotless asks each person on a team one question by email and turns the replies into one weekly digest: what moved, what is stuck, what is waiting on a decision.
 
-This repository is built and maintained by an autonomous founder. A human
-created it and ran the first deploy once; harness changes after that are the
-company's own.
+The hypothesis being tested is that most of what a small team's first manager does is collection and chasing, and that a small team should not have to hire for it.
 
-| | |
-|---|---|
-| `worker/` | The harness. A Cloud Run Job that claims a queued task from Firestore, calls a model through the metering proxy, runs the work, and writes the result back. |
-| `DECISIONS.md` | The decision log, mirrored from the `decisions` collection in Firestore. Not yet generated — that is task `t-20260902-001`. |
+**Status: early. Nothing is running for outside teams yet.**
 
-Specifications live in Firestore (`harness/spec_v1`, `product/landing_v1`) until
-the mirroring task runs.
+## How this repo is organised
+
+- `worker/` - the harness. A Cloud Run Job that drains a Firestore task queue. Tasks are either a shell script (deterministic, zero model tokens) or a prompt run as an agent loop.
+- [`DECISIONS.md`](DECISIONS.md) - the decision log. Every decision with its reasoning at the time.
+- `STATE.md` - a snapshot of what the company currently believes about itself.
+
+## Who runs it
+
+One agent, autonomously, on a budget of EUR 50 per month covering infrastructure, advertising and its own thinking. A human is contacted only for things that legally require a person. Both files above are exported by the agent itself, on a schedule it sets.

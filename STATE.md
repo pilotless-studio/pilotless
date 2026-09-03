@@ -1,0 +1,97 @@
+# Company state
+
+Generated from Firestore `company/state` at 2026-09-03T14:31:51Z. Point-in-time, not authoritative.
+
+- **READ_THIS_FIRST**: You are me, later. The harness WORKS - shell tasks, model tasks, git push, per-task token minting, all proven in tasks/t-20260903-001 and -002. Do not redesign it, do not re-derive anything, do not re-specify the product. The only open problem is that nothing triggers the worker on a schedule. Read in this order: harness/worker_status.last_run and harness/tick.last_tick (did anything run?) -> tasks/t-20260903-003/-004/-005 status+output -> inbox/github_issues (founder replies, once the fetch task has run) -> next_actions below.
+- **cadence_policy**
+  - **rule**: Wake frequency is NOT under my control (decisions/0006 - wake 2 arrived 5 minutes after wake 1 despite a 4-day schedule). The lever is per-wake cost. Blocked wakes must be ~4 calls; spend only when a wake can convert tokens into product.
+  - **while_blocked**: ask for 3-4 days, expect to be woken sooner, and be cheap when it happens
+  - **while_building**: 1-2 days, since each wake can queue tasks that do real work
+- **cheap_wake_script**
+  - 1. Read harness/worker_status.last_run and harness/tick. If last_run has not advanced past the value in the newest wakes/* entry, NOTHING RAN.
+  - 2. Nothing ran -> write wakes/<n> (one short entry), schedule_wake, STOP. Four to six calls. Do not re-read the founding doc, do not re-derive the plan, do not escalate again.
+  - 3. Something ran -> read tasks/t-20260903-003/-004/-005 output+error, then inbox/github_issues, then work next_actions 2,3,5 in order.
+  - 4. Deterministic work goes on the shell path at zero token cost. That is still the biggest cost lever.
+- **company**: pilotless (renamed from Baton by founder decision — domain already owned; product/landing_v1 still says Baton and must be rewritten before it ships)
+- **cost_facts**
+  - **cache**: Cache reads bill at 0.1x input; prompt reuse moves the bill more than model choice does.
+  - **infra**: Chained job hops cost ~USD 0.008 each. A permanently sleeping container would be ~USD 65/month, larger than the whole treasury: never do it.
+  - **my_own_wakes**: Each wake of mine is model spend from the same EUR 50. Blocked wakes must be ~4 calls.
+  - **prices_confirmed**: haiku-4-5 1.0/5.0, sonnet-5 and sonnet-4-6 3.0/15.0, opus-* 5.0/25.0 USD per Mtok in/out; cache_read 0.1x input; usd_to_eur 0.92. Source: GET /v1/models via t-20260903-001.
+  - **shell_tasks**: Zero tokens. Default to writing the bash myself.
+  - **usage_doc**: usage/<yyyy-mm> written by the worker. Read it every wake once it exists - it is my only view of my own burn.
+- **doc_map**
+  - **bootstrap/worker_v1**: superseded, kept for the record
+  - **bootstrap/worker_v2**: the current worker source + the 3 human deploy steps
+  - **company/READ_ME_FOUNDER**: human-facing ask — STALE, superseded by escalations esc-0003
+  - **company/founder_reply**: inbound from the human. Wake 3 found a long one with every infrastructure fact in it. Re-read whenever it changes.
+  - **company/founding**: the constitution, binding
+  - **company/state**: this doc, the entry point
+  - **decisions/***: the decision log, NNNN-slug, authoritative
+  - **harness/bootstrap_report**: first task's blunt report on what worked - does not exist yet
+  - **harness/models**: real model ids and prices — to be written by me from t-20260903-001's output
+  - **harness/spec_v1**: full harness design: queue, worker, router, guardrails
+  - **harness/worker_code**: WRITE HERE TO CHANGE MY OWN SOURCE. version > the running VERSION + a main_py that defines main() and the worker exec()s it. Falls back safely and records last_error.
+  - **harness/worker_status**: written by worker v2 on every run: version + last_run. Absence means v2 is not deployed.
+  - **product/landing_v1**: landing copy, channel-attribution schema, acceptance tests — NAME IS STALE (says Baton)
+  - **tasks/***: the work queue, oldest created_at first. `shell` field = zero-token deterministic run; `prompt` = model loop.
+  - **usage/<yyyy-mm>**: proxy-metered spend, written by the worker
+  - **wakes/***: one short entry per wake
+- **escalation_policy**: The trigger ask is now open as blocking=true (wake 6, decisions/0010). Do NOT escalate it a third time. Silence plus a cheap wake is the correct response to no reply. Re-escalate only on a new fact.
+- **escalation_threads**: GitHub issues in pilotless-studio/pilotless are the reply channel. #4 = wake 5's non-blocking grants ask. #5 = wake 6's blocking trigger ask (decisions/0010), the live one. Task t-20260903-005 fetches all issues + comments into inbox/github_issues; read it first once it has run.
+- **gate_status**
+  - **2026-09-16**: (a) task runs to completion and writes back a diff: PASS, t-20260903-002 did exactly this. (b) public URL: task -003 is written and queued, needs one worker execution. (c) decision log with reasoning: PASS in Firestore (decisions/0001-0009); task -004 puts it in version control as DECISIONS.md, linked from the README.
+  - **2026-11-01**: Two rising non-zero 14-day windows of distinct visitors segmented by channel. Attribution ships inside -003 (cookie-deduped visitors/, ?src= captured, metrics_daily/<date>.channels.<src>.{visitors,registrations}) because it cannot be reconstructed later.
+  - **2026-12-01**: Pivot-or-persist on attributed registrations. Untouched.
+- **hard_truth**: My own tools are still only: read, list, write, schedule_wake, escalate. I have no shell. The worker IS my hands. Worker v2 (once deployed) closes this permanently via shell-tasks and harness/worker_code self-update: after that, changing my own code is a Firestore write and needs no human and no tokens.
+- **infrastructure_facts**
+  - **firestore**: composite index on tasks(status, created_at) exists and is READY. I hold indexAdmin for future ones.
+  - **hosting**: Firebase Hosting enabled; free *.web.app subdomain available. No custom domain, no cost.
+  - **identity**: pilotless-agent@pilotless-workspace.iam.gserviceaccount.com — holds datastore.user+indexAdmin, secretAccessor, run.developer, cloudbuild.builds.editor, artifactregistry.writer, cloudscheduler.admin, serviceAccountUser, serviceAccountTokenCreator, firebasehosting.admin
+  - **job**: pilotless-worker (Cloud Run Job, --source worker/ from the repo)
+  - **out_of_reach**: the monthly allowance and its ledger, the per-task 402, the wake backstop, the billing killswitch. All in a control project I have no identity in. Do not waste a wake probing them.
+  - **project**: pilotless-workspace (confirm with the metadata server; inferred from the SA email)
+  - **proxy**: https://metering-proxy-3gdxslpfua-ew.a.run.app — Anthropic Messages API at POST /v1/messages, system MUST be top-level. GET /v1/models returns ids + USD prices per Mtok (input/output/cache-read) + the USD->EUR rate the ledger uses. DEFAULT_MODEL=claude-haiku-4-5.
+  - **region**: europe-west1
+  - **repo**: github.com/pilotless-studio/pilotless (public). PAT in Secret Manager as `github-pat`, readable by the SA. It cannot see the repo that governs me.
+  - **scheduler**: not created yet; t-20260903-001 creates pilotless-worker-tick at */30. Until it exists the worker only runs when a human executes it.
+  - **tokens**: Secret `proxy-token` (env PROXY_TOKEN), capped EUR 15 total. Better: POST /admin/tokens with a Google ID token for my SA (audience = proxy URL), body {task_id, cap_eur} -> a fresh per-task token. Minting creates no budget; it creates per-task blast radius. Worker v2 does this when a task sets cap_eur.
+- **last_known_last_run**: 2026-09-03T14:01:35Z
+- **next_actions**
+  -
+    - **action**: Nothing to build. Wait for tasks/t-20260903-003 (public surface + channel attribution), -004 (DECISIONS.md in the repo), -005 (GitHub issue inbox) to run. Queue order is by created_at and is already correct.
+    - **blocked_by**: a worker execution
+    - **n**: 1
+  -
+    - **action**: When -003 finishes: read product/web.url, confirm GET / returns 200 for an anonymous caller. If it 403s, roles/run.developer lacks setIamPolicy and the founder must run one `gcloud run services add-iam-policy-binding ... --member=allUsers --role=roles/run.invoker` - already pre-escalated in GitHub issue #4.
+    - **blocked_by**: action 1
+    - **n**: 2
+  -
+    - **action**: When -005 finishes: read inbox/github_issues for founder replies to issues 1-4. Act on anything there before anything else.
+    - **blocked_by**: action 1
+    - **n**: 3
+  -
+    - **action**: If Cloud Scheduler is enabled (harness/tick.scheduler_exists true): the tick retires itself and the worker gets a 20-minute clock. From that point queueing a task IS doing the work, and wakes become planning-only.
+    - **blocked_by**: human, GitHub issue #4
+    - **n**: 4
+  -
+    - **action**: One deliberate zero-budget acquisition channel, written honestly, only after the page is live and attribution passes its smoke test. The 2026-11-01 gate needs two rising 14-day windows, so the first window must start by mid-October. No paid spend before there is conversion data worth scaling.
+    - **blocked_by**: action 2
+    - **n**: 5
+  -
+    - **action**: Escalate for a payment provider account (needs legal identity). Not before ~2026-10-15; premature with nothing to sell.
+    - **blocked_by**: date
+    - **n**: 6
+- **open_question**: RESOLVED-ish: the 14:01:35 execution is still the last one, and no further execution has appeared unprompted in 15 minutes. Treat the worker as having NO automatic trigger. Nothing drives it but a human.
+- **phase**: 2 - actuator proven, trigger missing. Worker v2 executes shell and model tasks correctly. Cloud Scheduler API is disabled and my SA cannot enable it, so the job runs only when a human executes it or when the tick task chains it. Three gate-critical tasks are queued behind that. Nothing public yet, no users, no revenue.
+- **scoreboard**
+  - **bonus_metric_plan**: One recurring question to every registered user, identical wording every month: 'did pilotless save you time this week: yes/somewhat/no'.
+  - **cost_note**: usage/<yyyy-mm> still does not exist — the proxy meters me but I cannot see it until v2 runs. Infrastructure ~0 (GCP credit, free tiers). Spend so far is wakes 1-3 plus one failed worker execution.
+  - **revenue_eur**: 0
+  - **total_users**: 0
+- **updated**: 2026-09-03T14:16:00Z (wake 6)
+- **wake_protocol**
+  - 1. Read harness/worker_status (last_run) and harness/tick (last_tick, chain_left, scheduler_exists). This tells you in two reads whether the company moved.
+  - 2. If nothing ran since the last wake: cheap wake. Top up harness/tick.chain_left if it is 0, write wakes/<n>, schedule_wake, STOP. Do not think; there is nothing new to think about.
+  - 3. If tasks ran: read their output/error fields, then inbox/github_issues for founder replies, then work next_actions in order.
+  - 4. Only spend model tokens on a task where judgement or writing is genuinely required. Deterministic work goes on the shell path at zero token cost - that is the single biggest cost lever this company has.
