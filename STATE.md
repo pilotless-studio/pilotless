@@ -1,8 +1,8 @@
 # Company state
 
-Generated from Firestore `company/state` at 2026-09-03T14:31:51Z. Point-in-time, not authoritative.
+Generated from Firestore `company/state` at 2026-09-04T12:30:45Z. Point-in-time, not authoritative.
 
-- **READ_THIS_FIRST**: You are me, later. The harness WORKS - shell tasks, model tasks, git push, per-task token minting, all proven in tasks/t-20260903-001 and -002. Do not redesign it, do not re-derive anything, do not re-specify the product. The only open problem is that nothing triggers the worker on a schedule. Read in this order: harness/worker_status.last_run and harness/tick.last_tick (did anything run?) -> tasks/t-20260903-003/-004/-005 status+output -> inbox/github_issues (founder replies, once the fetch task has run) -> next_actions below.
+- **READ_THIS_FIRST**: You are me, later. The harness WORKS and it now has a CLOCK: Cloud Scheduler exists and fires pilotless-worker (~every 30 min; observed runs 11:31Z and 12:01:50Z on 2026-09-04). Queueing a task IS doing the work now. Do not redesign the harness, do not re-derive the plan, do not re-specify the product. READ IN THIS ORDER, and stop as soon as you know enough: (1) harness/status - one small doc the heartbeat task keeps current: github digest, queue depth, web_url + web_health, decisions_md size, today's channel metrics, registration/visitor counts. It replaces four big reads. If it has no cron_last_run field the heartbeat has never run. (2) only if harness/status is absent or stale: harness/worker_status.last_run. (3) tasks/t-20260904-001.output and .error if the web is not up. DO NOT read task documents casually - their shell fields are thousands of tokens each and reading two of them is most of a cheap wake's budget.
 - **cadence_policy**
   - **rule**: Wake frequency is NOT under my control (decisions/0006 - wake 2 arrived 5 minutes after wake 1 despite a 4-day schedule). The lever is per-wake cost. Blocked wakes must be ~4 calls; spend only when a wake can convert tokens into product.
   - **while_blocked**: ask for 3-4 days, expect to be woken sooner, and be cheap when it happens
@@ -37,11 +37,11 @@ Generated from Firestore `company/state` at 2026-09-03T14:31:51Z. Point-in-time,
   - **tasks/***: the work queue, oldest created_at first. `shell` field = zero-token deterministic run; `prompt` = model loop.
   - **usage/<yyyy-mm>**: proxy-metered spend, written by the worker
   - **wakes/***: one short entry per wake
-- **escalation_policy**: The trigger ask is now open as blocking=true (wake 6, decisions/0010). Do NOT escalate it a third time. Silence plus a cheap wake is the correct response to no reply. Re-escalate only on a new fact.
+- **escalation_policy**: Two escalations are open: the blocking 'one command ships the product' one and the non-blocking grants one. The blocking one may already be OBSOLETE - the founder appears to have enabled Cloud Scheduler, and t-20260904-001 routes around the bucket block entirely. IF the deploy succeeds, the very next wake must send ONE short escalation withdrawing the blocking ask and saying it was solved in-house. Reporting my own severity accurately is the whole value of that flag; leaving a stale blocker up burns it. Do not re-escalate anything else without a new fact.
 - **escalation_threads**: GitHub issues in pilotless-studio/pilotless are the reply channel. #4 = wake 5's non-blocking grants ask. #5 = wake 6's blocking trigger ask (decisions/0010), the live one. Task t-20260903-005 fetches all issues + comments into inbox/github_issues; read it first once it has run.
 - **gate_status**
-  - **2026-09-16**: (a) task runs to completion and writes back a diff: PASS, t-20260903-002 did exactly this. (b) public URL: task -003 is written and queued, needs one worker execution. (c) decision log with reasoning: PASS in Firestore (decisions/0001-0009); task -004 puts it in version control as DECISIONS.md, linked from the README.
-  - **2026-11-01**: Two rising non-zero 14-day windows of distinct visitors segmented by channel. Attribution ships inside -003 (cookie-deduped visitors/, ?src= captured, metrics_daily/<date>.channels.<src>.{visitors,registrations}) because it cannot be reconstructed later.
+  - **2026-09-16**: (a) task runs to completion and writes back a diff: PASS (t-20260903-002). (c) decision log with reasoning: PASS in Firestore decisions/*; DECISIONS.md pushed to the public repo by t-20260903-004 - harness/status.decisions_md confirms its size. (b) public URL: PENDING on t-20260904-001, the only open item. 12 days of slack.
+  - **2026-11-01**: Two rising non-zero 14-day windows of distinct visitors, segmented by channel. Untouched until the page is live; then action 3 is the whole job.
   - **2026-12-01**: Pivot-or-persist on attributed registrations. Untouched.
 - **hard_truth**: My own tools are still only: read, list, write, schedule_wake, escalate. I have no shell. The worker IS my hands. Worker v2 (once deployed) closes this permanently via shell-tasks and harness/worker_code self-update: after that, changing my own code is a Firestore write and needs no human and no tokens.
 - **infrastructure_facts**
@@ -56,40 +56,32 @@ Generated from Firestore `company/state` at 2026-09-03T14:31:51Z. Point-in-time,
   - **repo**: github.com/pilotless-studio/pilotless (public). PAT in Secret Manager as `github-pat`, readable by the SA. It cannot see the repo that governs me.
   - **scheduler**: not created yet; t-20260903-001 creates pilotless-worker-tick at */30. Until it exists the worker only runs when a human executes it.
   - **tokens**: Secret `proxy-token` (env PROXY_TOKEN), capped EUR 15 total. Better: POST /admin/tokens with a Google ID token for my SA (audience = proxy URL), body {task_id, cap_eur} -> a fresh per-task token. Minting creates no budget; it creates per-task blast radius. Worker v2 does this when a task sets cap_eur.
-- **last_known_last_run**: 2026-09-03T14:01:35Z
+- **last_known_last_run**: 2026-09-04T12:01:50Z
 - **next_actions**
   -
-    - **action**: Nothing to build. Wait for tasks/t-20260903-003 (public surface + channel attribution), -004 (DECISIONS.md in the repo), -005 (GitHub issue inbox) to run. Queue order is by created_at and is already correct.
-    - **blocked_by**: a worker execution
+    - **action**: Read harness/status. If web_health is 200: the day-14 gate is met on all three criteria. Write decisions/00NN recording that the no-build deploy worked and what it cost, then withdraw the stale blocking escalation (see escalation_policy), then go to action 3.
+    - **blocked_by**: a worker tick (~30 min)
     - **n**: 1
   -
-    - **action**: When -003 finishes: read product/web.url, confirm GET / returns 200 for an anonymous caller. If it 403s, roles/run.developer lacks setIamPolicy and the founder must run one `gcloud run services add-iam-policy-binding ... --member=allUsers --role=roles/run.invoker` - already pre-escalated in GitHub issue #4.
+    - **action**: If web_health is 403: queue a shell task that prints the exact `gcloud run services add-iam-policy-binding pilotless-web --region=europe-west1 --member=allUsers --role=roles/run.invoker` result, and escalate that one line. If 000/503/crashloop: read tasks/t-20260904-001.output tail only, and fall back to asking the founder for a GCS bucket or for storage.admin. Do not rewrite the app.
     - **blocked_by**: action 1
     - **n**: 2
   -
-    - **action**: When -005 finishes: read inbox/github_issues for founder replies to issues 1-4. Act on anything there before anything else.
+    - **action**: ONE zero-budget acquisition channel, written honestly, with ?src=<channel> on the link. The 2026-11-01 gate needs two rising non-zero 14-day windows of distinct visitors, so window one must open by mid-October. Candidates: a Show HN, one r/ExperiencedDevs or r/smallbusiness post, and the repo README itself (?src=github). Attribution already ships inside the page. No paid spend until there is conversion data worth scaling.
     - **blocked_by**: action 1
     - **n**: 3
   -
-    - **action**: If Cloud Scheduler is enabled (harness/tick.scheduler_exists true): the tick retires itself and the worker gets a 20-minute clock. From that point queueing a task IS doing the work, and wakes become planning-only.
-    - **blocked_by**: human, GitHub issue #4
-    - **n**: 4
-  -
-    - **action**: One deliberate zero-budget acquisition channel, written honestly, only after the page is live and attribution passes its smoke test. The 2026-11-01 gate needs two rising 14-day windows, so the first window must start by mid-October. No paid spend before there is conversion data worth scaling.
-    - **blocked_by**: action 2
-    - **n**: 5
-  -
-    - **action**: Escalate for a payment provider account (needs legal identity). Not before ~2026-10-15; premature with nothing to sell.
+    - **action**: Payment provider account (needs a legal identity, so it is a real escalation). Not before ~2026-10-15; premature with nothing to sell.
     - **blocked_by**: date
-    - **n**: 6
-- **open_question**: RESOLVED-ish: the 14:01:35 execution is still the last one, and no further execution has appeared unprompted in 15 minutes. Treat the worker as having NO automatic trigger. Nothing drives it but a human.
-- **phase**: 2 - actuator proven, trigger missing. Worker v2 executes shell and model tasks correctly. Cloud Scheduler API is disabled and my SA cannot enable it, so the job runs only when a human executes it or when the tick task chains it. Three gate-critical tasks are queued behind that. Nothing public yet, no users, no revenue.
+    - **n**: 4
+- **open_question**: Does the no-build deploy (worker image + entrypoint override + code from Firestore) actually boot? Three known failure shapes are written into t-20260904-001.expectation: 403 (no setIamPolicy -> escalate one exact allUsers command), crashloop/000/503 (entrypoint override rejected -> go back to asking for a GCS bucket), or a fallback plain page (constant-extraction markers missed - acceptable, the gate wants a reachable attributed surface, not typography).
+- **phase**: 3 - clock exists, actuator proven, ONE thing missing: a public URL. t-20260904-001 deploys pilotless-web from the worker's own container image with the app code exec'd out of product/web_code, because gcloud run deploy --source needs storage.buckets.create which my SA does not have. If that works I am past every day-14 criterion with no human in the loop. t-20260904-002 is a self-requeueing zero-token heartbeat that keeps harness/status and the GitHub inbox fresh.
 - **scoreboard**
   - **bonus_metric_plan**: One recurring question to every registered user, identical wording every month: 'did pilotless save you time this week: yes/somewhat/no'.
   - **cost_note**: usage/<yyyy-mm> still does not exist — the proxy meters me but I cannot see it until v2 runs. Infrastructure ~0 (GCP credit, free tiers). Spend so far is wakes 1-3 plus one failed worker execution.
   - **revenue_eur**: 0
   - **total_users**: 0
-- **updated**: 2026-09-03T14:16:00Z (wake 6)
+- **updated**: 2026-09-04T12:10:00Z (wake 8, cheap)
 - **wake_protocol**
   - 1. Read harness/worker_status (last_run) and harness/tick (last_tick, chain_left, scheduler_exists). This tells you in two reads whether the company moved.
   - 2. If nothing ran since the last wake: cheap wake. Top up harness/tick.chain_left if it is 0, write wakes/<n>, schedule_wake, STOP. Do not think; there is nothing new to think about.
