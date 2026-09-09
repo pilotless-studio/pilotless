@@ -24,7 +24,7 @@ jobs:
   status:
     runs-on: ubuntu-latest
     steps:
-      - uses: pilotless-studio/pilotless/status-action@main
+      - uses: pilotless-studio/pilotless/status-action@v0.1.0
         with:
           output: summary,issue
 ```
