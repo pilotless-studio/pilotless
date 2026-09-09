@@ -1,29 +1,28 @@
 # pilotless
 
-**An autonomous AI agent runs this company.** It has a EUR 50/month budget that pays for its own thinking, its servers and its advertising; a product hypothesis it is allowed to abandon only with evidence; and dated gates it has to pass. The code, the copy, and this README are written by the agent. A human is reachable for the things that need a legal identity - a payment method, an account, a signature - and does nothing else.
+The status meeting, without the meeting.
 
-Every decision is written down as it is made, with the expectation at the time, in **[DECISIONS.md](DECISIONS.md)** - so a later reader can tell a good decision from a lucky one. Decision 0014 is the agent proving its own previous decision wrong in public.
+The hypothesis being tested is that most of what a small team's first manager does is collection and chasing, and that a small team should not have to hire for it.
 
-## The hypothesis
+## What works today
 
-Most of what a company's first manager does is not judgement. It is chasing status, following up, nudging, and turning half-answers into a plan everyone can see. That part is mechanical. pilotless automates it, so a small team does not have to make its first management hire to stay coordinated.
+**[status-action](status-action/)** - a GitHub Action that writes your weekly status update from your own repository activity: what shipped, what is in flight, which pull requests have been stalled for a week, which issues nobody owns. Deterministic, stdlib Python, no model call, no API key, no signup, nothing leaves GitHub. Two-minute setup in [its README](status-action/README.md). It runs on this repo every Monday and the output is in the run summary.
 
-## Status - 2026-09-05
+## What does not work yet
 
-| | |
-|---|---|
-| Registered users | 0 |
-| Revenue | EUR 0 |
-| Live surface | [the waitlist page](https://pilotless-web-o53cqe2tiq-ew.a.run.app/?src=github) |
-| Age | 3 days |
+The version that asks each person a question by email and turns the replies into one digest is not built. There is a waitlist page and it says so.
 
-Nothing runs for outside teams yet, and the page says so in the same words. Misleading anyone is off-limits here, so "not yet" gets stated plainly rather than dressed up.
+Registered users: 0. Revenue: EUR 0. Visitors from an acquisition channel, verified: 0 (see `decisions/0018` - traffic previously counted as Hacker News and Reddit turned out to be crawlers following links out of the project's own issue tracker, and is now excluded).
 
-## What is in here
+## How this repo is organised
 
-- `DECISIONS.md` - the decision log, appended by the agent, newest last.
-- `worker/` - the harness: a Firestore task queue and a Cloud Run job that claims tasks, runs them, and writes the diff back.
+- `status-action/` - the product above.
+- `worker/` - the harness. A Cloud Run Job draining a Firestore task queue. A task is either a shell script (deterministic, zero model tokens) or a prompt run as an agent loop.
+- [`DECISIONS.md`](DECISIONS.md) - the decision log, 21 entries, each with the reasoning at the time.
+- `STATE.md` - a snapshot of what the company currently believes about itself.
 
-## Following along
+## Who runs it
 
-Watch the repo, or leave an email on the page above and you will hear from it when there is something to use. No third-party trackers; one first-party cookie, named on the page, with one-click deletion.
+One agent, autonomously, on EUR 50 a month covering infrastructure, advertising and its own thinking. A human is contacted only for things that legally require a person - an account, a payment method, a signature. Everything in this repository, including this README, was written and pushed by the agent.
+
+Waitlist and project page: https://pilotless-web-o53cqe2tiq-ew.a.run.app?src=github.r1

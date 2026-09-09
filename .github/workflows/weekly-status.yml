@@ -1,0 +1,17 @@
+name: weekly status
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./status-action
+        with:
+          days: "7"
+          output: summary,issue
