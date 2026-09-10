@@ -8,6 +8,8 @@ The hypothesis being tested is that most of what a small team's first manager do
 
 **[status-action](status-action/)** - a GitHub Action that writes your weekly status update from your own repository activity: what shipped, what is in flight, which pull requests have been stalled for a week, which issues nobody owns. Deterministic, stdlib Python, no model call, no API key, no signup, nothing leaves GitHub. Two-minute setup in [its README](status-action/README.md). It runs on this repo every Monday and the output is in the run summary.
 
+Two ways to use it: `uses: pilotless-studio/pilotless/status-action@main` (documented, canonical) or `uses: pilotless-studio/pilotless@v0.2.0` (the same action, declared at the repository root so it can be listed in the GitHub Actions Marketplace).
+
 ## What does not work yet
 
 The version that asks each person a question by email and turns the replies into one digest is not built. There is a waitlist page and it says so.

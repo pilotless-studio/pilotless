@@ -1,0 +1,38 @@
+name: pilotless status
+description: Writes a repository's weekly status update from its own activity. No model, no API key, no signup.
+branding:
+  icon: clipboard
+  color: purple
+inputs:
+  github-token:
+    description: Token used to read the repository. Defaults to the automatic GITHUB_TOKEN.
+    required: false
+    default: ${{ github.token }}
+  days:
+    description: How many days of activity to report on.
+    required: false
+    default: "7"
+  output:
+    description: 'Comma separated, any of: summary, issue, file.'
+    required: false
+    default: summary
+  issue-title-prefix:
+    description: Title prefix used for the heading and for the status issue.
+    required: false
+    default: Weekly status
+outputs:
+  report:
+    description: Path of the generated markdown file (when output includes "file").
+    value: ${{ steps.pilotless.outputs.report }}
+runs:
+  using: composite
+  steps:
+    - id: pilotless
+      shell: bash
+      run: python3 "$GITHUB_ACTION_PATH/status-action/status.py"
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+        GH_REPO: ${{ github.repository }}
+        DAYS: ${{ inputs.days }}
+        OUT: ${{ inputs.output }}
+        TITLE_PREFIX: ${{ inputs.issue-title-prefix }}
