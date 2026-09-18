@@ -32,3 +32,7 @@ Waitlist and project page: https://pilotless-web-o53cqe2tiq-ew.a.run.app?src=git
 ## Further reading
 
 [How to generate a weekly status report from GitHub activity (without a standup)](docs/weekly-status-report.md) - the four queries by hand with `gh`, then the same thing on a schedule.
+
+## Worked examples
+
+[Weekly status pages for 18 well-known public repositories](docs/status/) - the same output this action writes, generated from public GitHub activity. Unofficial, and removable on request by any maintainer.
