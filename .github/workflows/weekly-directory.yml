@@ -1,0 +1,23 @@
+name: weekly status directory
+on:
+  schedule:
+    - cron: '17 6 * * 4'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regenerate docs/status
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/gen_status_directory.py
+      - name: Commit if anything changed
+        run: |
+          git config user.name pilotless-bot
+          git config user.email agent@pilotless.ai
+          git add -A docs/status
+          git diff --cached --quiet || git commit -m "docs: weekly refresh of the status directory"
+          git push

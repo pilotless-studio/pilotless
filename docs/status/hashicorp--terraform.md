@@ -1,29 +1,29 @@
 # Weekly status: hashicorp/terraform
 
-_2026-09-11 to 2026-09-18 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**22 commits** by 5 people, **at least 21 pull requests merged**, **100 open pull requests**, **55 open issues** on this page of results.
+**25 commits** by 7 people, **at least 19 pull requests merged**, **100 open pull requests**, **59 open issues** on this page of results.
 
 ### Who moved code
-SarahFrench (12), austinvalle (4), jbardin (2), sebasslash (2), mildwonkey (2)
+SarahFrench (15), mildwonkey (3), crw (2), dbanck (2), radeksimko (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#31233](https://github.com/hashicorp/terraform/pull/31233) Backport of Update syntax.mdx into v1.2 - last touched 1557 days ago
-- [#33629](https://github.com/hashicorp/terraform/pull/33629) Add CIDR collapse functionality - last touched 1044 days ago
-- [#33937](https://github.com/hashicorp/terraform/pull/33937) Feature/ks3 backend - last touched 1044 days ago
-- [#32542](https://github.com/hashicorp/terraform/pull/32542) Use Environment Variables for remote state config - last touched 1044 days ago
-- [#33073](https://github.com/hashicorp/terraform/pull/33073) cli init: hide warning about incomplete lock - last touched 1044 days ago
+- [#31233](https://github.com/hashicorp/terraform/pull/31233) Backport of Update syntax.mdx into v1.2 - last touched 1564 days ago
+- [#33629](https://github.com/hashicorp/terraform/pull/33629) Add CIDR collapse functionality - last touched 1051 days ago
+- [#33937](https://github.com/hashicorp/terraform/pull/33937) Feature/ks3 backend - last touched 1051 days ago
+- [#32542](https://github.com/hashicorp/terraform/pull/32542) Use Environment Variables for remote state config - last touched 1051 days ago
+- [#33073](https://github.com/hashicorp/terraform/pull/33073) cli init: hide warning about incomplete lock - last touched 1051 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#39214](https://github.com/hashicorp/terraform/issues/39214) Test failure: `TestRemote_applyCanceled` - opened 2 days ago
-- [#39212](https://github.com/hashicorp/terraform/issues/39212) Prevent `metadata functions` silently ignoring positional arguments - opened 2 days ago
-- [#39200](https://github.com/hashicorp/terraform/issues/39200) Prevent `fmt` silently ignoring additional arguments after `"-"` - opened 4 days ago
-- [#39121](https://github.com/hashicorp/terraform/issues/39121) test: Remove ability to use variables with no matching variable block - opened 15 days ago
-- [#39094](https://github.com/hashicorp/terraform/issues/39094) `plan`/`apply` exit with an error when using a `cloud` backend and a version of TFE that d - opened 17 days ago
+- [#39285](https://github.com/hashicorp/terraform/issues/39285) Identity is nil in DELETE during requires-replace - opened 0 days ago
+- [#39281](https://github.com/hashicorp/terraform/issues/39281) Test failure: `TestRemote_applyLockTimeout` - opened 0 days ago
+- [#39214](https://github.com/hashicorp/terraform/issues/39214) Test failure: `TestRemote_applyCanceled` - opened 9 days ago
+- [#39212](https://github.com/hashicorp/terraform/issues/39212) Prevent `metadata functions` silently ignoring positional arguments - opened 9 days ago
+- [#39200](https://github.com/hashicorp/terraform/issues/39200) Prevent `fmt` silently ignoring additional arguments after `"-"` - opened 11 days ago
 
 ---
 

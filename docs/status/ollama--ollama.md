@@ -1,29 +1,29 @@
 # Weekly status: ollama/ollama
 
-_2026-09-11 to 2026-09-18 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**28 commits** by 5 people, **at least 22 pull requests merged**, **100 open pull requests**, **40 open issues** on this page of results.
+**21 commits** by 7 people, **at least 18 pull requests merged**, **100 open pull requests**, **38 open issues** on this page of results.
 
 ### Who moved code
-dhiltgen (10), jessegross (8), hoyyeva (6), ParthSareen (3), pdevine (1)
+dhiltgen (6), jessegross (5), ParthSareen (4), hoyyeva (3), drifkin (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#8504](https://github.com/ollama/ollama/pull/8504) add doc to describe setup of vm on proxmox for multiple P40 gpus - last touched 605 days ago
-- [#8259](https://github.com/ollama/ollama/pull/8259) create a default, non-root user for the container image - last touched 605 days ago
-- [#8161](https://github.com/ollama/ollama/pull/8161) Set n_ubatch parameter to same batch size as n_batch - last touched 595 days ago
-- [#8797](https://github.com/ollama/ollama/pull/8797) fix(openai): json schema impl - last touched 590 days ago
-- [#8049](https://github.com/ollama/ollama/pull/8049) Implement OLLAMA_MAX_KEEP_ALIVE environment variable - last touched 590 days ago
+- [#8504](https://github.com/ollama/ollama/pull/8504) add doc to describe setup of vm on proxmox for multiple P40 gpus - last touched 612 days ago
+- [#8259](https://github.com/ollama/ollama/pull/8259) create a default, non-root user for the container image - last touched 612 days ago
+- [#8161](https://github.com/ollama/ollama/pull/8161) Set n_ubatch parameter to same batch size as n_batch - last touched 602 days ago
+- [#8797](https://github.com/ollama/ollama/pull/8797) fix(openai): json schema impl - last touched 597 days ago
+- [#8049](https://github.com/ollama/ollama/pull/8049) Implement OLLAMA_MAX_KEEP_ALIVE environment variable - last touched 597 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#18521](https://github.com/ollama/ollama/issues/18521) Support Prism ternary GGUFs (PQ2_0 type 142 / PTQ1_0 type 143): import fails with unsuppor - opened 0 days ago
-- [#18515](https://github.com/ollama/ollama/issues/18515) Add MLX support for Bonsai's low-bit (1-bit/2-bit) quantized weights to the new 0.19 MLX b - opened 0 days ago
-- [#18506](https://github.com/ollama/ollama/issues/18506) glm-5.3-flash intermittently emits malformed string-encoded tool calls via Ollama Cloud - opened 0 days ago
-- [#18502](https://github.com/ollama/ollama/issues/18502) linux: fix Vulkan inference support on ARM64 (PR implemented) - opened 1 days ago
-- [#18494](https://github.com/ollama/ollama/issues/18494) qwen3-vl:8b-instruct 0xc0000005 on Vulkan AMD RX 6750 XT after multi-model load (Windows 0 - opened 1 days ago
+- [#18637](https://github.com/ollama/ollama/issues/18637) [Cloud] deepseek-v4.1-flash silently discards image input again — regression of #18527 - opened 0 days ago
+- [#18628](https://github.com/ollama/ollama/issues/18628) macOS incorrectly prompts to move app when installed in an `/Applications` subdirectory - opened 0 days ago
+- [#18612](https://github.com/ollama/ollama/issues/18612) Feature request: yield idle model VRAM under GPU-memory pressure - opened 1 days ago
+- [#18609](https://github.com/ollama/ollama/issues/18609) glm-ocr: 0.34.1+ returns HTTP 500 "prediction aborted, token repeat limit reached" for OCR - opened 1 days ago
+- [#18584](https://github.com/ollama/ollama/issues/18584) The current .sh file to install Ollama fails repeatedly with bad Internet connection, use  - opened 3 days ago
 
 ---
 

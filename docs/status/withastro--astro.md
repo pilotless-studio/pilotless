@@ -1,20 +1,20 @@
 # Weekly status: withastro/astro
 
-_2026-09-11 to 2026-09-18 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**67 commits** by 20 people, **at least 39 pull requests merged**, **46 open pull requests**, **3 open issues** on this page of results.
+**31 commits** by 10 people, **at least 30 pull requests merged**, **69 open pull requests**, **15 open issues** on this page of results.
 
 ### Who moved code
-matthewp (14), renovate[bot] (13), astro-factory[bot] (11), Princesseuh (10), ematipico (3)
+renovate[bot] (17), Princesseuh (3), matthewp (2), astrobot-houston (2), ematipico (2)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#14955](https://github.com/withastro/astro/pull/14955) feat(config): Add React compiler as an Astro config option - last touched 233 days ago
-- [#17020](https://github.com/withastro/astro/pull/17020) fix(transitions): skip ClientRouter transition when `from` and `to` are the same URL - last touched 92 days ago
-- [#17121](https://github.com/withastro/astro/pull/17121) Added config option for setting a hostname to be prepended to Server Island URLs - last touched 80 days ago
-- [#17315](https://github.com/withastro/astro/pull/17315) Resolve SolidJS dependency imports via framework crawling and fix test process.emit type e - last touched 73 days ago
-- [#17477](https://github.com/withastro/astro/pull/17477) fix(create-astro): create astro uses correct project name when using directory "." - last touched 58 days ago
+- [#14955](https://github.com/withastro/astro/pull/14955) feat(config): Add React compiler as an Astro config option - last touched 240 days ago
+- [#17020](https://github.com/withastro/astro/pull/17020) fix(transitions): skip ClientRouter transition when `from` and `to` are the same URL - last touched 99 days ago
+- [#17121](https://github.com/withastro/astro/pull/17121) Added config option for setting a hostname to be prepended to Server Island URLs - last touched 87 days ago
+- [#17315](https://github.com/withastro/astro/pull/17315) Resolve SolidJS dependency imports via framework crawling and fix test process.emit type e - last touched 80 days ago
+- [#17477](https://github.com/withastro/astro/pull/17477) fix(create-astro): create astro uses correct project name when using directory "." - last touched 65 days ago
 
 ### Issues nobody has picked up
 None on this page of results.

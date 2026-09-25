@@ -1,17 +1,17 @@
 # Weekly status: tiangolo/fastapi
 
-_2026-09-11 to 2026-09-18 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**0 commits** by 0 people, **at least 0 pull requests merged**, **78 open pull requests**, **1 open issues** on this page of results.
+**0 commits** by 0 people, **at least 0 pull requests merged**, **81 open pull requests**, **1 open issues** on this page of results.
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#11782](https://github.com/fastapi/fastapi/pull/11782) 📝 Add documentation on how to use the Django ORM inside FastAPI - last touched 330 days ago
-- [#10647](https://github.com/fastapi/fastapi/pull/10647) fix: respect call localns at get_typed_signature - last touched 284 days ago
-- [#14655](https://github.com/fastapi/fastapi/pull/14655) Add support for Sentinel values - last touched 253 days ago
-- [#14089](https://github.com/fastapi/fastapi/pull/14089) ✨ Improve JSON Parsing Error Messages - last touched 225 days ago
-- [#14574](https://github.com/fastapi/fastapi/pull/14574) Fix: Preserve model_fields_set for Form models (issue #13399) - last touched 223 days ago
+- [#11782](https://github.com/fastapi/fastapi/pull/11782) 📝 Add documentation on how to use the Django ORM inside FastAPI - last touched 337 days ago
+- [#10647](https://github.com/fastapi/fastapi/pull/10647) fix: respect call localns at get_typed_signature - last touched 291 days ago
+- [#14655](https://github.com/fastapi/fastapi/pull/14655) Add support for Sentinel values - last touched 260 days ago
+- [#14089](https://github.com/fastapi/fastapi/pull/14089) ✨ Improve JSON Parsing Error Messages - last touched 232 days ago
+- [#14574](https://github.com/fastapi/fastapi/pull/14574) Fix: Preserve model_fields_set for Form models (issue #13399) - last touched 230 days ago
 
 ### Issues nobody has picked up
 None on this page of results.

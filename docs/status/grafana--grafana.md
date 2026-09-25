@@ -1,29 +1,29 @@
 # Weekly status: grafana/grafana
 
-_2026-09-11 to 2026-09-18 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 48 people, **at least 35 pull requests merged**, **100 open pull requests**, **26 open issues** on this page of results.
+**100+ commits** by 56 people, **at least 36 pull requests merged**, **100 open pull requests**, **22 open issues** on this page of results.
 
 ### Who moved code
-pstibrany (12), ryantxu (6), fastfrwrd (6), ashharrison90 (5), RafaelPaulovic (4)
+renovate-sh-app[bot] (10), fastfrwrd (5), pstibrany (5), ryantxu (4), ashharrison90 (3)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#60522](https://github.com/grafana/grafana/pull/60522) Errors: Use errata to generate errors from HCL files - last touched 1338 days ago
-- [#94583](https://github.com/grafana/grafana/pull/94583) [WIP] Heatmap: Handle bounds <= 0 with sparse/native histograms - last touched 615 days ago
-- [#98505](https://github.com/grafana/grafana/pull/98505) [PoC] Alternative code editor based on CodeMirror - last touched 588 days ago
-- [#93567](https://github.com/grafana/grafana/pull/93567) Prometheus: WIP add limit to metric names calls and use regex filtering in the monaco code - last touched 573 days ago
-- [#97014](https://github.com/grafana/grafana/pull/97014) [WIP] GraphNG refactoring stuff - last touched 563 days ago
+- [#60522](https://github.com/grafana/grafana/pull/60522) Errors: Use errata to generate errors from HCL files - last touched 1345 days ago
+- [#94583](https://github.com/grafana/grafana/pull/94583) [WIP] Heatmap: Handle bounds <= 0 with sparse/native histograms - last touched 622 days ago
+- [#98505](https://github.com/grafana/grafana/pull/98505) [PoC] Alternative code editor based on CodeMirror - last touched 595 days ago
+- [#93567](https://github.com/grafana/grafana/pull/93567) Prometheus: WIP add limit to metric names calls and use regex filtering in the monaco code - last touched 580 days ago
+- [#97014](https://github.com/grafana/grafana/pull/97014) [WIP] GraphNG refactoring stuff - last touched 570 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#132992](https://github.com/grafana/grafana/issues/132992) Backport: Fix annotation permissions check using subresource for 12.4.x - opened 0 days ago
-- [#132985](https://github.com/grafana/grafana/issues/132985) XY chart: dots dissapear when size field values are all equal - opened 0 days ago
-- [#132968](https://github.com/grafana/grafana/issues/132968) Feature: AffixIO gate for agent-driven remediation / admin actions (Grafana Assistant) - opened 0 days ago
-- [#132967](https://github.com/grafana/grafana/issues/132967) Theme CSS disables all mouse interaction on Plotly panels (.js-plotly-plot .nsewdrag, .dra - opened 0 days ago
-- [#132929](https://github.com/grafana/grafana/issues/132929) Alerting: Templating in alert titles does not work - opened 0 days ago
+- [#133543](https://github.com/grafana/grafana/issues/133543) Auth: Google skip_org_role_sync defaults to true, silently disabling role_attribute_strict - opened 0 days ago
+- [#133541](https://github.com/grafana/grafana/issues/133541) Enforce managerAllowsEdits server-side for terraform-managed resources - opened 0 days ago
+- [#133525](https://github.com/grafana/grafana/issues/133525) Build: package.json version is one patch ahead of the release tag on 12.3.x and other bran - opened 0 days ago
+- [#133524](https://github.com/grafana/grafana/issues/133524) Plan mode improvements identified by LLM spec - opened 0 days ago
+- [#133523](https://github.com/grafana/grafana/issues/133523) Rows layout: repeated row renders the repeat source's title larger than its clones - opened 0 days ago
 
 ---
 

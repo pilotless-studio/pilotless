@@ -1,29 +1,29 @@
 # Weekly status: sveltejs/svelte
 
-_2026-09-11 to 2026-09-18 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**7 commits** by 3 people, **at least 7 pull requests merged**, **100 open pull requests**, **32 open issues** on this page of results.
+**12 commits** by 10 people, **at least 12 pull requests merged**, **100 open pull requests**, **27 open issues** on this page of results.
 
 ### Who moved code
-Nic-Polumeyv (4), svelte-triage-bot[bot] (2), xia-chao (1)
+dummdidumm (2), Rich-Harris (2), waltuov (1), gjija (1), Dextheking1 (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#8975](https://github.com/sveltejs/svelte/pull/8975) fix: define `role="application"` as an interactive ARIA role - last touched 1046 days ago
-- [#14083](https://github.com/sveltejs/svelte/pull/14083) docs: update store documentation - last touched 680 days ago
-- [#14116](https://github.com/sveltejs/svelte/pull/14116) fix: reset title element to previous value on removal - last touched 636 days ago
-- [#14796](https://github.com/sveltejs/svelte/pull/14796) feat: enable `animate:` directive for snippets - last touched 629 days ago
-- [#14599](https://github.com/sveltejs/svelte/pull/14599) Fix: Patch `structuredClone` to error on `$state` proxies - last touched 568 days ago
+- [#8975](https://github.com/sveltejs/svelte/pull/8975) fix: define `role="application"` as an interactive ARIA role - last touched 1053 days ago
+- [#14083](https://github.com/sveltejs/svelte/pull/14083) docs: update store documentation - last touched 687 days ago
+- [#14116](https://github.com/sveltejs/svelte/pull/14116) fix: reset title element to previous value on removal - last touched 643 days ago
+- [#14796](https://github.com/sveltejs/svelte/pull/14796) feat: enable `animate:` directive for snippets - last touched 636 days ago
+- [#14599](https://github.com/sveltejs/svelte/pull/14599) Fix: Patch `structuredClone` to error on `$state` proxies - last touched 575 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#18834](https://github.com/sveltejs/svelte/issues/18834) Chromium: responsive <img> in an {#if}/snippet-only fragment is retained forever — templat - opened 1 days ago
-- [#18827](https://github.com/sveltejs/svelte/issues/18827) A derived read via untrack() inside an effect leaves its child deriveds connected forever  - opened 2 days ago
-- [#18824](https://github.com/sveltejs/svelte/issues/18824) Synchronous throw in an awaited expression becomes `null.f` - opened 2 days ago
-- [#18811](https://github.com/sveltejs/svelte/issues/18811) `forkPreloads` crashing: a speculative render writes the `UNINITIALIZED` sentinel to the D - opened 6 days ago
-- [#18780](https://github.com/sveltejs/svelte/issues/18780) Discussion: Improving hydration performance for large lists - opened 12 days ago
+- [#18834](https://github.com/sveltejs/svelte/issues/18834) Chromium: responsive <img> in an {#if}/snippet-only fragment is retained forever — templat - opened 8 days ago
+- [#18827](https://github.com/sveltejs/svelte/issues/18827) A derived read via untrack() inside an effect leaves its child deriveds connected forever  - opened 9 days ago
+- [#18824](https://github.com/sveltejs/svelte/issues/18824) Synchronous throw in an awaited expression becomes `null.f` - opened 9 days ago
+- [#18811](https://github.com/sveltejs/svelte/issues/18811) `forkPreloads` crashing: a speculative render writes the `UNINITIALIZED` sentinel to the D - opened 13 days ago
+- [#18780](https://github.com/sveltejs/svelte/issues/18780) Discussion: Improving hydration performance for large lists - opened 19 days ago
 
 ---
 

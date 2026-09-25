@@ -1,28 +1,29 @@
 # Weekly status: supabase/supabase
 
-_2026-09-11 to 2026-09-18 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 35 people, **at least 41 pull requests merged**, **100 open pull requests**, **10 open issues** on this page of results.
+**100+ commits** by 43 people, **at least 12 pull requests merged**, **100 open pull requests**, **7 open issues** on this page of results.
 
 ### Who moved code
-joshenlim (10), SaxonF (10), dnywh (10), fsansalvadore (6), claude[bot] (6)
+SaxonF (13), dnywh (10), joshenlim (9), jordienr (6), djhi (5)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#22755](https://github.com/supabase/supabase/pull/22755) chore: Update using-custom-schemas.mdx - last touched 885 days ago
-- [#23307](https://github.com/supabase/supabase/pull/23307) feat: llama3 in studio - last touched 800 days ago
-- [#29716](https://github.com/supabase/supabase/pull/29716) Feat/managed pg - last touched 710 days ago
-- [#29837](https://github.com/supabase/supabase/pull/29837) Feat/app router - last touched 677 days ago
-- [#30401](https://github.com/supabase/supabase/pull/30401) Feat/sql statement stream - last touched 674 days ago
+- [#23307](https://github.com/supabase/supabase/pull/23307) feat: llama3 in studio - last touched 807 days ago
+- [#29716](https://github.com/supabase/supabase/pull/29716) Feat/managed pg - last touched 717 days ago
+- [#29837](https://github.com/supabase/supabase/pull/29837) Feat/app router - last touched 684 days ago
+- [#30401](https://github.com/supabase/supabase/pull/30401) Feat/sql statement stream - last touched 681 days ago
+- [#30392](https://github.com/supabase/supabase/pull/30392) Feat/conslidate sql and table - last touched 659 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#50552](https://github.com/supabase/supabase/issues/50552) Example: AffixIO gate for agent-triggered DB/admin actions - opened 0 days ago
-- [#50550](https://github.com/supabase/supabase/issues/50550) Legacy service_role key cannot be revealed or copied in Studio ConnectSheet - opened 0 days ago
-- [#50530](https://github.com/supabase/supabase/issues/50530) CLI docs reference inbucket instead of local_smtp and mailpit - opened 0 days ago
-- [#50358](https://github.com/supabase/supabase/issues/50358) Hosted transaction pooler reproduces dropped pipelined replies addressed by Supavisor #107 - opened 3 days ago
+- [#50900](https://github.com/supabase/supabase/issues/50900) Postgres crashes on permission-denied for RPC functions (v17.6.1.111) - opened 0 days ago
+- [#50882](https://github.com/supabase/supabase/issues/50882) fix(pg-meta): schemas.update and schemas.remove DO blocks fail when a name contains "$$" - opened 0 days ago
+- [#50862](https://github.com/supabase/supabase/issues/50862) Shared pooler certificate chain fails strict TLS verification: intermediate CA missing Key - opened 0 days ago
+- [#50831](https://github.com/supabase/supabase/issues/50831) linkedin_oidc provider uses api.linkedin.com for the authorization redirect instead of www - opened 1 days ago
+- [#50816](https://github.com/supabase/supabase/issues/50816) Nested inserts fail with `PGRST204 Could not find the '<child table>' column` while read e - opened 1 days ago
 
 ---
 

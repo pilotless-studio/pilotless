@@ -1,29 +1,29 @@
 # Weekly status: denoland/deno
 
-_2026-09-11 to 2026-09-18 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**6 commits** by 4 people, **at least 7 pull requests merged**, **100 open pull requests**, **57 open issues** on this page of results.
+**1 commits** by 1 people, **at least 1 pull requests merged**, **100 open pull requests**, **53 open issues** on this page of results.
 
 ### Who moved code
-bartlomieju (3), denobot (1), lucacasonato (1), taljeon (1)
+nathanwhit (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#28002](https://github.com/denoland/deno/pull/28002) perf(ext/canvas): remove static link `lcms2` - last touched 498 days ago
-- [#29737](https://github.com/denoland/deno/pull/29737) feat(pm): support ‎`http(s):` specifiers and aliases for ‎`deno add` - last touched 458 days ago
-- [#29811](https://github.com/denoland/deno/pull/29811) support deno resolution as a fallback in require - last touched 456 days ago
-- [#30376](https://github.com/denoland/deno/pull/30376) feat: unstable feature async-dns-resolver - last touched 401 days ago
-- [#30221](https://github.com/denoland/deno/pull/30221) feat: Replace spawn_blocking with spawn_blocking_optional and spawn_blocking_always - last touched 401 days ago
+- [#28002](https://github.com/denoland/deno/pull/28002) perf(ext/canvas): remove static link `lcms2` - last touched 505 days ago
+- [#29737](https://github.com/denoland/deno/pull/29737) feat(pm): support ‎`http(s):` specifiers and aliases for ‎`deno add` - last touched 465 days ago
+- [#29811](https://github.com/denoland/deno/pull/29811) support deno resolution as a fallback in require - last touched 463 days ago
+- [#30376](https://github.com/denoland/deno/pull/30376) feat: unstable feature async-dns-resolver - last touched 408 days ago
+- [#30221](https://github.com/denoland/deno/pull/30221) feat: Replace spawn_blocking with spawn_blocking_optional and spawn_blocking_always - last touched 408 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#36867](https://github.com/denoland/deno/issues/36867) Desktop - app icon is never applied with the CEF backend on Linux/Wayland or Windows - opened 0 days ago
-- [#36862](https://github.com/denoland/deno/issues/36862) `WebSocket` over `wss:` can leave the end of a message unsent forever: `bufferedAmount` re - opened 1 days ago
-- [#36861](https://github.com/denoland/deno/issues/36861) Desktop: Allow verifying sender of messages over desktop bindings for security - opened 1 days ago
-- [#36860](https://github.com/denoland/deno/issues/36860) Desktop: Expose an equivielent of 'will-navigate' event with `preventDefault` support for  - opened 1 days ago
-- [#36853](https://github.com/denoland/deno/issues/36853) bench compare - opened 2 days ago
+- [#36900](https://github.com/denoland/deno/issues/36900) `deno run` coverage reports untaken top-level branches as covered when the V8 code cache i - opened 0 days ago
+- [#36899](https://github.com/denoland/deno/issues/36899) `deno bundle` gives confusing error message when dependency is newer than `min-dep-age` - opened 0 days ago
+- [#36898](https://github.com/denoland/deno/issues/36898) v2.9.7 is not published on npm - opened 0 days ago
+- [#36896](https://github.com/denoland/deno/issues/36896) deno desktop - since macOS 27.0 in dev & webview only windows open with white screen for s - opened 0 days ago
+- [#36891](https://github.com/denoland/deno/issues/36891) Install matching `@types/*` packages with `--save-types` flag and `saveTypes` option - opened 1 days ago
 
 ---
 
