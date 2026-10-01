@@ -1,29 +1,29 @@
 # Weekly status: duckdb/duckdb
 
-_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 16 people, **at least 43 pull requests merged**, **100 open pull requests**, **40 open issues** on this page of results.
+**100+ commits** by 13 people, **at least 40 pull requests merged**, **100 open pull requests**, **34 open issues** on this page of results.
 
 ### Who moved code
-Mytherin (28), Maxxen (10), smvv (10), artjomPlaunov (10), pdet (9)
+Mytherin (42), carlopi (33), smvv (6), Maxxen (5), evertlammerts (3)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#25041](https://github.com/duckdb/duckdb/pull/25041) Push down database filters in system catalog functions - last touched 29 days ago
-- [#25192](https://github.com/duckdb/duckdb/pull/25192) Report query text for relation API statements - last touched 23 days ago
-- [#25238](https://github.com/duckdb/duckdb/pull/25238) Remove redundant CMake CMP00xx policy settings - last touched 22 days ago
-- [#25216](https://github.com/duckdb/duckdb/pull/25216) Fix join elimination dropping rows when UNNEST duplicates the inner side - last touched 22 days ago
-- [#25172](https://github.com/duckdb/duckdb/pull/25172) Add `preset` to tune family of related settings together, informing the system of intended - last touched 22 days ago
+- [#25192](https://github.com/duckdb/duckdb/pull/25192) Report query text for relation API statements - last touched 29 days ago
+- [#25238](https://github.com/duckdb/duckdb/pull/25238) Remove redundant CMake CMP00xx policy settings - last touched 28 days ago
+- [#25216](https://github.com/duckdb/duckdb/pull/25216) Fix join elimination dropping rows when UNNEST duplicates the inner side - last touched 28 days ago
+- [#25172](https://github.com/duckdb/duckdb/pull/25172) Add `preset` to tune family of related settings together, informing the system of intended - last touched 28 days ago
+- [#25143](https://github.com/duckdb/duckdb/pull/25143) fix: make week-based date parts and date_trunc range-safe at the min date - last touched 28 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#26146](https://github.com/duckdb/duckdb/issues/26146) Parquet RETURN_STATS reports wrong TIMETZ min/max - opened 0 days ago
-- [#26144](https://github.com/duckdb/duckdb/issues/26144) PREPARE with nextval() in a table-function argument: INTERNAL Error (read-only transaction - opened 0 days ago
-- [#26143](https://github.com/duckdb/duckdb/issues/26143) `fsum`/`kahan_sum`/`favg` combine adds the compensation term with the wrong sign - opened 0 days ago
-- [#26132](https://github.com/duckdb/duckdb/issues/26132) ClientContext::Destroy() can std::terminate() the process - no safe way to drop a connecti - opened 0 days ago
-- [#26118](https://github.com/duckdb/duckdb/issues/26118) max() on DOUBLE/FLOAT is about 30% slower than min() after #25927 - opened 1 days ago
+- [#26313](https://github.com/duckdb/duckdb/issues/26313) Try DuckDB v2.0-dev! - opened -1 days ago
+- [#26300](https://github.com/duckdb/duckdb/issues/26300) SIGSEGV when executing an ASOF join with a non-comparison condition - opened 0 days ago
+- [#26280](https://github.com/duckdb/duckdb/issues/26280) RemotePushdownOptimizer: a FROM subquery or CTE body on one remote catalog is not pushed w - opened 0 days ago
+- [#26274](https://github.com/duckdb/duckdb/issues/26274) Memory corruption crash from ASOF join over the recursive CTE - opened 1 days ago
+- [#26272](https://github.com/duckdb/duckdb/issues/26272) Arrow scan of list<dictionary> fails when the first 2048 rows hold no list elements - opened 1 days ago
 
 ---
 

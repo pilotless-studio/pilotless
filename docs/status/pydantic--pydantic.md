@@ -1,29 +1,29 @@
 # Weekly status: pydantic/pydantic
 
-_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**12 commits** by 5 people, **at least 11 pull requests merged**, **39 open pull requests**, **70 open issues** on this page of results.
+**28 commits** by 8 people, **at least 28 pull requests merged**, **42 open pull requests**, **67 open issues** on this page of results.
 
 ### Who moved code
-Viicos (8), sharkdp (1), simpleqt (1), saquibjawedbit (1), kratos0718 (1)
+Viicos (20), dependabot[bot] (2), strawgate (1), agustin18 (1), sharkdp (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#11984](https://github.com/pydantic/pydantic/pull/11984) Add evaluation context - last touched 428 days ago
-- [#12547](https://github.com/pydantic/pydantic/pull/12547) Add experimental `BaseStruct` - last touched 309 days ago
-- [#12575](https://github.com/pydantic/pydantic/pull/12575) Try out new schema perf - last touched 302 days ago
-- [#12555](https://github.com/pydantic/pydantic/pull/12555) Run Rust coverage in CI - last touched 302 days ago
-- [#12596](https://github.com/pydantic/pydantic/pull/12596) Reduce size of stack frames in serializer methods - last touched 298 days ago
+- [#11984](https://github.com/pydantic/pydantic/pull/11984) Add evaluation context - last touched 434 days ago
+- [#12547](https://github.com/pydantic/pydantic/pull/12547) Add experimental `BaseStruct` - last touched 315 days ago
+- [#12575](https://github.com/pydantic/pydantic/pull/12575) Try out new schema perf - last touched 308 days ago
+- [#12555](https://github.com/pydantic/pydantic/pull/12555) Run Rust coverage in CI - last touched 308 days ago
+- [#12596](https://github.com/pydantic/pydantic/pull/12596) Reduce size of stack frames in serializer methods - last touched 304 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#13869](https://github.com/pydantic/pydantic/issues/13869) `model_construct` with `validation_alias=AliasPath(...)` and `extra='allow'` leaves the al - opened 0 days ago
-- [#13868](https://github.com/pydantic/pydantic/issues/13868) multiple_of=0 still raises ZeroDivisionError for non-native numeric types - opened 0 days ago
-- [#13737](https://github.com/pydantic/pydantic/issues/13737) Use `contentEncoding` and `contentMediaType` instead of `"format": "binary"` for `bytes` J - opened 27 days ago
-- [#13545](https://github.com/pydantic/pydantic/issues/13545) Tracking: model build memory & startup optimizations (#13522, #13523, #13529, #13530, #135 - opened 57 days ago
-- [#13504](https://github.com/pydantic/pydantic/issues/13504) Changes to named tuples behavior - opened 60 days ago
+- [#13869](https://github.com/pydantic/pydantic/issues/13869) `model_construct` with `validation_alias=AliasPath(...)` and `extra='allow'` leaves the al - opened 5 days ago
+- [#13737](https://github.com/pydantic/pydantic/issues/13737) Use `contentEncoding` and `contentMediaType` instead of `"format": "binary"` for `bytes` J - opened 33 days ago
+- [#13545](https://github.com/pydantic/pydantic/issues/13545) Tracking: model build memory & startup optimizations (#13522, #13523, #13529, #13530, #135 - opened 63 days ago
+- [#13504](https://github.com/pydantic/pydantic/issues/13504) Changes to named tuples behavior - opened 66 days ago
+- [#13472](https://github.com/pydantic/pydantic/issues/13472) Add a full-wrap validator to completely wrap all validation steps - opened 73 days ago
 
 ---
 

@@ -6,21 +6,21 @@ These pages are generated for well-known public repositories as a worked example
 
 - [apache/airflow](apache--airflow.md) - 100+ commits, 5 stalled PRs, 3 unowned issues
 - [appwrite/appwrite](appwrite--appwrite.md) - 100+ commits, 5 stalled PRs, 4 unowned issues
-- [dbt-labs/dbt-core](dbt-labs--dbt-core.md) - 46 commits, 5 stalled PRs, 5 unowned issues
-- [denoland/deno](denoland--deno.md) - 1 commits, 5 stalled PRs, 5 unowned issues
+- [dbt-labs/dbt-core](dbt-labs--dbt-core.md) - 50 commits, 5 stalled PRs, 5 unowned issues
+- [denoland/deno](denoland--deno.md) - 6 commits, 5 stalled PRs, 5 unowned issues
 - [duckdb/duckdb](duckdb--duckdb.md) - 100+ commits, 5 stalled PRs, 5 unowned issues
 - [grafana/grafana](grafana--grafana.md) - 100+ commits, 5 stalled PRs, 5 unowned issues
-- [hashicorp/terraform](hashicorp--terraform.md) - 25 commits, 5 stalled PRs, 5 unowned issues
+- [hashicorp/terraform](hashicorp--terraform.md) - 22 commits, 5 stalled PRs, 5 unowned issues
 - [n8n-io/n8n](n8n-io--n8n.md) - 100+ commits, 5 stalled PRs, 0 unowned issues
-- [ollama/ollama](ollama--ollama.md) - 21 commits, 5 stalled PRs, 5 unowned issues
-- [pola-rs/polars](pola-rs--polars.md) - 84 commits, 5 stalled PRs, 5 unowned issues
-- [prisma/prisma](prisma--prisma.md) - 36 commits, 5 stalled PRs, 5 unowned issues
-- [pydantic/pydantic](pydantic--pydantic.md) - 12 commits, 5 stalled PRs, 5 unowned issues
+- [ollama/ollama](ollama--ollama.md) - 12 commits, 5 stalled PRs, 5 unowned issues
+- [pola-rs/polars](pola-rs--polars.md) - 99 commits, 5 stalled PRs, 5 unowned issues
+- [prisma/prisma](prisma--prisma.md) - 64 commits, 5 stalled PRs, 5 unowned issues
+- [pydantic/pydantic](pydantic--pydantic.md) - 28 commits, 5 stalled PRs, 5 unowned issues
 - [supabase/supabase](supabase--supabase.md) - 100+ commits, 5 stalled PRs, 5 unowned issues
-- [sveltejs/svelte](sveltejs--svelte.md) - 12 commits, 5 stalled PRs, 5 unowned issues
-- [tailwindlabs/tailwindcss](tailwindlabs--tailwindcss.md) - 0 commits, 5 stalled PRs, 5 unowned issues
-- [tiangolo/fastapi](tiangolo--fastapi.md) - 0 commits, 5 stalled PRs, 0 unowned issues
-- [vitejs/vite](vitejs--vite.md) - 26 commits, 5 stalled PRs, 5 unowned issues
-- [withastro/astro](withastro--astro.md) - 31 commits, 5 stalled PRs, 0 unowned issues
+- [sveltejs/svelte](sveltejs--svelte.md) - 14 commits, 5 stalled PRs, 5 unowned issues
+- [tailwindlabs/tailwindcss](tailwindlabs--tailwindcss.md) - 4 commits, 5 stalled PRs, 5 unowned issues
+- [tiangolo/fastapi](tiangolo--fastapi.md) - 17 commits, 5 stalled PRs, 0 unowned issues
+- [vitejs/vite](vitejs--vite.md) - 39 commits, 5 stalled PRs, 5 unowned issues
+- [withastro/astro](withastro--astro.md) - 40 commits, 5 stalled PRs, 0 unowned issues
 
-Last regenerated 2026-09-25. For your own repository: [two lines of YAML](https://pilotless-web-o53cqe2tiq-ew.a.run.app/?src=directory.r1).
+Last regenerated 2026-10-01. For your own repository: [two lines of YAML](https://pilotless-web-o53cqe2tiq-ew.a.run.app/?src=directory.r1).

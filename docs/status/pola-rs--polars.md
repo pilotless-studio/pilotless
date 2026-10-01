@@ -1,29 +1,29 @@
 # Weekly status: pola-rs/polars
 
-_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**84 commits** by 24 people, **at least 40 pull requests merged**, **100 open pull requests**, **44 open issues** on this page of results.
+**99 commits** by 18 people, **at least 5 pull requests merged**, **100 open pull requests**, **47 open issues** on this page of results.
 
 ### Who moved code
-ritchie46 (20), dancsi (8), JakubValtar (7), alexander-beedie (7), abokhalill (6)
+ritchie46 (28), orlp (15), dancsi (14), alexander-beedie (8), kdn36 (8)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#27169](https://github.com/pola-rs/polars/pull/27169) refactor(rust): Sortedness propagation in order optimizer - last touched 175 days ago
-- [#27503](https://github.com/pola-rs/polars/pull/27503) try remove AExpr `_name_last` iter variants - last touched 143 days ago
-- [#27438](https://github.com/pola-rs/polars/pull/27438) refactor(rust): Reuse allocations in IR / AExpr deep copying - last touched 143 days ago
-- [#27932](https://github.com/pola-rs/polars/pull/27932) refactor: Remove `POLARS_AUTO_STREAMING` in favor of using `POLARS_FORCE_STREAMING` - last touched 30 days ago
-- [#28203](https://github.com/pola-rs/polars/pull/28203) test(python): Test for lazy schema correctness - last touched 30 days ago
+- [#27169](https://github.com/pola-rs/polars/pull/27169) refactor(rust): Sortedness propagation in order optimizer - last touched 181 days ago
+- [#27503](https://github.com/pola-rs/polars/pull/27503) try remove AExpr `_name_last` iter variants - last touched 148 days ago
+- [#27438](https://github.com/pola-rs/polars/pull/27438) refactor(rust): Reuse allocations in IR / AExpr deep copying - last touched 148 days ago
+- [#27932](https://github.com/pola-rs/polars/pull/27932) refactor: Remove `POLARS_AUTO_STREAMING` in favor of using `POLARS_FORCE_STREAMING` - last touched 35 days ago
+- [#28203](https://github.com/pola-rs/polars/pull/28203) test(python): Test for lazy schema correctness - last touched 35 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#29531](https://github.com/pola-rs/polars/issues/29531) `from_pandas(include_index=True)` names an unnamed index column `'None'` (and unnamed Mult - opened 0 days ago
-- [#29523](https://github.com/pola-rs/polars/issues/29523) PlRefPath should implement TryFrom for Path and PathBuf - opened 0 days ago
-- [#29504](https://github.com/pola-rs/polars/issues/29504) min_by / max_by in group_by().agg() raises ComputeError on an emptied DataFrame - opened 0 days ago
-- [#29475](https://github.com/pola-rs/polars/issues/29475) `arr.median` returns Float64 for temporal inner types - opened 2 days ago
-- [#29474](https://github.com/pola-rs/polars/issues/29474) Exact temporal `rolling_mean` - opened 2 days ago
+- [#29644](https://github.com/pola-rs/polars/issues/29644) `clip` with a length-1 input and full-length bounds silently truncates to length 1 instead - opened 1 days ago
+- [#29640](https://github.com/pola-rs/polars/issues/29640) Parquet rows skipped when NaN in Float - opened 1 days ago
+- [#29627](https://github.com/pola-rs/polars/issues/29627) Incorrect results for in-memory extrumum-by in groupby context on nested keys - opened 1 days ago
+- [#29582](https://github.com/pola-rs/polars/issues/29582) Iceberg: remove unnecessary column projections and filters from `scan_parquet` - opened 2 days ago
+- [#29563](https://github.com/pola-rs/polars/issues/29563) User guide links to a Great Tables page that 404s (articles/intro.html) - opened 4 days ago
 
 ---
 

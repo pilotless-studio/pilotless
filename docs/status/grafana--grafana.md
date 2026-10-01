@@ -1,29 +1,29 @@
 # Weekly status: grafana/grafana
 
-_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 56 people, **at least 36 pull requests merged**, **100 open pull requests**, **22 open issues** on this page of results.
+**100+ commits** by 49 people, **at least 39 pull requests merged**, **100 open pull requests**, **20 open issues** on this page of results.
 
 ### Who moved code
-renovate-sh-app[bot] (10), fastfrwrd (5), pstibrany (5), ryantxu (4), ashharrison90 (3)
+pstibrany (12), joshhunt (10), ryantxu (6), RafaelPaulovic (4), ashharrison90 (4)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#60522](https://github.com/grafana/grafana/pull/60522) Errors: Use errata to generate errors from HCL files - last touched 1345 days ago
-- [#94583](https://github.com/grafana/grafana/pull/94583) [WIP] Heatmap: Handle bounds <= 0 with sparse/native histograms - last touched 622 days ago
-- [#98505](https://github.com/grafana/grafana/pull/98505) [PoC] Alternative code editor based on CodeMirror - last touched 595 days ago
-- [#93567](https://github.com/grafana/grafana/pull/93567) Prometheus: WIP add limit to metric names calls and use regex filtering in the monaco code - last touched 580 days ago
-- [#97014](https://github.com/grafana/grafana/pull/97014) [WIP] GraphNG refactoring stuff - last touched 570 days ago
+- [#60522](https://github.com/grafana/grafana/pull/60522) Errors: Use errata to generate errors from HCL files - last touched 1350 days ago
+- [#94583](https://github.com/grafana/grafana/pull/94583) [WIP] Heatmap: Handle bounds <= 0 with sparse/native histograms - last touched 628 days ago
+- [#98505](https://github.com/grafana/grafana/pull/98505) [PoC] Alternative code editor based on CodeMirror - last touched 601 days ago
+- [#93567](https://github.com/grafana/grafana/pull/93567) Prometheus: WIP add limit to metric names calls and use regex filtering in the monaco code - last touched 586 days ago
+- [#97014](https://github.com/grafana/grafana/pull/97014) [WIP] GraphNG refactoring stuff - last touched 576 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#133543](https://github.com/grafana/grafana/issues/133543) Auth: Google skip_org_role_sync defaults to true, silently disabling role_attribute_strict - opened 0 days ago
-- [#133541](https://github.com/grafana/grafana/issues/133541) Enforce managerAllowsEdits server-side for terraform-managed resources - opened 0 days ago
-- [#133525](https://github.com/grafana/grafana/issues/133525) Build: package.json version is one patch ahead of the release tag on 12.3.x and other bran - opened 0 days ago
-- [#133524](https://github.com/grafana/grafana/issues/133524) Plan mode improvements identified by LLM spec - opened 0 days ago
-- [#133523](https://github.com/grafana/grafana/issues/133523) Rows layout: repeated row renders the repeat source's title larger than its clones - opened 0 days ago
+- [#133932](https://github.com/grafana/grafana/issues/133932) Dashboard save folder picker: truncates listing at ~50 subfolders, no warning - opened 0 days ago
+- [#133908](https://github.com/grafana/grafana/issues/133908) Fix the storage-unified-apistore and storage-unified-resource depguard rules - opened 0 days ago
+- [#133907](https://github.com/grafana/grafana/issues/133907) Fix the apps-secret depguard rule - opened 0 days ago
+- [#133906](https://github.com/grafana/grafana/issues/133906) Fix depguard rules that never applied because of ./-prefixed file globs - opened 0 days ago
+- [#133887](https://github.com/grafana/grafana/issues/133887) Undo Redo: Unlink a library panel - opened 0 days ago
 
 ---
 

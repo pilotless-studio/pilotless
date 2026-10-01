@@ -1,29 +1,29 @@
 # Weekly status: ollama/ollama
 
-_2026-09-18 to 2026-09-25 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**21 commits** by 7 people, **at least 18 pull requests merged**, **100 open pull requests**, **38 open issues** on this page of results.
+**12 commits** by 4 people, **at least 12 pull requests merged**, **100 open pull requests**, **35 open issues** on this page of results.
 
 ### Who moved code
-dhiltgen (6), jessegross (5), ParthSareen (4), hoyyeva (3), drifkin (1)
+dhiltgen (6), ParthSareen (4), drifkin (1), hoyyeva (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#8504](https://github.com/ollama/ollama/pull/8504) add doc to describe setup of vm on proxmox for multiple P40 gpus - last touched 612 days ago
-- [#8259](https://github.com/ollama/ollama/pull/8259) create a default, non-root user for the container image - last touched 612 days ago
-- [#8161](https://github.com/ollama/ollama/pull/8161) Set n_ubatch parameter to same batch size as n_batch - last touched 602 days ago
-- [#8797](https://github.com/ollama/ollama/pull/8797) fix(openai): json schema impl - last touched 597 days ago
-- [#8049](https://github.com/ollama/ollama/pull/8049) Implement OLLAMA_MAX_KEEP_ALIVE environment variable - last touched 597 days ago
+- [#8504](https://github.com/ollama/ollama/pull/8504) add doc to describe setup of vm on proxmox for multiple P40 gpus - last touched 618 days ago
+- [#8259](https://github.com/ollama/ollama/pull/8259) create a default, non-root user for the container image - last touched 618 days ago
+- [#8161](https://github.com/ollama/ollama/pull/8161) Set n_ubatch parameter to same batch size as n_batch - last touched 607 days ago
+- [#8797](https://github.com/ollama/ollama/pull/8797) fix(openai): json schema impl - last touched 603 days ago
+- [#8049](https://github.com/ollama/ollama/pull/8049) Implement OLLAMA_MAX_KEEP_ALIVE environment variable - last touched 602 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#18637](https://github.com/ollama/ollama/issues/18637) [Cloud] deepseek-v4.1-flash silently discards image input again — regression of #18527 - opened 0 days ago
-- [#18628](https://github.com/ollama/ollama/issues/18628) macOS incorrectly prompts to move app when installed in an `/Applications` subdirectory - opened 0 days ago
-- [#18612](https://github.com/ollama/ollama/issues/18612) Feature request: yield idle model VRAM under GPU-memory pressure - opened 1 days ago
-- [#18609](https://github.com/ollama/ollama/issues/18609) glm-ocr: 0.34.1+ returns HTTP 500 "prediction aborted, token repeat limit reached" for OCR - opened 1 days ago
-- [#18584](https://github.com/ollama/ollama/issues/18584) The current .sh file to install Ollama fails repeatedly with bad Internet connection, use  - opened 3 days ago
+- [#18718](https://github.com/ollama/ollama/issues/18718) /v1/systemone rejects object-valued criteria descriptions accepted by the reference System - opened 0 days ago
+- [#18717](https://github.com/ollama/ollama/issues/18717) Structured outputs: JSON schema property order lost on the native llama-server chat path ( - opened 0 days ago
+- [#18715](https://github.com/ollama/ollama/issues/18715) deepseek-v4.1-flash:cloud: text right before a tool call sometimes loses a space ("harbor  - opened 0 days ago
+- [#18714](https://github.com/ollama/ollama/issues/18714) Model support: Bongard (T5Gemma2) for /v1/systemone - opened 0 days ago
+- [#18712](https://github.com/ollama/ollama/issues/18712) Windows auto-update can leave cuda_v12\ggml-cuda.dll as .tmp, causing 0 B VRAM / CPU fallb - opened 1 days ago
 
 ---
 
