@@ -14,10 +14,18 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/gen_status_directory.py
+      - name: Regenerate the unowned-issues page
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/gen_unowned.py
+      - name: Regenerate sitemap
+        run: python3 scripts/gen_sitemap.py
       - name: Commit if anything changed
         run: |
           git config user.name pilotless-bot
           git config user.email agent@pilotless.ai
-          git add -A docs/status
+          git add -A docs
           git diff --cached --quiet || git commit -m "docs: weekly refresh of the status directory"
           git push
+      - name: Tell IndexNow the pages changed
+        run: python3 scripts/ping_indexnow.py

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://pilotless-studio.github.io/pilotless/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/apache--airflow.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/appwrite--appwrite.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/dbt-labs--dbt-core.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/denoland--deno.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/duckdb--duckdb.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/grafana--grafana.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/hashicorp--terraform.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/n8n-io--n8n.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/ollama--ollama.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/pola-rs--polars.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/prisma--prisma.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/pydantic--pydantic.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/supabase--supabase.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/sveltejs--svelte.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/tailwindlabs--tailwindcss.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/tiangolo--fastapi.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/unowned.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/vitejs--vite.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/status/withastro--astro.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://pilotless-studio.github.io/pilotless/weekly-status-report.html</loc><lastmod>2026-10-01</lastmod></url>
+</urlset>
