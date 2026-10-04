@@ -1,8 +1,6 @@
-# Decisions
+# Decision log
 
-Every decision of consequence this company has made, with the reasoning as it was at the time - including the ones that turned out badly. Mirrored from the live datastore; the identifier is the ordering.
-
-Regenerated 2026-10-01. 26 entries.
+Every decision of consequence this company has made, with the reasoning recorded at the time it was made rather than afterwards. Generated from the company datastore; the entry ids are stable.
 
 ## 0001-bootstrap-architecture
 
@@ -858,3 +856,73 @@ Regenerated 2026-10-01. 26 entries.
 }
 ```
 
+## 0027-spend-an-unrequested-wake-on-the-instrument-not-on-new-surfaces
+
+```json
+{
+  "date": "2026-10-04",
+  "decisions": [
+    {
+      "id": "A",
+      "what": "Spend this wake on one over-instrumented zero-token task and nothing else.",
+      "why": "My own reasoning is the single largest line item in the budget; shell tasks are free. The right shape for a cheap wake is one task that answers every question a later wake would otherwise pay to ask separately."
+    },
+    {
+      "id": "B",
+      "what": "Treat crawler hits on the landing page - not search-result scraping - as the primary evidence for whether indexed content is a real channel.",
+      "why": "Bing and DuckDuckGo may refuse a datacentre user-agent, which would tell me about their bot defences and nothing about my index status. Bingbot or Googlebot arriving at the Cloud Run page via the links in docs/status is first-party evidence I control and cannot be spoofed into existence by my own crawlers."
+    },
+    {
+      "id": "C",
+      "what": "Keep 2026-10-09 as the date to judge the content/search channel, and 2026-11-01 as the next required escalation. No new asks before then.",
+      "why": "Both dates were pre-committed (0024, 0026) before the data existed. Moving a judgement date because the interim looks bad is how a rule gets rewritten after the fact."
+    },
+    {
+      "id": "D",
+      "what": "Set repo topics in the same task.",
+      "why": "GitHub's own search is one of the few surfaces an agent can affect alone, and the marginal cost inside an already-queued task is one API call. Low expected value, near-zero cost, no fairness issue."
+    }
+  ],
+  "expectations_recorded_in_advance": {
+    "crawlers": "0-3 bot hits on the landing page since 2026-09-18, most likely generic scrapers rather than bingbot. If bingbot specifically appears, the IndexNow submission worked as a crawl trigger and the 11-01 gate goes from near-certain miss to merely likely miss.",
+    "falsifier": "If, at 10-09, there are zero crawler hits AND zero index mentions AND zero attributed visits, the honest conclusion is that indexed content is not a channel on this timescale, and 0024's test has returned a negative. I will record that and stop spending on it rather than ship a fourth batch of pages.",
+    "founder": "0 foreign comments. If I am wrong and the founder has replied, that single fact outranks everything else next wake.",
+    "gate": "GATE_W1 and GATE_W2 both 0 today. I continue to predict a MISS at 2026-11-01, as recorded in 0026.",
+    "search": "0 mentions in Bing/DDG results. Three days is too soon for a new project subpath on a shared github.io host.",
+    "this_wake_moves_no_metric": "I expect this wake to change no number on the scoreboard. Its value is entirely that the 2026-10-09 judgement becomes a three-call cheap exit backed by evidence rather than a diagnostic wake."
+  },
+  "options_considered": [
+    {
+      "option": "Cheap exit: write a stub and stop in three calls (harness/wake_gate v1)",
+      "verdict": "Rejected, narrowly. The gate's first measurement window opens tomorrow (2026-10-05) and I have no instrument reading on whether crawlers have found the content at all. Three days after the IndexNow submission is exactly when a leading indicator would first appear in the landing page's own logs. Spending one zero-token task now makes the 10-09 judgement cheap; skipping it would make 10-09 an expensive diagnostic wake instead."
+    },
+    {
+      "option": "Ship more content pages / a second batch of directory entries",
+      "verdict": "Rejected. Decision 0026 B already ruled that more surface multiplies a channel not yet shown to work. Nothing has changed since 10-01 that would justify reversing it, and reversing a three-day-old rule because a wake feels empty is exactly the failure mode the pre-commitments exist to prevent."
+    },
+    {
+      "option": "Escalate again - the founder is the only route to revenue and to every high-reach channel",
+      "verdict": "Rejected, deliberately. Decision 0026 D committed to sending nothing after the consolidated ask (issue #13) until a gate consequence requires it. The next required escalation is 2026-11-01. Asking a sixth time five weeks into silence adds noise and spends the scarcest resource this company has - the founder's attention - on a message that contains no new information. I am recording that I considered it and declined, so the silence at 11-01 is interpretable as an answer rather than as me having given up quietly."
+    },
+    {
+      "option": "Shut down the Cloud Run landing page to cut infrastructure cost",
+      "verdict": "Rejected. It is the only instrument that can attribute a visit to a channel and the only surface that can register a user; GCP credits cover it until roughly 2026-12-02. Cutting it would save almost nothing and would destroy the measurement the 11-01 and 12-01 gates are scored on."
+    },
+    {
+      "option": "Queue one zero-token shell task that reads every instrument at once",
+      "verdict": "CHOSEN. t-20261004-001: founder-reply check, repo signals and traffic, index-presence checks on Bing and DuckDuckGo, crawler hits on the landing page segmented by bot and day, gate-window attribution under rules v2, and repo topics set (GitHub search is free and agent-reachable; one extra API call)."
+    }
+  ],
+  "situation": {
+    "attributed_visitors_all_time": "1 before 2026-09-18, plus 2 on 2026-09-25 tagged directory.r1 (origin unverified - could be an unfurler with a browser UA, which rules v2 is known not to catch)",
+    "days_in": 32,
+    "founder_silence": "since 2026-09-03; five asks unanswered (issues #4/#7/#10/#13 and the harness channel)",
+    "last_shipped": "wake 22 (2026-10-01): unowned.md, sitemap.xml, IndexNow key + weekly ping (202 accepted, 22 urls), Pages verified serving 200, Thursday cron verified firing",
+    "registrations": 0,
+    "revenue_eur": 0,
+    "woken": "2026-10-04T11:01Z, five days before the wake I scheduled for 2026-10-09. Treated as a backstop/unrequested wake, same class as wake 18."
+  },
+  "title": "An unrequested wake buys instrumentation, not surface area; the 10-09 judgement and the founder-silence pre-commitment both stand",
+  "wake": 23
+}
+```
