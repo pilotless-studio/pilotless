@@ -1,29 +1,29 @@
 # Weekly status: grafana/grafana
 
-_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-01 to 2026-10-08 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 49 people, **at least 39 pull requests merged**, **100 open pull requests**, **20 open issues** on this page of results.
+**100+ commits** by 48 people, **at least 40 pull requests merged**, **100 open pull requests**, **26 open issues** on this page of results.
 
 ### Who moved code
-pstibrany (12), joshhunt (10), ryantxu (6), RafaelPaulovic (4), ashharrison90 (4)
+pstibrany (6), ryantxu (6), fastfrwrd (6), gillesdemey (4), toddtreece (4)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#60522](https://github.com/grafana/grafana/pull/60522) Errors: Use errata to generate errors from HCL files - last touched 1350 days ago
-- [#94583](https://github.com/grafana/grafana/pull/94583) [WIP] Heatmap: Handle bounds <= 0 with sparse/native histograms - last touched 628 days ago
-- [#98505](https://github.com/grafana/grafana/pull/98505) [PoC] Alternative code editor based on CodeMirror - last touched 601 days ago
-- [#93567](https://github.com/grafana/grafana/pull/93567) Prometheus: WIP add limit to metric names calls and use regex filtering in the monaco code - last touched 586 days ago
-- [#97014](https://github.com/grafana/grafana/pull/97014) [WIP] GraphNG refactoring stuff - last touched 576 days ago
+- [#60522](https://github.com/grafana/grafana/pull/60522) Errors: Use errata to generate errors from HCL files - last touched 1358 days ago
+- [#94583](https://github.com/grafana/grafana/pull/94583) [WIP] Heatmap: Handle bounds <= 0 with sparse/native histograms - last touched 635 days ago
+- [#98505](https://github.com/grafana/grafana/pull/98505) [PoC] Alternative code editor based on CodeMirror - last touched 608 days ago
+- [#93567](https://github.com/grafana/grafana/pull/93567) Prometheus: WIP add limit to metric names calls and use regex filtering in the monaco code - last touched 593 days ago
+- [#97014](https://github.com/grafana/grafana/pull/97014) [WIP] GraphNG refactoring stuff - last touched 583 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#133932](https://github.com/grafana/grafana/issues/133932) Dashboard save folder picker: truncates listing at ~50 subfolders, no warning - opened 0 days ago
-- [#133908](https://github.com/grafana/grafana/issues/133908) Fix the storage-unified-apistore and storage-unified-resource depguard rules - opened 0 days ago
-- [#133907](https://github.com/grafana/grafana/issues/133907) Fix the apps-secret depguard rule - opened 0 days ago
-- [#133906](https://github.com/grafana/grafana/issues/133906) Fix depguard rules that never applied because of ./-prefixed file globs - opened 0 days ago
-- [#133887](https://github.com/grafana/grafana/issues/133887) Undo Redo: Unlink a library panel - opened 0 days ago
+- [#134473](https://github.com/grafana/grafana/issues/134473) [New Data Source]: <MDSplus> - opened 0 days ago
+- [#134448](https://github.com/grafana/grafana/issues/134448) Alerting: HA replicas disagree on alert state after 13.2.3, notifications flap FIRING/RESO - opened 0 days ago
+- [#134422](https://github.com/grafana/grafana/issues/134422) FeatureToggles: Clear search-and-storage legacy config.featureToggles reads - opened 0 days ago
+- [#134421](https://github.com/grafana/grafana/issues/134421) FeatureToggles: Clear observability-traces-and-profiling legacy config.featureToggles read - opened 0 days ago
+- [#134419](https://github.com/grafana/grafana/issues/134419) FeatureToggles: Clear grafana-app-platform-squad legacy config.featureToggles reads - opened 0 days ago
 
 ---
 

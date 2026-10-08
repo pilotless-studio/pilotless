@@ -1,20 +1,20 @@
 # Weekly status: n8n-io/n8n
 
-_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-01 to 2026-10-08 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 45 people, **at least 45 pull requests merged**, **100 open pull requests**, **7 open issues** on this page of results.
+**100+ commits** by 48 people, **at least 45 pull requests merged**, **100 open pull requests**, **3 open issues** on this page of results.
 
 ### Who moved code
-n8n-cat-bot[bot] (11), JoseBra (7), mfsiega (6), r00gm (5), Cadiac (4)
+n8n-cat-bot[bot] (9), aaguirre-rdit (6), riqwan (5), dou-mhmd (5), mike12345567 (4)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#11512](https://github.com/n8n-io/n8n/pull/11512) Add vercel.json - last touched 184 days ago
-- [#12301](https://github.com/n8n-io/n8n/pull/12301) fix(Notion Node): Fix Relation ID description  - last touched 184 days ago
-- [#12891](https://github.com/n8n-io/n8n/pull/12891) refactor(editor): Speed up test - last touched 184 days ago
-- [#13003](https://github.com/n8n-io/n8n/pull/13003) Pay 2550 prototype interactive designs - last touched 184 days ago
-- [#13134](https://github.com/n8n-io/n8n/pull/13134) fix: Display correct plan for 'Registered Community' instances - last touched 184 days ago
+- [#11512](https://github.com/n8n-io/n8n/pull/11512) Add vercel.json - last touched 191 days ago
+- [#12301](https://github.com/n8n-io/n8n/pull/12301) fix(Notion Node): Fix Relation ID description  - last touched 191 days ago
+- [#12891](https://github.com/n8n-io/n8n/pull/12891) refactor(editor): Speed up test - last touched 191 days ago
+- [#13003](https://github.com/n8n-io/n8n/pull/13003) Pay 2550 prototype interactive designs - last touched 191 days ago
+- [#13134](https://github.com/n8n-io/n8n/pull/13134) fix: Display correct plan for 'Registered Community' instances - last touched 191 days ago
 
 ### Issues nobody has picked up
 None on this page of results.

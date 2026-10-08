@@ -1,29 +1,29 @@
 # Weekly status: dbt-labs/dbt-core
 
-_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-01 to 2026-10-08 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**50 commits** by 29 people, **at least 7 pull requests merged**, **100 open pull requests**, **68 open issues** on this page of results.
+**53 commits** by 30 people, **at least 6 pull requests merged**, **100 open pull requests**, **61 open issues** on this page of results.
 
 ### Who moved code
-itsannbat (4), fa-assistant (4), kczimm (3), mach-kernel (3), VersusFacit (3)
+fa-assistant (4), itsannbat (3), ajhlee-dbt (3), mach-kernel (3), r-jais (3)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#11461](https://github.com/dbt-labs/dbt/pull/11461) [Backport 1.9.latest] Remove homebrew services from workflow - last touched 365 days ago
-- [#12976](https://github.com/dbt-labs/dbt/pull/12976) Fix #12975: fail parse when generic tests reference missing nodes - last touched 121 days ago
-- [#5982](https://github.com/dbt-labs/dbt/pull/5982) A very-WIP implementation of the PRQL plugin, for discussion - last touched 121 days ago
-- [#7101](https://github.com/dbt-labs/dbt/pull/7101) Selector Upgrade - last touched 121 days ago
-- [#7125](https://github.com/dbt-labs/dbt/pull/7125) Make MAXIMUM_SEED_SIZE_MIB configurable - last touched 121 days ago
+- [#11461](https://github.com/dbt-labs/dbt/pull/11461) [Backport 1.9.latest] Remove homebrew services from workflow - last touched 372 days ago
+- [#12976](https://github.com/dbt-labs/dbt/pull/12976) Fix #12975: fail parse when generic tests reference missing nodes - last touched 129 days ago
+- [#5982](https://github.com/dbt-labs/dbt/pull/5982) A very-WIP implementation of the PRQL plugin, for discussion - last touched 128 days ago
+- [#7101](https://github.com/dbt-labs/dbt/pull/7101) Selector Upgrade - last touched 128 days ago
+- [#7125](https://github.com/dbt-labs/dbt/pull/7125) Make MAXIMUM_SEED_SIZE_MIB configurable - last touched 128 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#16538](https://github.com/dbt-labs/dbt/issues/16538) [PORT-OVER] Require matching relation types for Databricks view ALTER updates - opened 0 days ago
-- [#16537](https://github.com/dbt-labs/dbt/issues/16537) [v2 Bug] `internal get-distribution-info --all` recurses forever through PATH shims (mise) - opened 0 days ago
-- [#16534](https://github.com/dbt-labs/dbt/issues/16534) [v2 Bug] `dbt clean` with non existing profile return exit code 1 but outputs "Finished 'c - opened 0 days ago
-- [#16532](https://github.com/dbt-labs/dbt/issues/16532) [Port] dbt-databricks#1691 snapshot no-op create_indexes and commit removal to Fusion - opened 0 days ago
-- [#16529](https://github.com/dbt-labs/dbt/issues/16529) [Feature] support `--empty` incremental builds - opened 0 days ago
+- [#16666](https://github.com/dbt-labs/dbt/issues/16666) [Databricks] Port MV/ST tag reconciliation from dbt-databricks #1686 to Fusion - opened 0 days ago
+- [#16665](https://github.com/dbt-labs/dbt/issues/16665) [v2 Bug] dbt compile does not print compiled SQL when the selection includes the model's t - opened 0 days ago
+- [#16664](https://github.com/dbt-labs/dbt/issues/16664) [1.x Bug] 'dbt debug` ignores `vars.yml` when rendering `dbt_project.yml` - opened 0 days ago
+- [#16656](https://github.com/dbt-labs/dbt/issues/16656) [Feature] Support dimension hierarchies in semantic model YAML - opened 0 days ago
+- [#16655](https://github.com/dbt-labs/dbt/issues/16655) [v2 Bug] A null target_lag set below a project-level default is ignored at every level, ma - opened 0 days ago
 
 ---
 

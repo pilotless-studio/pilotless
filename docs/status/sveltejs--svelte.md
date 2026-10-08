@@ -1,29 +1,29 @@
 # Weekly status: sveltejs/svelte
 
-_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-01 to 2026-10-08 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**14 commits** by 8 people, **at least 14 pull requests merged**, **100 open pull requests**, **27 open issues** on this page of results.
+**15 commits** by 12 people, **at least 15 pull requests merged**, **100 open pull requests**, **24 open issues** on this page of results.
 
 ### Who moved code
-Nic-Polumeyv (3), svelte-triage-bot[bot] (3), Rich-Harris (2), dummdidumm (2), fallintoplace (1)
+svelte-triage-bot[bot] (2), jarrednorrisdev (2), paoloricciuti (2), xyrolle (1), github-actions[bot] (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#8975](https://github.com/sveltejs/svelte/pull/8975) fix: define `role="application"` as an interactive ARIA role - last touched 1059 days ago
-- [#14083](https://github.com/sveltejs/svelte/pull/14083) docs: update store documentation - last touched 693 days ago
-- [#14116](https://github.com/sveltejs/svelte/pull/14116) fix: reset title element to previous value on removal - last touched 649 days ago
-- [#14796](https://github.com/sveltejs/svelte/pull/14796) feat: enable `animate:` directive for snippets - last touched 641 days ago
-- [#14599](https://github.com/sveltejs/svelte/pull/14599) Fix: Patch `structuredClone` to error on `$state` proxies - last touched 580 days ago
+- [#8975](https://github.com/sveltejs/svelte/pull/8975) fix: define `role="application"` as an interactive ARIA role - last touched 1066 days ago
+- [#14083](https://github.com/sveltejs/svelte/pull/14083) docs: update store documentation - last touched 700 days ago
+- [#14116](https://github.com/sveltejs/svelte/pull/14116) fix: reset title element to previous value on removal - last touched 656 days ago
+- [#14796](https://github.com/sveltejs/svelte/pull/14796) feat: enable `animate:` directive for snippets - last touched 649 days ago
+- [#14599](https://github.com/sveltejs/svelte/pull/14599) Fix: Patch `structuredClone` to error on `$state` proxies - last touched 588 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#18897](https://github.com/sveltejs/svelte/issues/18897) docs: make Svelte examples compatible with strict Twoslash checking - opened 0 days ago
-- [#18895](https://github.com/sveltejs/svelte/issues/18895) invariant_violation: "Batch has scheduled effects" when a pending async batch is rebased t - opened 0 days ago
-- [#18824](https://github.com/sveltejs/svelte/issues/18824) Synchronous throw in an awaited expression becomes `null.f` - opened 15 days ago
-- [#18811](https://github.com/sveltejs/svelte/issues/18811) `forkPreloads` crashing: a speculative render writes the `UNINITIALIZED` sentinel to the D - opened 19 days ago
-- [#18780](https://github.com/sveltejs/svelte/issues/18780) Discussion: Improving hydration performance for large lists - opened 24 days ago
+- [#18959](https://github.com/sveltejs/svelte/issues/18959) Async: page DOM left behind after a client-side remount when its template is only a child  - opened 0 days ago
+- [#18951](https://github.com/sveltejs/svelte/issues/18951) `<input {value}>` overwrites text the user typed before hydration finished - opened 1 days ago
+- [#18948](https://github.com/sveltejs/svelte/issues/18948) `flushSync()` in a blur handler fired while an eager block effect removes the focused elem - opened 1 days ago
+- [#18943](https://github.com/sveltejs/svelte/issues/18943) `in` and `Object.keys` on a state proxy miss keys added inside a fork - opened 1 days ago
+- [#18942](https://github.com/sveltejs/svelte/issues/18942) Assigning an inherited key like `toString` on a `$state` object is silently dropped - opened 1 days ago
 
 ---
 

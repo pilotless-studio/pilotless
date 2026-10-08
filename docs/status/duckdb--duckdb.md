@@ -1,29 +1,29 @@
 # Weekly status: duckdb/duckdb
 
-_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-01 to 2026-10-08 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 13 people, **at least 40 pull requests merged**, **100 open pull requests**, **34 open issues** on this page of results.
+**100+ commits** by 16 people, **at least 38 pull requests merged**, **100 open pull requests**, **10 open issues** on this page of results.
 
 ### Who moved code
-Mytherin (42), carlopi (33), smvv (6), Maxxen (5), evertlammerts (3)
+Mytherin (29), HendrikLambert (9), lnkuiper (8), dentiny (7), JelteF (7)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#25192](https://github.com/duckdb/duckdb/pull/25192) Report query text for relation API statements - last touched 29 days ago
-- [#25238](https://github.com/duckdb/duckdb/pull/25238) Remove redundant CMake CMP00xx policy settings - last touched 28 days ago
-- [#25216](https://github.com/duckdb/duckdb/pull/25216) Fix join elimination dropping rows when UNNEST duplicates the inner side - last touched 28 days ago
-- [#25172](https://github.com/duckdb/duckdb/pull/25172) Add `preset` to tune family of related settings together, informing the system of intended - last touched 28 days ago
-- [#25143](https://github.com/duckdb/duckdb/pull/25143) fix: make week-based date parts and date_trunc range-safe at the min date - last touched 28 days ago
+- [#25412](https://github.com/duckdb/duckdb/pull/25412) Add a constant-pattern fast path for LIKE ... ESCAPE - last touched 30 days ago
+- [#23870](https://github.com/duckdb/duckdb/pull/23870) bound bitpacking group offset against block size - last touched 30 days ago
+- [#23606](https://github.com/duckdb/duckdb/pull/23606) guard negative utf8proc_iterate return in string functions - last touched 30 days ago
+- [#23313](https://github.com/duckdb/duckdb/pull/23313) autovec-friendly logic - last touched 29 days ago
+- [#25464](https://github.com/duckdb/duckdb/pull/25464) ci: dump full raw unittest output in ThreadSanitizer runs - last touched 29 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#26313](https://github.com/duckdb/duckdb/issues/26313) Try DuckDB v2.0-dev! - opened -1 days ago
-- [#26300](https://github.com/duckdb/duckdb/issues/26300) SIGSEGV when executing an ASOF join with a non-comparison condition - opened 0 days ago
-- [#26280](https://github.com/duckdb/duckdb/issues/26280) RemotePushdownOptimizer: a FROM subquery or CTE body on one remote catalog is not pushed w - opened 0 days ago
-- [#26274](https://github.com/duckdb/duckdb/issues/26274) Memory corruption crash from ASOF join over the recursive CTE - opened 1 days ago
-- [#26272](https://github.com/duckdb/duckdb/issues/26272) Arrow scan of list<dictionary> fails when the first 2048 rows hold no list elements - opened 1 days ago
+- [#26745](https://github.com/duckdb/duckdb/issues/26745) UUID filters read substantially more Parquet data than VARCHAR filters - opened 0 days ago
+- [#26727](https://github.com/duckdb/duckdb/issues/26727) LEAD with a huge offset: default value or "Overflow in addition" depending on the row coun - opened 0 days ago
+- [#26720](https://github.com/duckdb/duckdb/issues/26720) Window function into CREATE TABLE AS or COPY sometimes hangs forever (lost unblock in the  - opened 0 days ago
+- [#26719](https://github.com/duckdb/duckdb/issues/26719) `Connection::ExtractPlan` throws INTERNAL Error "Failed to bind column reference ... inequ - opened 0 days ago
+- [#26712](https://github.com/duckdb/duckdb/issues/26712) Sort after a join runs out of memory at some memory_limit values but not at lower or highe - opened 0 days ago
 
 ---
 

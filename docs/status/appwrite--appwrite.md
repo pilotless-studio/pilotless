@@ -1,28 +1,29 @@
 # Weekly status: appwrite/appwrite
 
-_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-01 to 2026-10-08 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 12 people, **at least 46 pull requests merged**, **100 open pull requests**, **15 open issues** on this page of results.
+**100+ commits** by 9 people, **at least 44 pull requests merged**, **100 open pull requests**, **42 open issues** on this page of results.
 
 ### Who moved code
-Meldiron (16), ChiragAgg5k (14), loks0n (13), HarshMN2345 (13), cursoragent (8)
+ChiragAgg5k (40), HarshMN2345 (17), cursoragent (10), lohanidamodar (9), eldadfux (8)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#5539](https://github.com/appwrite/appwrite/pull/5539) Updated and renamed 10k-common-passwords to 100k-common-passwords - last touched 930 days ago
-- [#8332](https://github.com/appwrite/appwrite/pull/8332) Add better error message for `CustomID` validator input data type - last touched 826 days ago
-- [#6504](https://github.com/appwrite/appwrite/pull/6504) [Docs] Adding Elestio as one-click deploy option - last touched 771 days ago
-- [#8530](https://github.com/appwrite/appwrite/pull/8530) Refactor: Update Vietnamese translations - last touched 764 days ago
-- [#8798](https://github.com/appwrite/appwrite/pull/8798) update docker image to use the latest image tag - last touched 716 days ago
+- [#5539](https://github.com/appwrite/appwrite/pull/5539) Updated and renamed 10k-common-passwords to 100k-common-passwords - last touched 938 days ago
+- [#8332](https://github.com/appwrite/appwrite/pull/8332) Add better error message for `CustomID` validator input data type - last touched 833 days ago
+- [#8530](https://github.com/appwrite/appwrite/pull/8530) Refactor: Update Vietnamese translations - last touched 772 days ago
+- [#8798](https://github.com/appwrite/appwrite/pull/8798) update docker image to use the latest image tag - last touched 724 days ago
+- [#4800](https://github.com/appwrite/appwrite/pull/4800) pt-PT translation improvements - last touched 665 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#14031](https://github.com/appwrite/appwrite/issues/14031) Why can't I find kotlin runtime from create functions - opened 0 days ago
-- [#13768](https://github.com/appwrite/appwrite/issues/13768) Membership realtime delete event not properly firing on client sdks - opened 12 days ago
-- [#13766](https://github.com/appwrite/appwrite/issues/13766) TablesDB: deleting a row with an empty two-way manyToOne (onDelete: setNull) returns 500 g - opened 12 days ago
-- [#13633](https://github.com/appwrite/appwrite/issues/13633) updateIntegerAttribute allows widening min/max beyond the column width fixed at create tim - opened 18 days ago
+- [#14255](https://github.com/appwrite/appwrite/issues/14255) Absorb database, mongo and migration into packages/ (wave 6) - opened 0 days ago
+- [#14246](https://github.com/appwrite/appwrite/issues/14246) [Bug]: 10 dead CI badges in packages/*/README.md (Travis endpoints gone + missing workflow - opened 0 days ago
+- [#14222](https://github.com/appwrite/appwrite/issues/14222) 🐛 Bug Report: Transaction bulkUpdate changes rows that do not match the filter - opened 1 days ago
+- [#14221](https://github.com/appwrite/appwrite/issues/14221) 🐛 Bug Report: String values that look like operator JSON are executed as operators - opened 1 days ago
+- [#14220](https://github.com/appwrite/appwrite/issues/14220) 🐛 Bug Report: Postgres adapter truncates float columns to 14 digits - opened 1 days ago
 
 ---
 

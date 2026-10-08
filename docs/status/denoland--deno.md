@@ -1,29 +1,29 @@
 # Weekly status: denoland/deno
 
-_2026-09-24 to 2026-10-01 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-01 to 2026-10-08 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**6 commits** by 6 people, **at least 6 pull requests merged**, **100 open pull requests**, **47 open issues** on this page of results.
+**10 commits** by 8 people, **at least 10 pull requests merged**, **100 open pull requests**, **51 open issues** on this page of results.
 
 ### Who moved code
-hax0r31337 (1), piscisaureus (1), Hixie (1), wryanzimmerman (1), bartlomieju (1)
+bartlomieju (2), petamoriken (2), lrowe (1), dependabot[bot] (1), dsherret (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#28002](https://github.com/denoland/deno/pull/28002) perf(ext/canvas): remove static link `lcms2` - last touched 511 days ago
-- [#29737](https://github.com/denoland/deno/pull/29737) feat(pm): support ‎`http(s):` specifiers and aliases for ‎`deno add` - last touched 471 days ago
-- [#29811](https://github.com/denoland/deno/pull/29811) support deno resolution as a fallback in require - last touched 469 days ago
-- [#30376](https://github.com/denoland/deno/pull/30376) feat: unstable feature async-dns-resolver - last touched 414 days ago
-- [#30221](https://github.com/denoland/deno/pull/30221) feat: Replace spawn_blocking with spawn_blocking_optional and spawn_blocking_always - last touched 414 days ago
+- [#28002](https://github.com/denoland/deno/pull/28002) perf(ext/canvas): remove static link `lcms2` - last touched 518 days ago
+- [#29737](https://github.com/denoland/deno/pull/29737) feat(pm): support ‎`http(s):` specifiers and aliases for ‎`deno add` - last touched 478 days ago
+- [#29811](https://github.com/denoland/deno/pull/29811) support deno resolution as a fallback in require - last touched 476 days ago
+- [#30376](https://github.com/denoland/deno/pull/30376) feat: unstable feature async-dns-resolver - last touched 421 days ago
+- [#30221](https://github.com/denoland/deno/pull/30221) feat: Replace spawn_blocking with spawn_blocking_optional and spawn_blocking_always - last touched 421 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#36932](https://github.com/denoland/deno/issues/36932) Deno desktop: options to turn off CEF background networking and to answer permission reque - opened 0 days ago
-- [#36931](https://github.com/denoland/deno/issues/36931) `deno compile --bundle --minify --exclude-unused-npm` includes unused node native modules - opened 0 days ago
-- [#36930](https://github.com/denoland/deno/issues/36930) Add "engine" to Deno.version - opened 0 days ago
-- [#36926](https://github.com/denoland/deno/issues/36926) node:util: numericSeparator option is ignored by util.inspect and util.format - opened 0 days ago
-- [#36924](https://github.com/denoland/deno/issues/36924) Deno npm resolution ignores deprecation tags and latest tag - opened 1 days ago
+- [#36988](https://github.com/denoland/deno/issues/36988) `npm:` subpath specifiers resolve no type declarations when the package ships sibling `.d. - opened 0 days ago
+- [#36987](https://github.com/denoland/deno/issues/36987) serve: fallback to `Deno.serve()` handler if default export does not exist - opened 0 days ago
+- [#36984](https://github.com/denoland/deno/issues/36984) WebGPU: A manual blit may be required on devices without `VK_KHR_swapchain_mutable_format` - opened 0 days ago
+- [#36983](https://github.com/denoland/deno/issues/36983) node:fs: utimesSync / statSync drop sub-millisecond file times (mtimeNs is always a whole  - opened 0 days ago
+- [#36982](https://github.com/denoland/deno/issues/36982) fetch: aborting no longer cancels the response body after the Response is garbage-collecte - opened 0 days ago
 
 ---
 
