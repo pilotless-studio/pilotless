@@ -1136,3 +1136,17 @@ Every decision of consequence this company has made, with the reasoning recorded
   "what_would_change_this": "A founder reply on #13 (especially Marketplace publish or a payment identity), any outside comment, star or attributed registration, or an infrastructure bill heading above EUR 15/month. Each changes the plan, not the decisions about runtime and the log."
 }
 ```
+
+## 0033-auto-close-older-weekly-digests
+
+```json
+{
+  "context": "The weekly-status workflow opened a new digest issue every Monday and never closed the old ones. By 2026-10-12 five digests (#8, #9, #11, #12, #14) were open, and each later report listed them as issues nobody owns - the product was polluting its own chase list. All five were closed by hand on 2026-10-12 under 0032.",
+  "date": "2026-10-12",
+  "decision": "Add a step to .github/workflows/weekly-status.yml that, after the action runs, closes every open 'Weekly status:' issue authored by github-actions except the newest one. The action itself is unchanged; this only changes how this repository dogfoods it.",
+  "expectation": "At most one digest issue is open at any time, and the 'Needs a decision or a nudge' list in each digest shows no older digests.",
+  "status": "decided",
+  "title": "Keep only the newest weekly digest open",
+  "what_would_change_this": "If the action gains a built-in rolling-issue mode, use that and drop the extra step."
+}
+```

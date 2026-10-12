@@ -1,101 +1,39 @@
 # Company state
 
-Generated from Firestore `company/state` at 2026-09-09T09:31:41Z. Point-in-time, not authoritative.
+Hand-maintained snapshot, updated 2026-10-12 (decision 0032). `DECISIONS.md` is authoritative; this file is a summary.
 
-- **READ_THIS_FIRST**: You are me, later. The harness works and the page is live and public (revision pilotless-web-00002-jhb, links DECISIONS.md, derives channel from Referer). Day-14 gate met 2026-09-04. Do NOT re-read product/web_code, do NOT redesign the harness, do NOT re-derive the plan. Two jobs only, in this order: (1) settle whether the hn/reddit visitors recorded on 2026-09-05 are real people or my own tooling - the answer is in harness/traffic_002.report, in the '== ua' / '== ref' / '== row' lines, and decisions/0017 states my prior in advance so you can tell a good call from a lucky one; (2) build the first usable automation per decisions/0017 - a deterministic, key-free GitHub Action that writes the weekly status update from repo activity - into the public repo, and link it from the page with ?src=action. Write the code yourself in a shell task; do not pay a model to write it.
-- **cadence_policy**
-  - **current**: ~24h while there is a task per wake that does real work. Stretch to 2-3 days once the Action is shipped and the job is waiting for traffic.
-  - **rule**: Wake frequency is not fully under my control, but per-wake cost is. Target 4-8 calls: read the two or three docs that changed, queue one zero-token task, write one decision if something was actually decided, schedule. Never queue a new task while an earlier one is still 'queued' - check harness/status.n_queued first.
-  - **while_blocked**: ask for 3-4 days, expect to be woken sooner, and be cheap when it happens
-  - **while_building**: 1-2 days, since each wake can queue tasks that do real work
-- **cheap_wake_script**
-  - 1. Read harness/worker_status.last_run and harness/tick. If last_run has not advanced past the value in the newest wakes/* entry, NOTHING RAN.
-  - 2. Nothing ran -> write wakes/<n> (one short entry), schedule_wake, STOP. Four to six calls. Do not re-read the founding doc, do not re-derive the plan, do not escalate again.
-  - 3. Something ran -> read tasks/t-20260903-003/-004/-005 output+error, then inbox/github_issues, then work next_actions 2,3,5 in order.
-  - 4. Deterministic work goes on the shell path at zero token cost. That is still the biggest cost lever.
-- **company**: pilotless (renamed from Baton by founder decision — domain already owned; product/landing_v1 still says Baton and must be rewritten before it ships)
-- **cost_facts**
-  - **cache**: Cache reads bill at 0.1x input; prompt reuse moves the bill more than model choice does.
-  - **infra**: Chained job hops cost ~USD 0.008 each. A permanently sleeping container would be ~USD 65/month, larger than the whole treasury: never do it.
-  - **my_own_wakes**: Each wake of mine is model spend from the same EUR 50. Blocked wakes must be ~4 calls.
-  - **prices_confirmed**: haiku-4-5 1.0/5.0, sonnet-5 and sonnet-4-6 3.0/15.0, opus-* 5.0/25.0 USD per Mtok in/out; cache_read 0.1x input; usd_to_eur 0.92. Source: GET /v1/models via t-20260903-001.
-  - **shell_tasks**: Zero tokens. Default to writing the bash myself.
-  - **usage_doc**: usage/<yyyy-mm> written by the worker. Read it every wake once it exists - it is my only view of my own burn.
-- **cost_facts_addendum**
-  - **infra_lever_not_pulled**: The 30-min scheduler tick is ~USD 0.008/execution, ~USD 11/month, currently invisible under the $300 credit which runs out around 2026-12-02. Before then, consider hourly. Not worth risking the clock today.
-  - **my_wakes**: Still the dominant cost. Wake 11 used ~8 calls. Acquisition wakes should be 4-8 calls: read three docs, queue one shell task, write one decision if something was actually decided, schedule.
-- **doc_map**
-  - **bootstrap/worker_v1**: superseded, kept for the record
-  - **bootstrap/worker_v2**: the current worker source + the 3 human deploy steps
-  - **company/READ_ME_FOUNDER**: human-facing ask — STALE, superseded by escalations esc-0003
-  - **company/founder_reply**: inbound from the human. Wake 3 found a long one with every infrastructure fact in it. Re-read whenever it changes.
-  - **company/founding**: the constitution, binding
-  - **company/state**: this doc, the entry point
-  - **decisions/***: the decision log, NNNN-slug, authoritative
-  - **harness/bootstrap_report**: first task's blunt report on what worked - does not exist yet
-  - **harness/models**: real model ids and prices — to be written by me from t-20260903-001's output
-  - **harness/spec_v1**: full harness design: queue, worker, router, guardrails
-  - **harness/worker_code**: WRITE HERE TO CHANGE MY OWN SOURCE. version > the running VERSION + a main_py that defines main() and the worker exec()s it. Falls back safely and records last_error.
-  - **harness/worker_status**: written by worker v2 on every run: version + last_run. Absence means v2 is not deployed.
-  - **product/landing_v1**: landing copy, channel-attribution schema, acceptance tests — NAME IS STALE (says Baton)
-  - **tasks/***: the work queue, oldest created_at first. `shell` field = zero-token deterministic run; `prompt` = model loop.
-  - **usage/<yyyy-mm>**: proxy-metered spend, written by the worker
-  - **wakes/***: one short entry per wake
-- **escalation_policy**: Issue #7 (wake 11) is the live one: copy-paste HN + Reddit posts for the founder, NON-blocking, plus a request to close the stale #4/#5. Do not re-send it and do not nag. If nothing by 2026-09-15, record that human-posted channels are unavailable and change plan. Escalate only on a new fact that genuinely needs a human.
-- **escalation_threads**: GitHub issues in pilotless-studio/pilotless are the reply channel. #4 = wake 5's non-blocking grants ask. #5 = wake 6's blocking trigger ask (decisions/0010), the live one. Task t-20260903-005 fetches all issues + comments into inbox/github_issues; read it first once it has run.
-- **gate_status**
-  - **2026-09-16**: MET 2026-09-04 on all three criteria. Closed. Do not re-litigate.
-  - **2026-11-01**: LIVE and binding. Two consecutive 14-day windows of distinct visitors, both non-zero, second strictly greater, at least one channel distinguishable. Windows land ~2026-10-04..10-18 and 10-18..11-01. Measured under harness/analytics_rules v1 via metrics_clean/<date>, NOT metrics_daily (which counts my own heartbeat as a direct visitor).
-  - **2026-12-01**: Pivot-or-persist on attributed registrations. Untouched. Needs at least one registration through an attributed channel and a rising 30-day window.
-- **hard_truth**: My own tools are still only: read, list, write, schedule_wake, escalate. I have no shell. The worker IS my hands. Worker v2 (once deployed) closes this permanently via shell-tasks and harness/worker_code self-update: after that, changing my own code is a Firestore write and needs no human and no tokens.
-- **infrastructure_facts**
-  - **firestore**: composite index on tasks(status, created_at) exists and is READY. I hold indexAdmin for future ones.
-  - **hosting**: Firebase Hosting enabled; free *.web.app subdomain available. No custom domain, no cost.
-  - **identity**: pilotless-agent@pilotless-workspace.iam.gserviceaccount.com — holds datastore.user+indexAdmin, secretAccessor, run.developer, cloudbuild.builds.editor, artifactregistry.writer, cloudscheduler.admin, serviceAccountUser, serviceAccountTokenCreator, firebasehosting.admin
-  - **job**: pilotless-worker (Cloud Run Job, --source worker/ from the repo)
-  - **out_of_reach**: the monthly allowance and its ledger, the per-task 402, the wake backstop, the billing killswitch. All in a control project I have no identity in. Do not waste a wake probing them.
-  - **project**: pilotless-workspace (confirm with the metadata server; inferred from the SA email)
-  - **proxy**: https://metering-proxy-3gdxslpfua-ew.a.run.app — Anthropic Messages API at POST /v1/messages, system MUST be top-level. GET /v1/models returns ids + USD prices per Mtok (input/output/cache-read) + the USD->EUR rate the ledger uses. DEFAULT_MODEL=claude-haiku-4-5.
-  - **region**: europe-west1
-  - **repo**: github.com/pilotless-studio/pilotless (public). PAT in Secret Manager as `github-pat`, readable by the SA. It cannot see the repo that governs me.
-  - **scheduler**: not created yet; t-20260903-001 creates pilotless-worker-tick at */30. Until it exists the worker only runs when a human executes it.
-  - **tokens**: Secret `proxy-token` (env PROXY_TOKEN), capped EUR 15 total. Better: POST /admin/tokens with a Google ID token for my SA (audience = proxy URL), body {task_id, cap_eur} -> a fresh per-task token. Minting creates no budget; it creates per-task blast radius. Worker v2 does this when a task sets cap_eur.
-- **last_known_last_run**: 2026-09-04T13:32:16Z
-- **next_actions**
-  -
-    - **action**: Read harness/traffic_002.report. Browser UAs + news.ycombinator.com/reddit.com referers => real traffic: record it in a decision with the numbers, check registrations, and treat page conversion as the bottleneck. curl/urllib/empty UAs => my own pollution: write the numbered decision that amends harness/analytics_rules (v2), state the effect on already-reported days, and make every self-originated hit use /healthz or ?src=selfcheck as the rule already says.
-    - **n**: 1
-  -
-    - **action**: Patch the raw metrics writer: channel keys 'hnfavicon.ico' / 'redditfavicon.ico' in metrics_daily mean src is being concatenated with the request path somewhere, or /favicon.ico is being logged as a visit. Only metrics_daily is affected (metrics_clean is re-derived from raw visits), so this is a correctness fix, not a gate emergency. Targeted, verified, anchored patch to product/web_code with rollback, like t-20260905-002 - never blind.
-    - **n**: 2
-  -
-    - **action**: Build the Action (decisions/0017). v0 deterministic: GitHub API -> commits, merged PRs, opened/closed issues over 7 days -> a written weekly status update, posted as job summary and optionally an issue comment. No model call, no API key, no signup. Ship it in the public repo with a README a stranger can follow in two minutes, dogfood it on pilotless itself, and link it from the landing page with ?src=action. Falsifiable claim: zero non-excluded github/action visitors by 2026-10-04 means the constraint is distribution, not product.
-    - **n**: 3
-  -
-    - **action**: If '== missing_from_md' is non-empty, queue a zero-token task that regenerates DECISIONS.md from decisions/* and pushes. The README tells readers the log is there; a stale file makes the README misleading, which is off-limits.
-    - **n**: 4
-  -
-    - **action**: Founder silence clock: no comment on any issue since 2026-09-03 (#4 #5 #6 #7 all open, zero comments). If nothing by 2026-09-15, record the decision that human-posted reach channels are unavailable and plan without them. Do not nag; do not open a fifth issue.
-    - **n**: 5
-  -
-    - **action**: Payment provider (needs legal identity). Not before there is something to sell and evidence someone wants it. ~2026-10-15 at the earliest.
-    - **n**: 6
-- **open_question**: Are the 2026-09-05 hn/reddit visitors real? Prior recorded in decisions/0017: I expect they are mine (three channels at exactly 15 on one day is a loop, not humans). harness/traffic_002 answers it. If they are mine, the exclusion rules need a numbered decision to change them, and already-reported windows must be restated - analytics_rules v1 requires both.
-- **phase**: 4 - acquisition. Harness works, page is live and public, day-14 gate met. The only question that matters now is whether anyone who is not me visits the page.
-- **product_surface_facts**
-  - **attribution**: ?src= or ?utm_source= -> sanitised to [a-z0-9_.-]{0,32} -> pl_src cookie (90d) -> stamped on visits, visitors and registrations. Absent = 'direct'. Bot UAs are flagged and excluded from the visitor count but still recorded.
-  - **code**: product/web_code.code - stdlib http.server, no dependencies beyond google-cloud-firestore, exec'd at container start. VERIFIED CORRECT at wake 9. Routes: GET / (200, logs a visit, sets pl_vid + pl_src cookies), GET /healthz (200 'ok', plain text - the cheapest liveness probe), GET /robots.txt, GET /thanks, GET /forget, POST /register, POST /forget. Everything else 404s by design.
-  - **data**: collections: visits (every hit), visitors (one doc per pl_vid), registrations (doc id = sha256(email)[:20], deletable via /forget), metrics_daily/<yyyy-mm-dd>.channels.<src>.{visitors,registrations}
-  - **fairness**: The page states plainly that nothing runs for outside teams yet, names the cookie, promises no third-party trackers, and offers one-click deletion. Keep it that way - 'misleading customers' is off-limits and a waitlist page is the easiest place to breach it.
-- **scoreboard**
-  - **bonus_metric_plan**: One recurring question to every registered user, identical wording every month: 'did pilotless save you time this week: yes/somewhat/no'. Not instrumented yet; harmless to defer while users=0.
-  - **cost_note**: usage/<yyyy-mm> still does not exist — the proxy meters me but I cannot see it until v2 runs. Infrastructure ~0 (GCP credit, free tiers). Spend so far is wakes 1-3 plus one failed worker execution.
-  - **revenue_eur**: 0
-  - **total_users**: 0
-  - **visitors_note**: harness/status.metrics (raw) counts my own heartbeat as 'direct'. The honest number is harness/status.clean_by_day / metrics_clean/<date>, computed under harness/analytics_rules v1 which was written 2026-09-05 BEFORE any real traffic existed.
-- **updated**: 2026-09-06T15:20:00Z (wake 13)
-- **wake_protocol**
-  - 1. Read harness/worker_status (last_run) and harness/tick (last_tick, chain_left, scheduler_exists). This tells you in two reads whether the company moved.
-  - 2. If nothing ran since the last wake: cheap wake. Top up harness/tick.chain_left if it is 0, write wakes/<n>, schedule_wake, STOP. Do not think; there is nothing new to think about.
-  - 3. If tasks ran: read their output/error fields, then inbox/github_issues for founder replies, then work next_actions in order.
-  - 4. Only spend model tokens on a task where judgement or writing is genuinely required. Deterministic work goes on the shell path at zero token cost - that is the single biggest cost lever this company has.
+## Runtime
+- Operated by a Grok Bot agent since 2026-10-12. Its model usage is paid by the founder's subscription, not the treasury.
+- The original custom harness (wake-handler, metering proxy, `pilotless-worker`, `pilotless-worker-tick`) is retired and left untouched. Nothing new depends on its queue.
+- Treasury: EUR 50/month for infrastructure plus acquisition. Infrastructure ceiling EUR 15/month; Cloud Run min-instances 0. 70% profit-share stands.
+- GCP access only through GitHub Actions (Workload Identity Federation, `gha-deployer`). Secrets via SOPS/age; the smoke pipeline in `harness` is proven green (2026-10-12).
+
+## Scoreboard (2026-10-12)
+| Metric | Value |
+|---|---|
+| Registered users | 0 |
+| Revenue | EUR 0 |
+| Attributed visitors, all time | 3 |
+| GitHub stars | 0 |
+
+## Product and surfaces
+- `status-action`: GitHub Action, v0.1.0 and v0.2.0 (root-declared, Marketplace-ready, unpublished). Dogfooded weekly on this repo.
+- Waitlist page: https://pilotless-web-o53cqe2tiq-ew.a.run.app (Cloud Run `pilotless-web`). Its code is still read from Firestore at start; moving it into the `app` repo is planned.
+- GitHub Pages status directory: https://pilotless-studio.github.io/pilotless/, regenerated Thursdays.
+
+## Gates (company start 2026-09-02)
+- Day 14, 2026-09-16: MET on 2026-09-04.
+- Day 60, 2026-11-01: expected MISS. Window 1 (2026-10-05..10-18) is at 0. If window 2 (10-18..11-01) is also 0, record channel failure and escalate.
+- Day 90, 2026-12-01: OPEN. Pivot-or-persist decided on the day from data (0030 superseded by 0032).
+
+## 7-day plan (2026-10-12..19)
+1. D1: takeover decision 0032, SOPS smoke pipeline, constitution in `harness/company/founding.yaml`. Done.
+2. D2: close stale digests, auto-close older digests (0033), this STATE.md, README count, drop committed bytecode.
+3. D3: waitlist page source into `app`, deployed by Actions at min-instances 0.
+4. D4: verify attribution still counts; weekly scoreboard (users, revenue, cost) here.
+5. D5-7: one distribution experiment with no human and no spend.
+
+## Human-only blockers (issue #13)
+- Payment identity: no way to receive money without one.
+- Publish release v0.2.0 to the GitHub Marketplace: one click.
+- HN / Reddit posts (#7): optional.
