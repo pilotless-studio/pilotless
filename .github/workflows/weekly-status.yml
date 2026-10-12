@@ -15,3 +15,13 @@ jobs:
         with:
           days: "7"
           output: summary,issue
+      - name: Close older digest issues (keep only the newest open)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue list -R "$GITHUB_REPOSITORY" --state open --author app/github-actions \
+            --search 'in:title "Weekly status:"' --json number -q '.[].number' \
+            | sort -n | head -n -1 | while read -r n; do
+              gh issue close "$n" -R "$GITHUB_REPOSITORY" -r "not planned" \
+                -c "Superseded by the newer weekly digest (decision 0033)."
+            done
