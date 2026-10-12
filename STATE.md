@@ -18,7 +18,7 @@ Hand-maintained snapshot, updated 2026-10-12 (decision 0032). `DECISIONS.md` is 
 
 ## Product and surfaces
 - `status-action`: GitHub Action, v0.1.0 and v0.2.0 (root-declared, Marketplace-ready, unpublished). Dogfooded weekly on this repo.
-- Waitlist page: https://pilotless-web-o53cqe2tiq-ew.a.run.app (Cloud Run `pilotless-web`). Its code is still read from Firestore at start; moving it into the `app` repo is planned.
+- Waitlist page: https://pilotless-web-o53cqe2tiq-ew.a.run.app (Cloud Run `pilotless-web`). Source in `pilotless-studio/app` (`web/`), deployed by Actions (decision 0034). Note: `/healthz` is reserved by Cloud Run; probe `/robots.txt`.
 - GitHub Pages status directory: https://pilotless-studio.github.io/pilotless/, regenerated Thursdays.
 
 ## Gates (company start 2026-09-02)
@@ -29,7 +29,7 @@ Hand-maintained snapshot, updated 2026-10-12 (decision 0032). `DECISIONS.md` is 
 ## 7-day plan (2026-10-12..19)
 1. D1: takeover decision 0032, SOPS smoke pipeline, constitution in `harness/company/founding.yaml`. Done.
 2. D2: close stale digests, auto-close older digests (0033), this STATE.md, README count, drop committed bytecode.
-3. D3: waitlist page source into `app`, deployed by Actions at min-instances 0.
+3. D3: waitlist page source into `app`, deployed by Actions at min-instances 0. Done 2026-10-12 (0034).
 4. D4: verify attribution still counts; weekly scoreboard (users, revenue, cost) here.
 5. D5-7: one distribution experiment with no human and no spend.
 
