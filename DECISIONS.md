@@ -1166,3 +1166,54 @@ Every decision of consequence this company has made, with the reasoning recorded
   "what_would_change_this": "If the image approach costs more than a few cents a month, or Firestore reads become a problem, revisit. Otherwise none expected."
 }
 ```
+
+## 0035-founder-directive-drop-the-waitlist
+
+```json
+{
+  "author": "operator, recording a founder instruction",
+  "context": "On 2026-10-12 the founder (Sjaak, in chat with the operator) instructed: drop the waitlist direction entirely and build something more useful that people can actually use, to validate the hypothesis that a company's first manager can be replaced by automation. The waitlist page (pilotless-web) describes an email status-collection product that was never built; in 39 days it has produced 0 registrations from 3 attributed visitors. The only thing anyone can use today is status-action.",
+  "date": "2026-10-12",
+  "decision": "The waitlist surface is dropped as a product direction. No further work goes into the email-collection waitlist or its copy. The next product is something a user can install and get value from on day one, built on the existing assets: status-action, the status directory, the unowned-issues page and the Firestore attribution. Candidates and a recommendation are in docs/proposals/2026-10-next-product.md; 0036 chooses A. The live site stays as it is until the replacement is ready, so that no surface goes dark and attribution is not broken in the middle of day-60 window 1.",
+  "scope_of_override": "This is a founder instruction, not an evidence-based pivot. It overrides product.abandonment's requirement for evidence from gathered data ONLY for the waitlist surface. It does not abandon or amend the founding hypothesis, which stays under test. It does not settle the 2026-12-01 pivot-or-persist gate, which is still decided on the day from data (0032 D). It does not change the day-60 gate, which is measured as before.",
+  "not_decided_here": "Which candidate product to build, its pricing, and when the waitlist page is replaced. Each will get its own numbered decision.",
+  "expectation": "A recommended candidate is chosen and its build started within 7 days. The registered-user metric is redefined as an install or signup of a product that does something, which makes the 2026-12-01 gate testable rather than unfalsifiable.",
+  "what_would_change_this": "A further founder instruction. Evidence about the waitlist itself does not reopen it, because it is not the basis of this decision.",
+  "status": "decided",
+  "title": "Founder directive: drop the waitlist, build something people can use"
+}
+```
+
+## 0036-build-the-pilotless-github-app
+
+```json
+{
+  "context": "0035 dropped the waitlist on founder instruction. docs/proposals/2026-10-next-product.md compared three candidates: (A) a GitHub App that installs in one click and does a first manager's chores; (B) status-action plus claimable public status pages; (C) an email-in standup bot.",
+  "date": "2026-10-12",
+  "decision": "Build A: the pilotless GitHub App. It installs on an org or on selected repos. On install, and every week after, it writes a status digest to one pinned rolling issue per repo, built from the same logic as status-action: what shipped, what is in flight, stalled PRs, issues nobody owns. Later increments: stale-PR nudges (at most one per PR per week), per-person standup lines, and a sign-in-with-GitHub dashboard. It runs on the existing pilotless-web Cloud Run service (min-instances 0) with Firestore state, behind a feature flag, and the landing page is not replaced until the App works end to end. B's status directory becomes the top of the funnel: its calls to action will point at the install URL with attributed src tokens.",
+  "reasoning": [
+    "A is the only candidate that is usable on day one, does the chores the hypothesis is about without asking anyone to change how they work, and is measurable from first-party events (installation webhooks) rather than from telemetry an Action would have to phone home with.",
+    "It reuses what already works (status-action logic, the directory, the deploy pipeline, attribution) instead of starting over.",
+    "It has a paid path GitHub can bill (Marketplace paid plans) once a payment identity exists.",
+    "B is cheaper but its users are nearly unmeasurable and rarely pay. C tests the hypothesis most directly but has no reachable distribution surface and adds outbound-email risk."
+  ],
+  "metric_definitions": {
+    "registered_user": "A GitHub App installation that is still active (installed, not suspended, at least one repo selected) 7 days after its installation event. Counted per installation, not per repo. Our own org's installation is excluded.",
+    "satisfaction": "(1) 28-day retention: the share of registered installations still active 28 days after install. (2) Digest thumbs: the 👍/👎 reactions on each digest issue body, and the share of 👍 among digests that got any reaction.",
+    "attribution": "Install links carry src tokens (e.g. directory.a1); the landing hit's pl_src is joined to the installation by the setup redirect, falling back to 'direct'."
+  },
+  "expectations": [
+    "The App is created by the founder's single click on the manifest link (escalation issue) within 7 days. Without it, nothing installable exists.",
+    "First digest posted on our own repo within 48 hours of App creation.",
+    "At least 1 outside registered installation by 2026-12-01, reached only through owned surfaces (directory, unowned page, README, docs) and, if the founder publishes it, the Marketplace listing."
+  ],
+  "falsifiable_by": [
+    "Zero outside installations by 2026-12-01 with the install CTA live on the directory pages for at least 21 days: distribution, not product, is the constraint, and the day-90 gate records it.",
+    "Outside installations exist but 28-day retention is below 25%, or 👎 outnumber 👍: the product does not replace the chore, and the hypothesis on this surface is weakened.",
+    "Infrastructure for the App above EUR 15/month at fewer than 100 installations: the architecture is wrong."
+  ],
+  "cost": "Agent time only. Infrastructure is expected to be EUR 0-3/month on Cloud Run requests plus the Firestore free tier.",
+  "status": "decided",
+  "title": "Build candidate A: the pilotless GitHub App"
+}
+```
