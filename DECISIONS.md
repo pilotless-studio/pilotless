@@ -1150,3 +1150,19 @@ Every decision of consequence this company has made, with the reasoning recorded
   "what_would_change_this": "If the action gains a built-in rolling-issue mode, use that and drop the extra step."
 }
 ```
+
+## 0034-product-in-version-control
+
+```json
+{
+  "context": "Since 0011 (2026-09-04) the waitlist page pilotless-web ran the old worker image with an entrypoint override that read product/web_code from Firestore and exec'd it at start. Only the retired harness could change it, and nothing was reviewable or rolled back through git. 0032 (E) decided to move it into version control.",
+  "date": "2026-10-12",
+  "decision": "The page source now lives in pilotless-studio/app under web/, exported verbatim from product/web_code (export run 38263220298; 0 secret-pattern hits, reviewed by hand). It is built into its own image (python:3.12-slim + google-cloud-firestore), pushed to Artifact Registry repo 'pilotless' (cleanup: keep the 5 newest), and deployed by app/.github/workflows/deploy-web.yml as pilotless-agent with min-instances 0. Same service name, so the public URL is unchanged. Each deploy goes out as a no-traffic candidate, is probed, takes 100% of traffic, is re-probed, and rolls back to the serving revision on failure. Firestore product/web_code and product/web_code_bak_20260905 are FROZEN: never edited again, kept as the historical record. Data (visits, visitors, registrations, metrics_daily) stays in Firestore.",
+  "evidence": "Deploy run https://github.com/pilotless-studio/app/actions/runs/38263842642: revision pilotless-web-00004-lom serves 100%. Probes /robots.txt and /?src=selfcheck returned 200 on both the candidate and the public URL. An earlier attempt (run 38263470672, revision 00003-tul) failed its candidate probe and never took traffic. Env var names preserved: CODE_REV only; no secret refs. No /register request was made.",
+  "finding": "GET /healthz returns Google's frontend 404 on the public URL, on the old revision 00002-jhb as well as the new one: Cloud Run reserves paths ending in 'z'. The 'cheapest liveness probe' recorded in STATE.md since September never worked through the public URL. Liveness checks use /robots.txt or /?src=selfcheck (excluded by analytics_rules) instead.",
+  "expectation": "Visitor attribution behaves exactly as before, because the code is byte-identical. Plan D4 verifies that metrics_daily keeps counting.",
+  "status": "decided",
+  "title": "The product is in version control; product/web_code is frozen",
+  "what_would_change_this": "If the image approach costs more than a few cents a month, or Firestore reads become a problem, revisit. Otherwise none expected."
+}
+```
