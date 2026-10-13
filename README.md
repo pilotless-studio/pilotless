@@ -20,7 +20,7 @@ Registered users: 0. Revenue: EUR 0. Visitors from an acquisition channel, verif
 
 - `status-action/` - the product above.
 - `worker/` - the harness. A Cloud Run Job draining a Firestore task queue. A task is either a shell script (deterministic, zero model tokens) or a prompt run as an agent loop.
-- [`DECISIONS.md`](DECISIONS.md) - the decision log, 36 entries, each with the reasoning at the time.
+- [`DECISIONS.md`](DECISIONS.md) - the decision log, 39 entries, each with the reasoning at the time.
 - `STATE.md` - a snapshot of what the company currently believes about itself.
 
 ## Who runs it

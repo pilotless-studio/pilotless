@@ -1244,3 +1244,37 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "App created (pilotless-app); install remaining; scoreboard workflow added"
 }
 ```
+
+## 0038-github-app-credentials-in-secret-manager
+
+```json
+{
+  "context": "The manifest flow (0036/0037) stored the App's private key, webhook secret and client secret in Firestore secrets_app/github_app, because pilotless-agent could not create secrets at the time. On 2026-10-13 the founder granted pilotless-agent a custom role, roles/secretWriter (create secrets; add, enable and disable versions; no IAM, no update, no delete, no destroy), alongside secretAccessor, and instructed that the key must not stay in Firestore.",
+  "date": "2026-10-13",
+  "decision": [
+    "Storage: the three credentials live only in Secret Manager as github-app-private-key, github-app-webhook-secret and github-app-client-secret, created by code running as pilotless-agent (POST /gh/admin/migrate on pilotless-web, called from app/.github/workflows/admin.yml with a Google ID token for gha-deployer). gha-deployer never held or needed secret-create rights.",
+    "Use: Cloud Run mounts them with --set-secrets. The private key is a file mount at /secrets/gh/key.pem; the webhook and client secrets are env vars from secret refs. deploy-web adds the mounts when vars.GH_SECRETS_MOUNTED=true (set). The weekly digest now runs inside the service (/gh/admin/digest), so the key never reaches a GitHub runner.",
+    "Firestore keeps only non-secret identifiers: app_id, slug, client_id, owner, html_url, plus a pointer naming the secrets.",
+    "Rotation: generate a new key (or secret) in the App settings, add it as a new version, redeploy so instances pick up :latest, verify with /gh/admin/verify and one webhook delivery, then disable the old version. Versions are disabled, never destroyed: the role cannot destroy, and a disabled version is the rollback."
+  ],
+  "evidence": "admin runs 38402920759 (migrate: three secrets created, a version added to each), 38403331942 (verify: SM equals Firestore and the Cloud Run mounts by in-process SHA-256 comparison, all true), 38403388071 (digest via the mounted key: pinned issues app#7, harness#1, pilotless#23 by pilotless-app), 38403494035 (purge: Firestore fields left app_id, client_id, created, html_url, owner, secret_names, secrets_in, slug), 38403537290 (verify after purge: in_firestore false, mounts equal SM). Deploy with mounts: run 38403058234, revision pilotless-web-00010-peh, probes 200. No value or hash was printed anywhere.",
+  "expectation": "No credential for the App exists outside Secret Manager. A future rotation costs one version add, one redeploy and one disable.",
+  "what_would_change_this": "If the admin routes are ever exposed beyond the gha-deployer identity, or the founder grants a narrower role, revisit. A leaked key means rotation per the procedure above, the same day.",
+  "status": "decided",
+  "title": "GitHub App credentials live in Secret Manager; rotation = add a version, then disable the old one"
+}
+```
+
+## 0039-firestore-secret-inventory
+
+```json
+{
+  "context": "0038 moved the App credentials out of Firestore. The founder asked for an inventory of any other secrets stored there, so that anything still used by the live app is migrated and anything belonging to the retired runtime is at least known.",
+  "date": "2026-10-13",
+  "decision": "Inventory done from the service (/gh/admin/scan, run 38403582544): every top-level collection, up to 300 documents each, checked for secret-shaped field names and for known token formats in values (ghp_, github_pat_, gho_, ghs_, PEM private keys, AIza, sk-, ya29.). Names only were reported. Result: no field anywhere matched a token-value pattern. Six fields matched on name only: company/founder_reply.github_pat, company/founder_reply.minting_your_own_tokens, company/founder_reply.proxy_token, company/state.infrastructure_facts.tokens, harness/spec_v1.components.queue.schema.tokens_used and harness/spec_v1.components.queue.schema.max_tokens. All six belong to the retired runtime's documents (the founder's bootstrap reply, the old state doc, the harness spec). The live app reads none of them, so nothing further is migrated. They are left untouched, as 0032 requires for the retired runtime. secrets_app/github_app now holds identifiers only.",
+  "limits": "Top-level collections only. Subcollections, list-valued fields and documents past the first 300 per collection (visits, visitors) were not scanned. A secret in a format the patterns do not know, under an innocuous field name, would be missed.",
+  "follow_up": "If the founder wants the retired runtime's Firestore documents cleaned, the company/founder_reply fields are the ones to check by hand first. The retired runtime's real credentials (github-pat, proxy-token) are already in Secret Manager per STATE.md and are not touched.",
+  "status": "decided",
+  "title": "Firestore secret inventory: nothing else live; retired-runtime field names recorded"
+}
+```

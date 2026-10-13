@@ -12,8 +12,8 @@ Hand-maintained snapshot, updated 2026-10-13 morning cycle (decision 0037). `DEC
 ## Scoreboard (2026-10-13, run https://github.com/pilotless-studio/app/actions/runs/38361337945)
 | Metric | Value |
 |---|---|
-| GitHub App | exists: `pilotless-app` (id 5287646), owner `pilotless-studio`; pem / webhook_secret / client_secret present |
-| App installed on org? | **No** — 0 installations in Firestore |
+| GitHub App | `pilotless-app` (id 5287646), owner `pilotless-studio`; credentials in Secret Manager only (0038) |
+| App installed on org? | **Yes**: pilotless-studio, all repos (2026-10-13). First digests pinned: pilotless#23, app#7, harness#1. Global digest flag off. |
 | Registered users (active ≥7d, excl. own org) | 0 |
 | Active installations (total / outside) | 0 / 0 |
 | `config/ghapp` | empty (digests still flagged off) |
