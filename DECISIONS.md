@@ -1217,3 +1217,30 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Build candidate A: the pilotless GitHub App"
 }
 ```
+
+## 0037-github-app-created-scoreboard-workflow
+
+```json
+{
+  "context": "Escalation #20 asked the founder to create the GitHub App for decision 0036. On 2026-10-12 the App was created (name pilotless taken → slug pilotless-app, id 5287646, owner pilotless-studio). Credentials landed in Firestore secrets_app/github_app; /gh/setup and /gh/callback now return 410. The App is not yet installed on the org (Cursor is the only org installation). Operating cycles need a repeatable scoreboard; none existed.",
+  "date": "2026-10-13",
+  "decision": "Record App creation as complete and treat org install as the remaining human gate (new escalation #21, install URL https://github.com/apps/pilotless-app/installations/new). Keep digests_enabled off until an installation webhook exists. Add a scoreboard workflow in pilotless-studio/app (workflow_dispatch + weekday morning cron) that reads Firestore via WIF and publishes a JSON summary artifact for each operating cycle. Close #20.",
+  "reasoning": [
+    "Creation succeeded; re-asking for create would confuse. Install is a separate one-click org-owner action and is what unblocks dogfood and the first digest.",
+    "Enabling digests before install would no-op or race with missing installation state.",
+    "A cheap scoreboard workflow replaces hand-counted STATE.md visitors and makes day-60 / day-90 gates evidence-based without widening GCP permissions or spending money."
+  ],
+  "expectations": [
+    "Founder installs pilotless-app on pilotless-studio (all repos, or at least pilotless/app/harness) within a few days via #21.",
+    "First digest on our own repos within 48 hours of that install (operator flips digests_enabled and runs the digest workflow).",
+    "Every morning cycle (and weekday cron) produces a scoreboard.json artifact with github_app, installations, registered_users, visitors, revenue_eur, cost note, and product_url_probe."
+  ],
+  "falsifiable_by": [
+    "Install not done by 2026-10-20: human gate is the bottleneck; escalate once more then pause App work that depends on dogfood.",
+    "Scoreboard workflow fails auth or prints secrets: stop using it until fixed; never log pem/client_secret/webhook_secret/tokens."
+  ],
+  "cost": "Agent time plus Actions minutes only. No new always-on infra.",
+  "status": "decided",
+  "title": "App created (pilotless-app); install remaining; scoreboard workflow added"
+}
+```
