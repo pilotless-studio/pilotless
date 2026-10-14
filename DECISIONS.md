@@ -1310,3 +1310,42 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Enable weekly digests; point directory CTAs at App install"
 }
 ```
+
+## 0041-early-directory-install-cta-publish
+
+```json
+{
+  "context": "Afternoon cycle 2026-10-14. Morning 0040 flipped config/ghapp.digests_enabled and pointed the directory and unowned generators at /install, but live GitHub Pages still showed waitlist CTAs (directory.r1 / unowned.r1) until a regen. The Thursday weekly-directory cron would have been 2026-10-15 ~08:17 Europe/Amsterdam. Escalations #7/#10/#13: no new founder replies. Health: waitlist https://pilotless-web-o53cqe2tiq-ew.a.run.app/ → 200; /install → 303 to App install; GitHub Pages directory → 200. Scoreboard dispatch https://github.com/pilotless-studio/app/actions/runs/38578454514 (afternoon cron https://github.com/pilotless-studio/app/actions/runs/38567271306): registered_users 0, active_installations_total 1 (own org) / outside 0, visitors all-time 108, window1 (2026-10-05..10-18) 11 all direct, previous 14d 11, revenue 0, cost null, digests_enabled true, has_pem false (expected after Secret Manager).",
+  "date": "2026-10-14",
+  "decision": [
+    "Early-dispatch weekly-directory via workflow_dispatch so directory.a1 / unowned.a1 install CTAs go live today, rather than waiting for the Thursday cron.",
+    "Fix the one-line Pages homepage CTA in docs/index.md in the same cycle: it still linked the waitlist with ?src=directory.r1 and called itself the project page. It now links /install?src=directory.a1 and is labeled install the App / the project.",
+    "Do not swap the waitlist landing this cycle (outside installs still 0; day-60 not yet).",
+    "Do not re-nag escalations #7/#10/#13 (silence until day-60 per #13).",
+    "Scoreboard and health checked; users and revenue unchanged."
+  ],
+  "reasoning": [
+    "The day-60 visitor gate is 18 days out (2026-11-01) and window1 is flat versus the previous 14 days.",
+    "The owned distribution surface from 0040 was code-ready but not yet published. One day earlier is free (Actions minutes only) and starts the ≥14-day CTA-live clock sooner for the 0040 falsifier.",
+    "docs/index.md is the Pages homepage. Leaving directory.r1 there would keep a waitlist CTA on the surface this cycle just published."
+  ],
+  "expectations": [
+    "Pages shows install CTAs with src=directory.a1 / unowned.a1, including the homepage link.",
+    "Watch for those attribution tokens on installs and visits.",
+    "Monday digest cron updates pinned issues with digests_enabled true."
+  ],
+  "falsifiable_by": [
+    "Pages still showing waitlist CTAs after regen → fix generators/pages.",
+    "Zero outside installs by day-60 with CTA live ≥14 days → distribution constraint (already predicted)."
+  ],
+  "cost": "Actions minutes only.",
+  "evidence": [
+    "weekly-directory workflow_dispatch succeeded: https://github.com/pilotless-studio/pilotless/actions/runs/38578446458",
+    "Commit 98798a2 docs: weekly refresh of the status directory. Verified on main: docs/status/index.md ends with https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=directory.a1; docs/status/unowned.md footer https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=unowned.a1. Last regenerated 2026-10-14.",
+    "Scoreboard dispatch https://github.com/pilotless-studio/app/actions/runs/38578454514; afternoon cron https://github.com/pilotless-studio/app/actions/runs/38567271306.",
+    "This cycle also fixes the one-line homepage CTA in docs/index.md: https://pilotless-web-o53cqe2tiq-ew.a.run.app/?src=directory.r1 (labeled the project page) becomes https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=directory.a1, labeled install the App / the project."
+  ],
+  "status": "decided",
+  "title": "Publish directory App-install CTAs early (afternoon cycle)"
+}
+```
