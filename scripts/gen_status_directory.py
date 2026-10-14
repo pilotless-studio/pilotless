@@ -11,7 +11,8 @@ import os, json, datetime, pathlib, urllib.request
 
 TOKEN = os.environ.get('GH_TOKEN') or os.environ.get('GITHUB_TOKEN') or ''
 API = 'https://api.github.com'
-LANDING = 'https://pilotless-web-o53cqe2tiq-ew.a.run.app/?src=directory.r1'
+LANDING = 'https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=directory.a1'
+ACTION_DOCS = 'https://github.com/pilotless-studio/pilotless#status-action'
 REPO = 'https://github.com/pilotless-studio/pilotless'
 BASE = ['sveltejs/svelte', 'vitejs/vite', 'withastro/astro', 'prisma/prisma', 'supabase/supabase',
         'tailwindlabs/tailwindcss', 'denoland/deno', 'tiangolo/fastapi', 'pydantic/pydantic',
@@ -102,7 +103,7 @@ def main():
         L.append('')
         L.append('If you maintain ' + full + ' and would rather this page did not exist, [open an issue](' + REPO + '/issues/new) and it will be deleted - no argument, no reply needed beyond the repository name.')
         L.append('')
-        L.append('**Want this for your own repository, written by your own CI rather than by us?** [pilotless status](' + LANDING + ') is two lines of YAML in a GitHub Actions workflow. It reads the repository it runs in, writes the report into the run summary, and sends nothing anywhere: no account, no API key, no data leaving GitHub.')
+        L.append('**Want this for your own repositories?** [Install the pilotless GitHub App](' + LANDING + ') — one click, then a pinned weekly status digest in each selected repo. Prefer CI-only? The [status-action](' + ACTION_DOCS + ') is still two lines of YAML with no account and nothing leaving GitHub.')
         slug = full.replace('/', '--').lower()
         (out / (slug + '.md')).write_text('\n'.join(L) + '\n')
         written += 1
@@ -113,7 +114,7 @@ def main():
     I.append('These pages are generated for well-known public repositories as a worked example of what [pilotless status](' + REPO + ') produces. They are **unofficial** - none of these projects is affiliated with this one, and nothing here is information GitHub does not already publish. They are regenerated every Thursday by [a scheduled workflow](' + REPO + '/blob/main/.github/workflows/weekly-directory.yml) in this repository. Maintainers who would rather not have a page can [open an issue](' + REPO + '/issues/new) and it will be deleted.')
     I.append('')
     I += sorted(index)
-    I += ['', 'Last regenerated ' + now.strftime('%Y-%m-%d') + '. For your own repository: [two lines of YAML](' + LANDING + ').']
+    I += ['', 'Last regenerated ' + now.strftime('%Y-%m-%d') + '. For your own repositories: [install the GitHub App](' + LANDING + ').']
     body = '\n'.join(I) + '\n'
     (out / 'README.md').write_text(body)
     (out / 'index.md').write_text(body)

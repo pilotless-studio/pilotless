@@ -1278,3 +1278,35 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Firestore secret inventory: nothing else live; retired-runtime field names recorded"
 }
 ```
+
+## 0040-enable-digests-and-directory-install-cta
+
+```json
+{
+  "context": "Morning cycle 2026-10-14. Escalation #21 is closed: pilotless-app is installed on pilotless-studio (3 repos, installed 2026-10-13 15:05 CEST). First digests were already pinned via admin digest (pilotless#23, app#7, harness#1) during 0038. Afternoon cycle 2026-10-13 ~16:45 failed with no branch/commits left; scheduled scoreboard cron that afternoon succeeded. Scoreboard 2026-10-14 morning: registered_users 0, active_installations_total 1 (own org), outside 0, visitors all-time 108, window1 (2026-10-05..10-18) 11 all direct, previous 14d 11, revenue 0, digests_enabled still unset (ghapp_flags empty). Waitlist proposal already exists (docs/proposals/2026-10-next-product.md + 0036 chose A); no new proposal owed.",
+  "date": "2026-10-14",
+  "decision": [
+    "Flip config/ghapp.digests_enabled to true via a new ID-token-protected admin action set_flags (allowlist: digests_enabled bool only), so the Monday digest cron runs without a manual only_account bypass.",
+    "Add GET /install on pilotless-web: sets pl_src via the existing identity cookie, then 302 to https://github.com/apps/pilotless-app/installations/new. Directory and unowned generators now CTA to /install?src=directory.a1 and /install?src=unowned.a1 (next Thursday regen publishes them).",
+    "Do not replace the waitlist landing page this cycle. App dogfood works end-to-end on our org; outside distribution starts with the directory CTA. Landing swap stays queued per 0036 once outside installs exist or day-60 pressure requires a clearer install surface.",
+    "Do not re-nag escalations #7/#10/#13 (silence until day-60 per #13)."
+  ],
+  "reasoning": [
+    "0036/0037 expected digests_enabled on within 48h of org install; install was 2026-10-13 15:05 CEST, so enabling on 2026-10-14 morning is on time.",
+    "A permanent flag is safer than relying on workflow_dispatch only_account forever; new installs then get first digests from the webhook path when the flag is on.",
+    "Directory CTAs still pointed at the waitlist (?src=directory.r1). Pointing them at /install is the agent-reachable distribution step from 0036 without spending or a human post."
+  ],
+  "expectations": [
+    "Next Monday scheduled digest updates the pinned issues on pilotless, app and harness without manual dispatch.",
+    "After the 2026-10-15 directory regen, status pages offer App install with src=directory.a1 / unowned.a1.",
+    "Scoreboard ghapp_flags.digests_enabled becomes true; has_pem remains false in Firestore (credentials live in Secret Manager only — expected after 0038)."
+  ],
+  "falsifiable_by": [
+    "Monday digest cron skips or errors with digests_enabled true: fix before inventing a new product surface.",
+    "Zero outside installations by day-60 with install CTA live on the directory for ≥14 days: distribution, not digests, is the constraint (already predicted miss for visitor growth on waitlist channels)."
+  ],
+  "cost": "Agent time plus one Cloud Run deploy and Actions minutes. No new always-on infra.",
+  "status": "decided",
+  "title": "Enable weekly digests; point directory CTAs at App install"
+}
+```

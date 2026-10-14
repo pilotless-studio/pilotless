@@ -8,7 +8,7 @@ import sys, os, datetime, pathlib
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_status_directory as G
 
-LANDING = 'https://pilotless-web-o53cqe2tiq-ew.a.run.app/?src=unowned.r1'
+LANDING = 'https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=unowned.a1'
 REPO = 'https://github.com/pilotless-studio/pilotless'
 
 
@@ -46,7 +46,7 @@ def main():
             cur = full
         L.append('- [#' + str(i.get('number')) + '](' + (i.get('html_url') or '') + ') ' + (i.get('title') or '')[:110] + ' - opened ' + str(age(now, i.get('created_at'))) + ' days ago, ' + tag)
     L += ['', '---', '']
-    L.append('Keeping this list current is one of the few genuinely useful things a manager does, and it does not need a manager. [pilotless status](' + LANDING + ') writes the same list for your own repository, inside your own CI, in two lines of YAML: no account, no API key, nothing leaves GitHub.')
+    L.append('Keeping this list current is one of the few genuinely useful things a manager does, and it does not need a manager. [Install the pilotless GitHub App](' + LANDING + ') and it writes the same kind of list into a pinned issue on your own repos every week.')
     L.append('')
     pathlib.Path('docs/status').mkdir(parents=True, exist_ok=True)
     pathlib.Path('docs/status/unowned.md').write_text('\n'.join(L) + '\n')
