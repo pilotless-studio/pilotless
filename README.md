@@ -14,7 +14,7 @@ Two ways to use it: `uses: pilotless-studio/pilotless/status-action@main` (docum
 
 ## What does not work yet
 
-The version that asks each person a question by email and turns the replies into one digest is not built. The waitlist page is still live. The product path is now the GitHub App: weekly digests into a pinned issue per installed repo. Outside installs are still 0.
+The version that asks each person a question by email and turns the replies into one digest is not built. The site root is the App install landing; `/waitlist` remains for the old form. The product path is now the GitHub App: weekly digests into a pinned issue per installed repo. Outside installs are still 0.
 
 Registered users: 0. Revenue: EUR 0. Outside App installs: 0.
 
