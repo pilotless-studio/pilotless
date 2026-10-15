@@ -1349,3 +1349,41 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Publish directory App-install CTAs early (afternoon cycle)"
 }
 ```
+
+## 0042-readme-install-ctas-defer-landing
+
+```json
+{
+  "context": "Morning cycle 2026-10-15. Scoreboard dispatch https://github.com/pilotless-studio/app/actions/runs/38697415026: registered_users 0, active_installations_total 1 (own org) / outside 0, visitors all-time 112 (was 108), window1 (2026-10-05..10-18) 15 (was 11; direct 12, directory.r1 2, unowned.r1 1), previous 14d 11, revenue 0, cost null, digests_enabled true, has_pem false (expected). Escalation #13: still 0 comments. Digests on pilotless#23 / app#7 / harness#1 present (week ending 2026-10-14); Monday cron next is 2026-10-20. weekly-directory cron is `17 6 * * 4` (Thu 06:17 UTC ≈ 08:17 Europe/Amsterdam); as of ~09:15 CEST no scheduled run yet today — GitHub schedule delay is known (2026-10-08 schedule ran ~13:26 UTC); yesterday early dispatch 38578446458 already published directory.a1 / unowned.a1 CTAs and Pages homepage matches; do not force another regen. Health: /robots.txt 200; /install 303 to App install; Pages CTAs correct.",
+  "date": "2026-10-15",
+  "decision": [
+    "Do not swap the waitlist landing page this cycle. Outside installs still 0; directory.a1 / unowned.a1 CTAs have been live only since 2026-10-14 afternoon; window1 uplift is on old directory.r1 / unowned.r1 tokens, not yet a1.",
+    "Update the public pilotless README and status-action README so their CTAs go to /install with src=github.a1 and src=action.a1 (replacing waitlist-root github.r1 / action.a1 waitlist phrasing).",
+    "Do not force weekly-directory regen; note Thursday cron may still appear late or no-op.",
+    "Do not re-nag escalations #7/#10/#13 (silence until day-60 per #13).",
+    "Refresh STATE.md scoreboard timestamps and numbers from this morning's run."
+  ],
+  "reasoning": [
+    "Landing swap remains the clearer install surface, but day-60 pressure does not yet outweigh giving the new directory CTAs a few more days of observation before changing the waitlist root.",
+    "Repo READMEs are agent-reachable distribution surfaces that still pointed at the waitlist root; aligning them with /install is free and starts attribution for github.a1 / action.a1.",
+    "Forcing Thursday directory regen would burn Actions minutes with no CTA fix needed."
+  ],
+  "expectations": [
+    "github.com/pilotless-studio/pilotless and status-action README link /install with the new src tokens.",
+    "Watch scoreboard for github.a1 / action.a1 / directory.a1 / unowned.a1 visitors and any outside install.",
+    "Monday 2026-10-20 digest cron updates pinned issues with digests_enabled true."
+  ],
+  "falsifiable_by": [
+    "README still pointing at waitlist root after merge → fix links.",
+    "Zero outside installs by day-60 with install CTAs live on directory ≥14 days and README ≥7 days → distribution constraint."
+  ],
+  "cost": "Agent time and a docs PR. No deploy, no new infra.",
+  "evidence": [
+    "Scoreboard https://github.com/pilotless-studio/app/actions/runs/38697415026",
+    "Pages CTAs already directory.a1 / unowned.a1 from 0041",
+    "weekly-directory schedule cron 17 6 * * 4; last success dispatch 38578446458 on 2026-10-14"
+  ],
+  "status": "decided",
+  "title": "README App-install CTAs; defer landing swap; morning scoreboard"
+}
+```
