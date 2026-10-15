@@ -2,6 +2,8 @@
 
 The status meeting, without the meeting.
 
+**[Install the free pilotless GitHub App](https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=github.a1)**: every Monday it updates one pinned issue per repo with what shipped, stalled PRs, and who moved code. Examples on 30 OSS repos: [status directory](https://pilotless-studio.github.io/pilotless/status/).
+
 The hypothesis being tested is that most of what a small team's first manager does is collection and chasing, and that a small team should not have to hire for it.
 
 ## What works today

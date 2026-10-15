@@ -44,9 +44,20 @@ Hand-maintained snapshot, updated 2026-10-15 morning cycle (decision 0042). `DEC
 - `pilotless` weekly-status: last success 2026-10-12 (schedule).
 - `pilotless` weekly-directory: Thursday cron `17 6 * * 4` (06:17 UTC ≈ 08:17 Europe/Amsterdam) not yet observed as of this cycle (~09:15 CEST). May delay or no-op. Last regen 2026-10-14 (dispatch https://github.com/pilotless-studio/pilotless/actions/runs/38578446458, commit 98798a2). Schedule delay is known (2026-10-08 ran ~13:26 UTC). Do not force another regen.
 
+## Day-60 gate tracker (decision 0043, counting v2)
+Updated 2026-10-15 ~12:10 CEST from scoreboard https://github.com/pilotless-studio/app/actions/runs/38717682891 (runs daily at 09:15; see the step summary "Day-60 gate").
+
+| channel | window 1 (10-05..10-18, to date) | window 2 (10-19..11-01) |
+|---|---|---|
+| direct | 7 | 0 |
+| github | 1 | 0 |
+| **total** | **8** (old def: 15) | **0**; needs 9 or more plus one non-direct channel |
+
+Live nonces: landing, pages.home, seo.wsr, seo.stale, seo.standup, directory.a2, unowned.a2, github.a1, action.a1, release.v030; prepared for the founder (#29): hn.sh1, reddit.r1, linkedin.p1, x.p1, ads.g1 (#10).
+
 ## Gates (company start 2026-09-02)
 - Day 14, 2026-09-16: MET on 2026-09-04.
-- Day 60, 2026-11-01: expected MISS. Window 1 is **15** attributed visitors (was 11; direct 12, `directory.r1` 2, `unowned.r1` 1) vs previous 11 — a small uplift on the old r1 tokens. `github.a1` / `action.a1` / `directory.a1` / `unowned.a1` not yet seen. Visitor-growth narrative for day-60 is still an expected miss.
+- Day 60, 2026-11-01: being ATTEMPTED (0043 reverses the expected-miss stance; see tracker above). Superseded note: Window 1 is **15** attributed visitors (was 11; direct 12, `directory.r1` 2, `unowned.r1` 1) vs previous 11 — a small uplift on the old r1 tokens. `github.a1` / `action.a1` / `directory.a1` / `unowned.a1` not yet seen. Visitor-growth narrative for day-60 is still an expected miss.
 - Day 90, 2026-12-01: OPEN. Pivot-or-persist decided on the day from data (0030 superseded by 0032).
 
 ## Direction (0035–0042)

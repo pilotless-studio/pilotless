@@ -1387,3 +1387,55 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "README App-install CTAs; defer landing swap; morning scoreboard"
 }
 ```
+
+## 0043-attempt-day60-gate-counting-v2-and-channels
+
+```json
+{
+  "context": "2026-10-15 ~12:00 CEST. The founder said explicitly: do not accept the day-60 miss; make the necessary changes. Audit of counting before window 2 (10-19..11-01): (a) the bot filter caught crawlers by name only, so 'Mozilla/5.0 (compatible)' scanners and raw curl self-probes using non-selfcheck src values were counted as humans; (b) /install, where directory and README CTAs link directly, recorded nothing, so the channels that matter most were invisible; (c) a *.github.io referer was lumped in with github, and all search engines were one bucket. Under the old definition, window 1 to date was 15 (direct 12, directory.r1 2, unowned.r1 1).",
+  "date": "2026-10-15",
+  "decision": [
+    "Reverse 0028's stance that the gate is arithmetically lost and its prediction of a miss (repeated in 0040/0042). The gate is attempted.",
+    "Counting definition v2 (app/web/counting.py, shared by the service and the scoreboard): a visitor is a distinct pl_vid with at least one visit whose UA is a real browser (Mozilla/5.0 (...) ... Chrome|Firefox|Safari|Edg|OPR/), matches no automation, unfurler, camo, headless, or uptime marker, and whose src is not internal (selfcheck/selftest/favicon/probe/health/test/...). Channel = first-touch src in the window, grouped by the prefix before the '.'. /install now logs visits too. Referer mapping: *.github.io -> pages; search.google/bing/ddg/other; our own host -> direct.",
+    "Window 1 is restated from the raw visits log using the identical v2 rules: 8 to date (direct 7, github 1; 31 visits excluded, all curl or 'Mozilla/5.0 (compatible)', including every directory.r1/unowned.r1 hit). Window 1 keeps counting through 10-18. Caveat: /install visits were not logged before 2026-10-15 ~12:05 CEST, so the opening days of window 1 may undercount install-link clicks. Given the bot share, the true number is probably 0-1.",
+    "Channels live before 10-19, each with its own nonce: landing (App landing replaced the waitlist at / ; waitlist kept at /waitlist), pages.home, seo.wsr / seo.stale / seo.standup (three guides with front matter, in the sitemap, IndexNow 200 for 37 URLs), directory.a2 (directory expanded 18->30 repos, per-page titles, descriptions and internal links), unowned.a2, github.a1 (README), action.a1, release.v030 (release v0.3.0), and referer fallbacks pages / github / search.*. Repo description and topics updated.",
+    "Founder-only asks consolidated into escalation #29 (supersedes #7 and #13, both closed), ranked: Show HN hn.sh1, Reddit reddit.r1, Marketplace publish, LinkedIn linkedin.p1, X x.p1; the ads test (#10, EUR 10 cap, ads.g1) is noted as the most reliable route if approved.",
+    "Awesome-list PRs: none opened. The obvious fit (sdras/awesome-actions) has had no push since 2024-09 and has 335 open issues/PRs, and the project has 0 stars and an unpublished Action, so a PR would sit unreviewed in a pile. That is exactly the low-value promotion the rules forbid. Revisit after the Marketplace publish if a maintained list fits.",
+    "Daily gate tracker: the scoreboard cron now runs every day; the gate_day60 block plus step-summary table show window 1 vs window 2 to date per channel."
+  ],
+  "reasoning": [
+    "A gate passed on bot traffic is worthless, so the definition has to be tightened before window 2 starts and applied to both windows equally.",
+    "The cheapest real lever was measurement: CTAs pointed at an endpoint that counted nothing.",
+    "With window 1 at 8 after restatement, 9 human visitors over 14 days is a small target, but the agent-only channels are slow (new SEO pages need weeks to rank; the directory has drawn 0 verified humans so far)."
+  ],
+  "expectations": {
+    "window1_final": "8-10 (v2)",
+    "window2_agent_only": {
+      "search.*+seo.*": "0-3",
+      "directory/unowned/pages": "1-4",
+      "github/release/action": "1-3",
+      "landing/direct": "2-6",
+      "total": "4-12; P(pass) about 35%"
+    },
+    "window2_if_founder_posts_hn_or_reddit": "25-150; P(pass) about 90%",
+    "window2_if_ads_approved": "+10-30 under ads.g1"
+  },
+  "falsifiers": [
+    "If the v2 gate block for window 2 shows 0 non-direct visitors by 10-26, the agent-only channels have failed. Write that down and stop polishing pages.",
+    "If a non-browser client shows up in the included set (spot-check the visits ua for counted vids), v2 is too loose. Tighten it and restate both windows.",
+    "If seo.* pages are not indexed (no search.* referers and no seo.* src) by 11-01, SEO cannot work within a 2-week horizon for this domain."
+  ],
+  "evidence": [
+    "app PR https://github.com/pilotless-studio/app/pull/10",
+    "deploy run https://github.com/pilotless-studio/app/actions/runs/38717440814",
+    "scoreboard (restated) https://github.com/pilotless-studio/app/actions/runs/38717682891",
+    "pilotless PR #28; directory run 38717655076 (30 written, IndexNow 200)",
+    "release https://github.com/pilotless-studio/pilotless/releases/tag/v0.3.0",
+    "escalation #29"
+  ],
+  "cost": "EUR 0. One deploy plus Actions minutes; the scoreboard now also runs on weekends (~30 s/day).",
+  "supersedes": "0028 (gate stance only)",
+  "status": "decided",
+  "title": "Attempt the day-60 gate: counting v2, restated window 1, zero-cost channels with nonces, one ranked founder escalation"
+}
+```
