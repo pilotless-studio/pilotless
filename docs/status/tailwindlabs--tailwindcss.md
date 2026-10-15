@@ -1,6 +1,6 @@
 ---
 title: "tailwindlabs/tailwindcss weekly status: stalled PRs and unowned issues"
-description: "tailwindlabs/tailwindcss this week: 16 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "tailwindlabs/tailwindcss this week: 17 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
@@ -9,10 +9,10 @@ description: "tailwindlabs/tailwindcss this week: 16 commits, 5 stalled pull req
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**16 commits** by 8 people, **at least 15 pull requests merged**, **53 open pull requests**, **37 open issues** on this page of results.
+**17 commits** by 8 people, **at least 16 pull requests merged**, **52 open pull requests**, **37 open issues** on this page of results.
 
 ### Who moved code
-RobinMalfait (8), lazerg (2), 911RS (1), otarampinelli (1), cestercian (1)
+RobinMalfait (8), otarampinelli (2), lazerg (2), 911RS (1), cestercian (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:

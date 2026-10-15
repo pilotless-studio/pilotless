@@ -1,6 +1,6 @@
 ---
 title: "zed-industries/zed weekly status: stalled PRs and unowned issues"
-description: "zed-industries/zed this week: 86 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "zed-industries/zed this week: 85 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
@@ -9,10 +9,10 @@ description: "zed-industries/zed this week: 86 commits, 5 stalled pull requests 
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**86 commits** by 42 people, **at least 31 pull requests merged**, **100 open pull requests**, **41 open issues** on this page of results.
+**85 commits** by 43 people, **at least 31 pull requests merged**, **100 open pull requests**, **41 open issues** on this page of results.
 
 ### Who moved code
-benbrandt (30), SomeoneToIgnore (7), Anthony-Eid (4), reflectronic (3), osiewicz (2)
+benbrandt (29), SomeoneToIgnore (7), Anthony-Eid (4), reflectronic (3), lingyaochu (2)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:

@@ -12,15 +12,15 @@ _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's
 **100+ commits** by 46 people, **at least 41 pull requests merged**, **100 open pull requests**, **16 open issues** on this page of results.
 
 ### Who moved code
-kaxil (26), bbovenzi (5), Lee-W (5), zozo123 (4), CyberNativeAI (4)
+kaxil (27), Lee-W (6), bbovenzi (5), zozo123 (4), CyberNativeAI (4)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
 - [#34487](https://github.com/apache/airflow/pull/34487) Add watchdog for immediately processing changes in the DAGs folder - last touched 850 days ago
 - [#30531](https://github.com/apache/airflow/pull/30531) [WIP] Migrate core `EmailOperator` to SMTP provider - last touched 451 days ago
-- [#36504](https://github.com/apache/airflow/pull/36504) [POC][WIP] Async SQLAlchemy sessions in Airflow - last touched 153 days ago
-- [#68014](https://github.com/apache/airflow/pull/68014) Make required airflowctl body fields positional - last touched 86 days ago
+- [#36504](https://github.com/apache/airflow/pull/36504) [POC][WIP] Async SQLAlchemy sessions in Airflow - last touched 154 days ago
+- [#68014](https://github.com/apache/airflow/pull/68014) Make required airflowctl body fields positional - last touched 87 days ago
 - [#66852](https://github.com/apache/airflow/pull/66852) Add tasks clear command to airflowctl - last touched 86 days ago
 
 ### Issues nobody has picked up

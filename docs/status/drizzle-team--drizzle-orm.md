@@ -1,6 +1,6 @@
 ---
 title: "drizzle-team/drizzle-orm weekly status: stalled PRs and unowned issues"
-description: "drizzle-team/drizzle-orm this week: 1 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "drizzle-team/drizzle-orm this week: 0 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
@@ -9,10 +9,7 @@ description: "drizzle-team/drizzle-orm this week: 1 commits, 5 stalled pull requ
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**1 commits** by 1 people, **at least 6 pull requests merged**, **100 open pull requests**, **33 open issues** on this page of results.
-
-### Who moved code
-Sukairo-02 (1)
+**0 commits** by 0 people, **at least 5 pull requests merged**, **100 open pull requests**, **33 open issues** on this page of results.
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:

@@ -9,10 +9,10 @@ description: "grafana/grafana this week: 100+ commits, 5 stalled pull requests a
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 59 people, **at least 42 pull requests merged**, **100 open pull requests**, **14 open issues** on this page of results.
+**100+ commits** by 60 people, **at least 41 pull requests merged**, **100 open pull requests**, **13 open issues** on this page of results.
 
 ### Who moved code
-fastfrwrd (6), adela-almasan (5), konsalex (4), lwandz13 (4), mckn (4)
+fastfrwrd (6), adela-almasan (5), mckn (4), mustafasencer (3), Clarity-89 (3)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:

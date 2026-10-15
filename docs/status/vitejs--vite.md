@@ -1,6 +1,6 @@
 ---
 title: "vitejs/vite weekly status: stalled PRs and unowned issues"
-description: "vitejs/vite this week: 27 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "vitejs/vite this week: 31 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
@@ -9,10 +9,10 @@ description: "vitejs/vite this week: 27 commits, 5 stalled pull requests and 5 u
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**27 commits** by 12 people, **at least 27 pull requests merged**, **100 open pull requests**, **22 open issues** on this page of results.
+**31 commits** by 12 people, **at least 31 pull requests merged**, **100 open pull requests**, **25 open issues** on this page of results.
 
 ### Who moved code
-h-a-n-a (13), renovate[bot] (3), btea (2), MFA-G (1), koriyoshi2041 (1)
+h-a-n-a (13), sapphi-red (4), btea (3), renovate[bot] (3), Ernesto-tha-great (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:

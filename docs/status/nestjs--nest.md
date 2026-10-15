@@ -1,6 +1,6 @@
 ---
 title: "nestjs/nest weekly status: stalled PRs and unowned issues"
-description: "nestjs/nest this week: 96 commits, 5 stalled pull requests and 2 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "nestjs/nest this week: 96 commits, 5 stalled pull requests and 1 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
@@ -9,7 +9,7 @@ description: "nestjs/nest this week: 96 commits, 5 stalled pull requests and 2 u
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**96 commits** by 23 people, **at least 48 pull requests merged**, **18 open pull requests**, **8 open issues** on this page of results.
+**96 commits** by 23 people, **at least 48 pull requests merged**, **19 open pull requests**, **8 open issues** on this page of results.
 
 ### Who moved code
 renovate[bot] (40), kamilmysliwiec (11), thekhegay (8), maxymlyskov (6), OmBhandwaldar (5)
@@ -26,7 +26,6 @@ Open, and untouched for seven days or more:
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#18155](https://github.com/nestjs/nest/issues/18155) `@All()` ignores the route version with FastifyAdapter (header, media type and custom vers - opened 0 days ago
 - [#4944](https://github.com/nestjs/nest/issues/4944) Dependency Dashboard - opened 2305 days ago
 
 ---

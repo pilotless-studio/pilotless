@@ -9,7 +9,7 @@ description: "biomejs/biome this week: 100+ commits, 5 stalled pull requests and
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 10 people, **at least 45 pull requests merged**, **100 open pull requests**, **26 open issues** on this page of results.
+**100+ commits** by 10 people, **at least 45 pull requests merged**, **100 open pull requests**, **27 open issues** on this page of results.
 
 ### Who moved code
 dyc3 (70), denbezrukov (11), ematipico (8), Netail (3), renovate[bot] (2)
@@ -26,11 +26,11 @@ Open, and untouched for seven days or more:
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
+- [#12376](https://github.com/biomejs/biome/issues/12376) 💅 `noReturnAssign` flags parenthesized assignments that ESLint allows by default - opened 0 days ago
 - [#12375](https://github.com/biomejs/biome/issues/12375) 💅 `noSetterReturn` misses setters in `Object.defineProperty` descriptors - opened 0 days ago
 - [#12374](https://github.com/biomejs/biome/issues/12374) 🐛 `biome migrate eslint` drops `eqeqeq`'s null checks (`noDoubleEquals` keeps `ignoreNull: - opened 0 days ago
 - [#12373](https://github.com/biomejs/biome/issues/12373) 🐛 `biome migrate eslint` maps `one-var` to `useSingleVarDeclarator`, which does the opposi - opened 0 days ago
 - [#12372](https://github.com/biomejs/biome/issues/12372) 💅 `useArrowFunction` is incorrectly marked as safe - opened 0 days ago
-- [#12351](https://github.com/biomejs/biome/issues/12351) 📎 Remove variable & argument reporting from `noDuplicateFields` - opened 1 days ago
 
 ---
 

@@ -12,7 +12,7 @@ _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's
 **100+ commits** by 12 people, **at least 47 pull requests merged**, **100 open pull requests**, **25 open issues** on this page of results.
 
 ### Who moved code
-astral-automations-bot[bot] (40), charliermarsh (24), renovate[bot] (16), woodruffw (7), konstin (4)
+astral-automations-bot[bot] (40), charliermarsh (22), renovate[bot] (16), woodruffw (7), konstin (6)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
@@ -29,8 +29,8 @@ Open, unassigned, and with no replies yet:
 - [#22588](https://github.com/astral-sh/uv/issues/22588) `uv publish --index <name>` does not reuse `UV_INDEX_<NAME>_USERNAME` for keyring authenti - opened 0 days ago
 - [#22587](https://github.com/astral-sh/uv/issues/22587) uvx --from <local-path> is never rechecked while every git ref type is (inconsistent with  - opened 0 days ago
 - [#22586](https://github.com/astral-sh/uv/issues/22586) Recommended Docker `.venv` workflow isolates app from user-installed system packages at ru - opened 0 days ago
-- [#22584](https://github.com/astral-sh/uv/issues/22584) Multiple test regressions in 0.13.1 - opened 0 days ago
-- [#22457](https://github.com/astral-sh/uv/issues/22457) Setting to error on "constraint-dependencies" not being used - opened 4 days ago
+- [#22457](https://github.com/astral-sh/uv/issues/22457) Setting to error on "constraint-dependencies" not being used - opened 5 days ago
+- [#22384](https://github.com/astral-sh/uv/issues/22384) Feature request: `uv auth` supports pluggable token provider for short-lived tokens - opened 5 days ago
 
 ---
 

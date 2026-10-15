@@ -9,10 +9,10 @@ description: "appwrite/appwrite this week: 100+ commits, 5 stalled pull requests
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 8 people, **at least 41 pull requests merged**, **100 open pull requests**, **33 open issues** on this page of results.
+**100+ commits** by 8 people, **at least 42 pull requests merged**, **100 open pull requests**, **36 open issues** on this page of results.
 
 ### Who moved code
-abnegate (38), ChiragAgg5k (29), HarshMN2345 (11), levivannoort (7), ArnabChatterjee20k (6)
+abnegate (49), ArnabChatterjee20k (18), levivannoort (10), HarshMN2345 (9), ChiragAgg5k (6)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
@@ -20,7 +20,7 @@ Open, and untouched for seven days or more:
 - [#5539](https://github.com/appwrite/appwrite/pull/5539) Updated and renamed 10k-common-passwords to 100k-common-passwords - last touched 945 days ago
 - [#8332](https://github.com/appwrite/appwrite/pull/8332) Add better error message for `CustomID` validator input data type - last touched 840 days ago
 - [#8530](https://github.com/appwrite/appwrite/pull/8530) Refactor: Update Vietnamese translations - last touched 779 days ago
-- [#8798](https://github.com/appwrite/appwrite/pull/8798) update docker image to use the latest image tag - last touched 730 days ago
+- [#8798](https://github.com/appwrite/appwrite/pull/8798) update docker image to use the latest image tag - last touched 731 days ago
 - [#4800](https://github.com/appwrite/appwrite/pull/4800) pt-PT translation improvements - last touched 672 days ago
 
 ### Issues nobody has picked up

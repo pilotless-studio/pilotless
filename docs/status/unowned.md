@@ -7,10 +7,14 @@ description: "Unassigned, unanswered issues in popular open source GitHub projec
 
 # Open source issues nobody has picked up
 
-_Week of 2026-10-15. 72 open issues across 30 well-known public repositories that are unassigned and, in most cases, have had no reply yet. Regenerated every Thursday from public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Unofficial; none of these projects is affiliated with this one._
+_Week of 2026-10-15. 70 open issues across 30 well-known public repositories that are unassigned and, in most cases, have had no reply yet. Regenerated every Thursday from public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Unofficial; none of these projects is affiliated with this one._
 
 Every one of these is a real piece of work on a real project, sitting in a queue nobody is watching. If you are looking for somewhere to start contributing, start here. If you maintain one of these projects, this is the list a status meeting would have produced for you.
 
+
+## biomejs/biome
+
+- [#12376](https://github.com/biomejs/biome/issues/12376) 💅 `noReturnAssign` flags parenthesized assignments that ESLint allows by default - opened 0 days ago, unassigned, no replies
 
 ## astral-sh/uv
 
@@ -28,17 +32,9 @@ Every one of these is a real piece of work on a real project, sitting in a queue
 
 - [#12374](https://github.com/biomejs/biome/issues/12374) 🐛 `biome migrate eslint` drops `eqeqeq`'s null checks (`noDoubleEquals` keeps `ignoreNull: true`) - opened 0 days ago, unassigned, no replies
 
-## nestjs/nest
-
-- [#18155](https://github.com/nestjs/nest/issues/18155) `@All()` ignores the route version with FastifyAdapter (header, media type and custom versioning) - opened 0 days ago, unassigned, no replies
-
 ## pydantic/pydantic
 
 - [#14004](https://github.com/pydantic/pydantic/issues/14004) JSON schema of `bytes` ignores `val_json_bytes` in validation mode - opened 0 days ago, unassigned, no replies
-
-## biomejs/biome
-
-- [#12373](https://github.com/biomejs/biome/issues/12373) 🐛 `biome migrate eslint` maps `one-var` to `useSingleVarDeclarator`, which does the opposite - opened 0 days ago, unassigned, no replies
 
 ## huggingface/transformers
 
@@ -135,7 +131,7 @@ Every one of these is a real piece of work on a real project, sitting in a queue
 
 ## pydantic/pydantic
 
-- [#13988](https://github.com/pydantic/pydantic/issues/13988) dict with Enum (non-str values) or Literal[int] keys can't validate its own model_dump_json() output - opened 1 days ago, unassigned, no replies
+- [#13988](https://github.com/pydantic/pydantic/issues/13988) dict with Enum (non-str values) or Literal[int] keys can't validate its own model_dump_json() output - opened 2 days ago, unassigned, no replies
 
 ## sveltejs/svelte
 
@@ -152,10 +148,6 @@ Every one of these is a real piece of work on a real project, sitting in a queue
 ## prisma/prisma
 
 - [#30688](https://github.com/prisma/orm/issues/30688) orm init: say where to get a Postgres database and how to deploy - opened 3 days ago, unassigned, no replies
-
-## sveltejs/svelte
-
-- [#18975](https://github.com/sveltejs/svelte/issues/18975) SSR: `onDestroy` doesn't run for children of a `<svelte:boundary>` that fails synchronously - opened 3 days ago, unassigned, no replies
 
 ## pola-rs/polars
 
@@ -204,7 +196,7 @@ Every one of these is a real piece of work on a real project, sitting in a queue
 
 ## grafana/grafana
 
-- [#110677](https://github.com/grafana/grafana/issues/110677) Pyroscope/flamegraph: Move "other" out of the TOP table and explain it better - opened 404 days ago, good first issue
+- [#110677](https://github.com/grafana/grafana/issues/110677) Pyroscope/flamegraph: Move "other" out of the TOP table and explain it better - opened 405 days ago, good first issue
 
 ## excalidraw/excalidraw
 
@@ -227,7 +219,7 @@ Every one of these is a real piece of work on a real project, sitting in a queue
 
 ## excalidraw/excalidraw
 
-- [#9503](https://github.com/excalidraw/excalidraw/issues/9503) canvas search results unstable - opened 522 days ago, good first issue
+- [#9503](https://github.com/excalidraw/excalidraw/issues/9503) canvas search results unstable - opened 523 days ago, good first issue
 
 ## ollama/ollama
 
@@ -259,7 +251,7 @@ Every one of these is a real piece of work on a real project, sitting in a queue
 
 ## supabase/supabase
 
-- [#6435](https://github.com/supabase/supabase/issues/6435) Allow newlines in SMS OTP template - opened 1850 days ago, good first issue
+- [#6435](https://github.com/supabase/supabase/issues/6435) Allow newlines in SMS OTP template - opened 1851 days ago, good first issue
 
 ---
 

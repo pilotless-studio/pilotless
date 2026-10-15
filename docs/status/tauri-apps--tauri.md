@@ -1,6 +1,6 @@
 ---
 title: "tauri-apps/tauri weekly status: stalled PRs and unowned issues"
-description: "tauri-apps/tauri this week: 43 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "tauri-apps/tauri this week: 42 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
@@ -9,10 +9,10 @@ description: "tauri-apps/tauri this week: 43 commits, 5 stalled pull requests an
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**43 commits** by 17 people, **at least 41 pull requests merged**, **100 open pull requests**, **43 open issues** on this page of results.
+**42 commits** by 17 people, **at least 41 pull requests merged**, **100 open pull requests**, **43 open issues** on this page of results.
 
 ### Who moved code
-lucasfernog (9), Legend-Master (7), renovate[bot] (6), FabianLars (5), github-actions[bot] (3)
+lucasfernog (9), renovate[bot] (6), Legend-Master (6), FabianLars (5), github-actions[bot] (3)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:

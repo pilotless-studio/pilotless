@@ -9,7 +9,7 @@ description: "langchain-ai/langchain this week: 22 commits, 5 stalled pull reque
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**22 commits** by 5 people, **at least 14 pull requests merged**, **100 open pull requests**, **76 open issues** on this page of results.
+**22 commits** by 5 people, **at least 14 pull requests merged**, **100 open pull requests**, **77 open issues** on this page of results.
 
 ### Who moved code
 ccurme (11), langchain-oss-model-profiles[bot] (4), richardscarrott (4), byhow (2), gethin-langchain (1)

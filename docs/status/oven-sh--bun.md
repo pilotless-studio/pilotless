@@ -1,6 +1,6 @@
 ---
 title: "oven-sh/bun weekly status: stalled PRs and unowned issues"
-description: "oven-sh/bun this week: 62 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "oven-sh/bun this week: 63 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
@@ -9,10 +9,10 @@ description: "oven-sh/bun this week: 62 commits, 5 stalled pull requests and 5 u
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**62 commits** by 6 people, **at least 9 pull requests merged**, **100 open pull requests**, **24 open issues** on this page of results.
+**63 commits** by 6 people, **at least 10 pull requests merged**, **100 open pull requests**, **23 open issues** on this page of results.
 
 ### Who moved code
-Jarred-Sumner (31), dylan-conway (20), robobun (5), sosukesuzuki (3), alii (2)
+Jarred-Sumner (31), dylan-conway (21), robobun (5), sosukesuzuki (3), alii (2)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
@@ -26,11 +26,11 @@ Open, and untouched for seven days or more:
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
+- [#45320](https://github.com/oven-sh/bun/issues/45320) bun fmt: .git/info/exclude is not respected, and --ignore-path=.git/info/exclude matches n - opened 0 days ago
 - [#45301](https://github.com/oven-sh/bun/issues/45301) bun test coverage: isolated test files' counts are not merged, and plugin source maps are  - opened 0 days ago
 - [#45300](https://github.com/oven-sh/bun/issues/45300) Bun.spawn with terminal option hangs forever when the PTY child writes and exits before sp - opened 0 days ago
 - [#45277](https://github.com/oven-sh/bun/issues/45277) Bun.SQL: describe a query without running it, like postgres.js's .describe() - opened 0 days ago
 - [#45276](https://github.com/oven-sh/bun/issues/45276) Bun.SQL: PGDATABASE overrides the database named in the connection URL - opened 0 days ago
-- [#45275](https://github.com/oven-sh/bun/issues/45275) Bun.SQL: a plain query waits behind every pending transaction, even ones started after it - opened 0 days ago
 
 ---
 

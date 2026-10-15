@@ -9,10 +9,10 @@ description: "n8n-io/n8n this week: 100+ commits, 5 stalled pull requests and 0 
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 40 people, **at least 47 pull requests merged**, **100 open pull requests**, **4 open issues** on this page of results.
+**100+ commits** by 40 people, **at least 47 pull requests merged**, **100 open pull requests**, **6 open issues** on this page of results.
 
 ### Who moved code
-Flexicon (10), Cadiac (7), CharlieKolb (7), JoseBra (6), luigigubello (5)
+Flexicon (10), CharlieKolb (9), Cadiac (7), luigigubello (6), JoseBra (6)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:

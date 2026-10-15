@@ -1,6 +1,6 @@
 ---
 title: "prisma/prisma weekly status: stalled PRs and unowned issues"
-description: "prisma/prisma this week: 50 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "prisma/prisma this week: 49 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
@@ -9,10 +9,10 @@ description: "prisma/prisma this week: 50 commits, 5 stalled pull requests and 5
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**50 commits** by 2 people, **at least 38 pull requests merged**, **100 open pull requests**, **54 open issues** on this page of results.
+**49 commits** by 2 people, **at least 38 pull requests merged**, **100 open pull requests**, **54 open issues** on this page of results.
 
 ### Who moved code
-wmadden-electric (31), StevenMcClankerton (19)
+wmadden-electric (30), StevenMcClankerton (19)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:

@@ -1,6 +1,6 @@
 ---
 title: "pydantic/pydantic weekly status: stalled PRs and unowned issues"
-description: "pydantic/pydantic this week: 23 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "pydantic/pydantic this week: 25 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
@@ -9,10 +9,10 @@ description: "pydantic/pydantic this week: 23 commits, 5 stalled pull requests a
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**23 commits** by 3 people, **at least 23 pull requests merged**, **44 open pull requests**, **67 open issues** on this page of results.
+**25 commits** by 4 people, **at least 25 pull requests merged**, **44 open pull requests**, **66 open issues** on this page of results.
 
 ### Who moved code
-Viicos (21), spencer-tb (1), laisbsc (1)
+Viicos (22), XXXXXQ-0206 (1), spencer-tb (1), laisbsc (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
@@ -28,7 +28,7 @@ Open, unassigned, and with no replies yet:
 
 - [#14004](https://github.com/pydantic/pydantic/issues/14004) JSON schema of `bytes` ignores `val_json_bytes` in validation mode - opened 0 days ago
 - [#13998](https://github.com/pydantic/pydantic/issues/13998) `RootModel` stores `__pydantic_private__` in the instance `__dict__` instead of the slot - opened 0 days ago
-- [#13988](https://github.com/pydantic/pydantic/issues/13988) dict with Enum (non-str values) or Literal[int] keys can't validate its own model_dump_jso - opened 1 days ago
+- [#13988](https://github.com/pydantic/pydantic/issues/13988) dict with Enum (non-str values) or Literal[int] keys can't validate its own model_dump_jso - opened 2 days ago
 - [#13977](https://github.com/pydantic/pydantic/issues/13977) No PyPy 8.0 wheels for pydantic-core - opened 3 days ago
 - [#13923](https://github.com/pydantic/pydantic/issues/13923) Rebuild model when using `model_construct()` - opened 12 days ago
 

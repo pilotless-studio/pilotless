@@ -1,6 +1,6 @@
 ---
 title: "sveltejs/svelte weekly status: stalled PRs and unowned issues"
-description: "sveltejs/svelte this week: 10 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "sveltejs/svelte this week: 11 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
@@ -9,10 +9,10 @@ description: "sveltejs/svelte this week: 10 commits, 5 stalled pull requests and
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**10 commits** by 2 people, **at least 15 pull requests merged**, **100 open pull requests**, **25 open issues** on this page of results.
+**11 commits** by 2 people, **at least 16 pull requests merged**, **100 open pull requests**, **25 open issues** on this page of results.
 
 ### Who moved code
-Rich-Harris (9), Conduitry (1)
+Rich-Harris (10), Conduitry (1)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:

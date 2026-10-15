@@ -9,10 +9,10 @@ description: "duckdb/duckdb this week: 100+ commits, 5 stalled pull requests and
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 11 people, **at least 34 pull requests merged**, **100 open pull requests**, **19 open issues** on this page of results.
+**100+ commits** by 12 people, **at least 33 pull requests merged**, **100 open pull requests**, **18 open issues** on this page of results.
 
 ### Who moved code
-Sander Mathijs van Veen (41), Robinho-MR (12), Mytherin (10), kryonix (9), hannes (7)
+Sander Mathijs van Veen (36), Robinho-MR (15), Mytherin (12), kryonix (9), hannes (8)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
@@ -21,7 +21,7 @@ Open, and untouched for seven days or more:
 - [#25940](https://github.com/duckdb/duckdb/pull/25940) fix: prevent integer to bignum truncation near powers of two - last touched 25 days ago
 - [#25897](https://github.com/duckdb/duckdb/pull/25897) Add regression test for QUALIFY above a filtered aggregate subquery - last touched 24 days ago
 - [#25349](https://github.com/duckdb/duckdb/pull/25349) Add operator-owned sub-plans to EXPLAIN - last touched 24 days ago
-- [#24942](https://github.com/duckdb/duckdb/pull/24942) Support multi-index scans with full filter coverage - last touched 23 days ago
+- [#24942](https://github.com/duckdb/duckdb/pull/24942) Support multi-index scans with full filter coverage - last touched 24 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:

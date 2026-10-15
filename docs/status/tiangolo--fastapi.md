@@ -18,7 +18,7 @@ latest-changes[bot] (16), pr-submit[bot] (14), dependabot[bot] (2), tiangolo (2)
 Open, and untouched for seven days or more:
 
 - [#11782](https://github.com/fastapi/fastapi/pull/11782) 📝 Add documentation on how to use the Django ORM inside FastAPI - last touched 357 days ago
-- [#10647](https://github.com/fastapi/fastapi/pull/10647) fix: respect call localns at get_typed_signature - last touched 311 days ago
+- [#10647](https://github.com/fastapi/fastapi/pull/10647) fix: respect call localns at get_typed_signature - last touched 312 days ago
 - [#14655](https://github.com/fastapi/fastapi/pull/14655) Add support for Sentinel values - last touched 280 days ago
 - [#14089](https://github.com/fastapi/fastapi/pull/14089) ✨ Improve JSON Parsing Error Messages - last touched 252 days ago
 - [#14574](https://github.com/fastapi/fastapi/pull/14574) Fix: Preserve model_fields_set for Form models (issue #13399) - last touched 250 days ago

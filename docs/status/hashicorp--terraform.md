@@ -30,7 +30,7 @@ Open, unassigned, and with no replies yet:
 - [#39281](https://github.com/hashicorp/terraform/issues/39281) Flakey test: `TestRemote_applyLockTimeout` - opened 20 days ago
 - [#39214](https://github.com/hashicorp/terraform/issues/39214) Flakey test: `TestRemote_applyCanceled` - opened 29 days ago
 - [#39212](https://github.com/hashicorp/terraform/issues/39212) Prevent `metadata functions` silently ignoring positional arguments - opened 29 days ago
-- [#39200](https://github.com/hashicorp/terraform/issues/39200) Prevent `fmt` silently ignoring additional arguments after `"-"` - opened 30 days ago
+- [#39200](https://github.com/hashicorp/terraform/issues/39200) Prevent `fmt` silently ignoring additional arguments after `"-"` - opened 31 days ago
 
 ---
 

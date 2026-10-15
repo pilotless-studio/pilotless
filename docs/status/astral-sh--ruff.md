@@ -1,6 +1,6 @@
 ---
 title: "astral-sh/ruff weekly status: stalled PRs and unowned issues"
-description: "astral-sh/ruff this week: 96 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "astral-sh/ruff this week: 95 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
@@ -9,10 +9,10 @@ description: "astral-sh/ruff this week: 96 commits, 5 stalled pull requests and 
 
 _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**96 commits** by 23 people, **at least 31 pull requests merged**, **100 open pull requests**, **14 open issues** on this page of results.
+**95 commits** by 23 people, **at least 31 pull requests merged**, **100 open pull requests**, **12 open issues** on this page of results.
 
 ### Who moved code
-charliermarsh (17), renovate[bot] (15), ntBre (14), carljm (13), AlexWaygood (8)
+charliermarsh (16), renovate[bot] (15), ntBre (14), carljm (13), AlexWaygood (8)
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
