@@ -11,13 +11,16 @@ import os, json, datetime, pathlib, urllib.request
 
 TOKEN = os.environ.get('GH_TOKEN') or os.environ.get('GITHUB_TOKEN') or ''
 API = 'https://api.github.com'
-LANDING = 'https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=directory.a1'
+LANDING = 'https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=directory.a2'
 ACTION_DOCS = 'https://github.com/pilotless-studio/pilotless#status-action'
 REPO = 'https://github.com/pilotless-studio/pilotless'
 BASE = ['sveltejs/svelte', 'vitejs/vite', 'withastro/astro', 'prisma/prisma', 'supabase/supabase',
         'tailwindlabs/tailwindcss', 'denoland/deno', 'tiangolo/fastapi', 'pydantic/pydantic',
         'duckdb/duckdb', 'pola-rs/polars', 'ollama/ollama', 'grafana/grafana',
-        'hashicorp/terraform', 'apache/airflow', 'dbt-labs/dbt-core', 'n8n-io/n8n', 'appwrite/appwrite']
+        'hashicorp/terraform', 'apache/airflow', 'dbt-labs/dbt-core', 'n8n-io/n8n', 'appwrite/appwrite',
+        'astral-sh/ruff', 'astral-sh/uv', 'biomejs/biome', 'oven-sh/bun', 'tauri-apps/tauri', 'nestjs/nest',
+        'drizzle-team/drizzle-orm', 'langchain-ai/langchain', 'huggingface/transformers', 'excalidraw/excalidraw',
+        'immich-app/immich', 'zed-industries/zed']
 
 
 def get(path, q=''):
@@ -76,7 +79,10 @@ def main():
         unowned = [i for i in issues if not i.get('assignee') and not i.get('pull_request') and (i.get('comments') or 0) == 0][:5]
         ncommits = '100+' if len(commits) >= 100 else str(len(commits))
         nmerged = ('at least ' + str(len(merged))) if len(closed) >= 50 else str(len(merged))
-        L = ['# Weekly status: ' + full, '']
+        desc = (full + ' this week: ' + ncommits + ' commits, ' + str(len(stalled)) + ' stalled pull requests and ' + str(len(unowned)) + ' unowned issues, from public GitHub activity. Unofficial weekly status report.')
+        L = ['---', 'title: "' + full + ' weekly status: stalled PRs and unowned issues"', 'description: "' + desc.replace('"', "'") + '"', '---', '',
+             '[All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)', '',
+             '# Weekly status: ' + full, '']
         L.append('_' + since.date().isoformat() + ' to ' + now.date().isoformat() + " (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](" + REPO + '). Not affiliated with the project, and no information here that GitHub does not publish._')
         L.append('')
         L.append('**' + ncommits + ' commits** by ' + str(len(authors)) + ' people, **' + nmerged + ' pull requests merged**, **' + str(len(pulls)) + ' open pull requests**, **' + str(len([i for i in issues if not i.get('pull_request')])) + ' open issues** on this page of results.')
@@ -108,12 +114,15 @@ def main():
         (out / (slug + '.md')).write_text('\n'.join(L) + '\n')
         written += 1
         index.append('- [' + full + '](' + slug + '.md) - ' + ncommits + ' commits, ' + str(len(stalled)) + ' stalled PRs, ' + str(len(unowned)) + ' unowned issues')
-    I = ['# Weekly status pages', '']
+    I = ['---', 'title: "Weekly status reports for ' + str(written) + ' open source GitHub repositories"',
+         'description: "What shipped, which pull requests stalled and which issues nobody picked up, for ' + str(written) + ' popular open source repositories. Regenerated weekly from public GitHub data."', '---', '',
+         '# Weekly status pages', '']
     I.append('What a status meeting is usually for, written from public activity instead of asked for in a meeting: what shipped this week, which pull requests have gone quiet, and which issues nobody has picked up.')
     I.append('')
     I.append('These pages are generated for well-known public repositories as a worked example of what [pilotless status](' + REPO + ') produces. They are **unofficial** - none of these projects is affiliated with this one, and nothing here is information GitHub does not already publish. They are regenerated every Thursday by [a scheduled workflow](' + REPO + '/blob/main/.github/workflows/weekly-directory.yml) in this repository. Maintainers who would rather not have a page can [open an issue](' + REPO + '/issues/new) and it will be deleted.')
     I.append('')
     I += sorted(index)
+    I += ['', 'Also: [open issues nobody has picked up, across all of these](unowned.html) · guides: [weekly status report from GitHub](../weekly-status-report.html), [stale pull request reminders](../stale-pull-request-reminder.html), [a GitHub standup bot without the standup](../github-standup-bot.html).']
     I += ['', 'Last regenerated ' + now.strftime('%Y-%m-%d') + '. For your own repositories: [install the GitHub App](' + LANDING + ').']
     body = '\n'.join(I) + '\n'
     (out / 'README.md').write_text(body)

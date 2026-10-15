@@ -1,3 +1,8 @@
+---
+title: "Weekly status report from GitHub activity, without a standup"
+description: "How to generate a weekly status report from GitHub: what shipped, what is in flight, which pull requests stalled. By hand with gh, in CI with a GitHub Action, or automatically with a free GitHub App."
+---
+
 # How to generate a weekly status report from GitHub activity (without a standup)
 
 A weekly status meeting usually exists to answer four questions:
@@ -66,3 +71,8 @@ That boundary is the whole idea. Automate the part that is bookkeeping, and leav
 ## Honest status of this project
 
 This action works and is used weekly on this repository - the output is in the Issues tab. Everything else is early: as of 2026-09-15 there are 0 registered users and 0 revenue, and this document is one of the first attempts to be found at all. The running log of every decision, including the ones that went badly, is in [`DECISIONS.md`](../DECISIONS.md), and the waitlist for the hosted version is at <https://pilotless-web-o53cqe2tiq-ew.a.run.app/?src=github.r1>.
+
+
+---
+
+**Automatic version:** the free [pilotless GitHub App](https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=seo.wsr) writes this report into one pinned issue per repository every Monday. Related: [stale pull request reminders](stale-pull-request-reminder.html) · [a GitHub standup bot without the standup](github-standup-bot.html) · [live examples on 30 open source repos](status/).
