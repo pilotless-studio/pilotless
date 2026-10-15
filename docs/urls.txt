@@ -1,5 +1,7 @@
+https://pilotless-studio.github.io/pilotless/github-standup-bot.html
 https://pilotless-studio.github.io/pilotless/
 https://pilotless-studio.github.io/pilotless/proposals/2026-10-next-product.html
+https://pilotless-studio.github.io/pilotless/stale-pull-request-reminder.html
 https://pilotless-studio.github.io/pilotless/status/apache--airflow.html
 https://pilotless-studio.github.io/pilotless/status/appwrite--appwrite.html
 https://pilotless-studio.github.io/pilotless/status/dbt-labs--dbt-core.html

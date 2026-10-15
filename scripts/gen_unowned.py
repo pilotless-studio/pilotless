@@ -8,7 +8,7 @@ import sys, os, datetime, pathlib
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_status_directory as G
 
-LANDING = 'https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=unowned.a1'
+LANDING = 'https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=unowned.a2'
 REPO = 'https://github.com/pilotless-studio/pilotless'
 
 
@@ -34,7 +34,10 @@ def main():
                 continue
             rows.append((i.get('created_at') or '', full, i, tag))
     rows.sort(reverse=True)
-    L = ['# Open source issues nobody has picked up', '']
+    L = ['---', 'title: "Good first issues nobody has picked up: unassigned open source issues this week"',
+         'description: "Unassigned, unanswered issues in popular open source GitHub projects, refreshed weekly. A starting point for contributors and a triage list for maintainers."', '---', '',
+         '[All status pages](./) · [Home](../)', '',
+         '# Open source issues nobody has picked up', '']
     L.append('_Week of ' + now.date().isoformat() + '. ' + str(len(rows)) + ' open issues across ' + str(len(G.BASE)) + ' well-known public repositories that are unassigned and, in most cases, have had no reply yet. Regenerated every Thursday from public GitHub activity by [pilotless status](' + REPO + '). Unofficial; none of these projects is affiliated with this one._')
     L.append('')
     L.append('Every one of these is a real piece of work on a real project, sitting in a queue nobody is watching. If you are looking for somewhere to start contributing, start here. If you maintain one of these projects, this is the list a status meeting would have produced for you.')
