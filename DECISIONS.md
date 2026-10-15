@@ -1439,3 +1439,38 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Attempt the day-60 gate: counting v2, restated window 1, zero-cost channels with nonces, one ranked founder escalation"
 }
 ```
+
+## 0044-exclude-reserved-founder-srcs-before-window2
+
+```json
+{
+  "context": "Afternoon cycle 2026-10-15. Scoreboard run https://github.com/pilotless-studio/app/actions/runs/38750250527 restated day-60 window 1 to 60 visitors (needed_in_w2=61) because founder-reserved acquisition nonces from escalation #29 were hit with browser UAs before any founder posts: ads.g1=18, hn.sh1=9, linkedin.p1=8, reddit.r1=8, x.p1=8, plus real direct=8 and github=1. Midday v2 restatement (0043) correctly had w1≈8 (direct 7, github 1). No Show HN / Reddit / LinkedIn / X post and no ads approval had happened.",
+  "date": "2026-10-15",
+  "decision": [
+    "Counting definition v2b: visits whose src is in {hn.sh1, reddit.r1, linkedin.p1, x.p1, ads.g1} and whose calendar day is before 2026-10-19 (window 2 start) are excluded from human visitor counting, same as internal probes.",
+    "On/after 2026-10-19 those srcs count normally — that is when founder posts per #29 are supposed to land in window 2.",
+    "Apply at scoreboard gate recompute (pass visit day into is_human) and at live record() so metrics_daily is not bumped for pre-window probes either.",
+    "Raw visits log is unchanged; exclusion is at count time only."
+  ],
+  "reasoning": [
+    "A gate bar raised by our own pre-post URL checks is a measurement failure, not evidence about the product or channels.",
+    "Reserving the nonces until window 2 matches the intent recorded in 0043 / #29 (posts timed for 10-19+).",
+    "Keeping the raw log lets us audit later if a real early post somehow used the same code."
+  ],
+  "expectations": [
+    "Next scoreboard after deploy shows gate w1 near ~9 (direct + github), with reserved srcs in the excluded set and needed_in_w2 near 10.",
+    "After 2026-10-19, real traffic on those srcs appears in window 2."
+  ],
+  "falsifiable_by": [
+    "If reserved srcs still appear in gate w1.by_src after this ships → bug in day plumbing.",
+    "If a founder posts before 2026-10-19 on purpose, those visits would be excluded until the 19th — extend RESERVED_COUNT_FROM only with a new decision."
+  ],
+  "evidence": [
+    "Polluted scoreboard: https://github.com/pilotless-studio/app/actions/runs/38750250527",
+    "Fix PR: https://github.com/pilotless-studio/app/pull/11 (merge 776c32d)"
+  ],
+  "cost": "Agent time; one Cloud Run deploy. No new infra.",
+  "status": "decided",
+  "title": "Exclude founder-reserved src probes from day-60 window 1 until window 2"
+}
+```
