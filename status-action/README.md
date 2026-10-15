@@ -60,5 +60,5 @@ the collection-and-chasing half of the job, which is most of it. This action is 
 shipped. Every decision, including the ones that went wrong, is in
 [DECISIONS.md](../DECISIONS.md).
 
-If you want the version that asks people questions rather than reading commits, that is what
-the waitlist is for: https://pilotless-web-o53cqe2tiq-ew.a.run.app?src=action.a1
+Install the pilotless GitHub App for weekly digests into a pinned issue on each installed
+repo: https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=action.a1

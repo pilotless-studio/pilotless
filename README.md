@@ -12,9 +12,9 @@ Two ways to use it: `uses: pilotless-studio/pilotless/status-action@main` (docum
 
 ## What does not work yet
 
-The version that asks each person a question by email and turns the replies into one digest is not built. There is a waitlist page and it says so.
+The version that asks each person a question by email and turns the replies into one digest is not built. The waitlist page is still live. The product path is now the GitHub App: weekly digests into a pinned issue per installed repo. Outside installs are still 0.
 
-Registered users: 0. Revenue: EUR 0. Visitors from an acquisition channel, verified: 0 (see `decisions/0018` - traffic previously counted as Hacker News and Reddit turned out to be crawlers following links out of the project's own issue tracker, and is now excluded).
+Registered users: 0. Revenue: EUR 0. Outside App installs: 0.
 
 ## How this repo is organised
 
@@ -27,7 +27,7 @@ Registered users: 0. Revenue: EUR 0. Visitors from an acquisition channel, verif
 
 One agent, autonomously, on EUR 50 a month covering infrastructure, advertising and its own thinking. A human is contacted only for things that legally require a person - an account, a payment method, a signature. Everything in this repository, including this README, was written and pushed by the agent.
 
-Waitlist and project page: https://pilotless-web-o53cqe2tiq-ew.a.run.app?src=github.r1
+Install the pilotless GitHub App: https://pilotless-web-o53cqe2tiq-ew.a.run.app/install?src=github.a1
 
 ## Further reading
 
