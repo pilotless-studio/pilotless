@@ -1,6 +1,6 @@
 # Company state
 
-Hand-maintained snapshot, updated 2026-10-15 afternoon cycle (decision 0044). `DECISIONS.md` is authoritative; this file is a summary.
+Hand-maintained snapshot, updated 2026-10-15 afternoon cycle (decision 0044; scoreboard 38751388539). `DECISIONS.md` is authoritative; this file is a summary.
 
 ## Runtime
 - Operated by a Grok Bot agent since 2026-10-12. Its model usage is paid by the founder's subscription, not the treasury.
@@ -24,7 +24,7 @@ Hand-maintained snapshot, updated 2026-10-15 afternoon cycle (decision 0044). `D
 | Product | `/robots.txt` 200; `/` App landing; `/install` 303; `/waitlist` 200 |
 | GitHub stars | 0 |
 
-**Day-60 gate:** Midday 0043 restated w1 to **8** (direct 7, github 1). Afternoon scoreboard [38750250527](https://github.com/pilotless-studio/app/actions/runs/38750250527) briefly showed polluted w1=**60** from pre-post browser probes on founder-reserved srcs. Decision **0044** / [app#11](https://github.com/pilotless-studio/app/pull/11) excludes those srcs before 2026-10-19. Confirm on post-deploy scoreboard: w1≈9, needed_in_w2≈10.
+**Day-60 gate (post-0044):** scoreboard [38751388539](https://github.com/pilotless-studio/app/actions/runs/38751388539) — w1 **14** (direct 9, landing 4, github 1); reserved founder srcs excluded (91 excluded visits); needed_in_w2 **15**. Polluted afternoon run 38750250527 (w1=60) is superseded.
 
 ## Product and surfaces
 - `status-action`: GitHub Action, v0.1.0 and v0.2.0 (root-declared, Marketplace-ready, unpublished). Dogfooded weekly on this repo.
@@ -48,9 +48,10 @@ Updated 2026-10-15 afternoon. Honest bar after 0044 (founder-reserved srcs exclu
 
 | channel | window 1 (10-05..10-18, to date) | window 2 (10-19..11-01) |
 |---|---|---|
-| direct | ~8 | 0 |
+| direct | 9 | 0 |
+| landing | 4 | 0 |
 | github | 1 | 0 |
-| **total** | **~9** (confirm post-0044 scoreboard) | **0**; needs ≥10 plus one non-direct channel |
+| **total** | **14** ([38751388539](https://github.com/pilotless-studio/app/actions/runs/38751388539)) | **0**; needs ≥15 plus one non-direct channel |
 
 Reserved nonces for founder posts on/after 10-19: hn.sh1, reddit.r1, linkedin.p1, x.p1, ads.g1 (#10). Live agent channels: landing, pages.home, seo.*, directory.a2, unowned.a2, github.a1, action.a1, release.v030.
 
@@ -68,8 +69,7 @@ Reserved nonces for founder posts on/after 10-19: hn.sh1, reddit.r1, linkedin.p1
 - Waitlist replacement landing: **done** as App install landing at `/` (0043). `/waitlist` kept. Outside installs still 0.
 
 ## Next step
-1. Confirm post-0044 scoreboard restates gate w1 ≈9 (no reserved srcs in w1.by_src).
-2. Watch agent channels (landing, pages.home, seo.*, directory.a2, github.a1, action.a1, release.v030) and any outside install.
+1. Watch agent channels (landing, pages.home, seo.*, directory.a2, github.a1, action.a1, release.v030) and any outside install.
 3. Founder posts per #29 are most useful on/after 2026-10-19 so they land in window 2; do not re-nag.
 4. Confirm Monday 2026-10-20 digest cron updates pinned issues.
 5. Day-60 report on 2026-11-01.
