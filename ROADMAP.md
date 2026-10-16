@@ -5,6 +5,8 @@
 
 This file is generated from the Pilotless roadmap for this installation. Edit items through the roadmap tools. A hand edit is overwritten on the next sync.
 
+Derived status is done only when an item has at least one implementation tracking issue and every implementation issue is closed. Merged pull requests alone do not mark an item done. Design links are ignored.
+
 ## Now
 
 ### MCP server + OAuth
@@ -112,4 +114,5 @@ This file is generated from the Pilotless roadmap for this installation. Edit it
 - Sources:
   - https://github.com/pilotless-studio/app/pull/18
   - https://github.com/pilotless-studio/app/pull/19
+  - https://github.com/pilotless-studio/pilotless/issues/39
 - Decisions: 0048
