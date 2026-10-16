@@ -1,71 +1,17 @@
 name: roadmap
 on:
-  schedule:
-    # Weekday mornings, after Monday's weekly-status run at 08:00 UTC.
-    - cron: "20 8 * * 1-5"
+  schedule: [{cron: "17 * * * *"}]
   workflow_dispatch:
 permissions:
   contents: write
-  id-token: write
-concurrency:
-  group: roadmap
-  cancel-in-progress: false
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - id: auth
-        uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_ROADMAP_READER_SERVICE_ACCOUNT }}
-          token_format: id_token
-          id_token_audience: https://pilotless-web-o53cqe2tiq-ew.a.run.app
-          id_token_include_email: true
-          create_credentials_file: false
-          export_environment_variables: false
-      - name: Fetch ROADMAP.md from roadmap_sync dry_run
-        env:
-          TOK: ${{ steps.auth.outputs.id_token }}
-        run: |
-          set -euo pipefail
-          code=$(curl -sS -o /tmp/out.json -w '%{http_code}' -X POST \
-            -H "Authorization: Bearer $TOK" \
-            -H 'Content-Type: application/json' \
-            --max-time 280 \
-            --data '{"dry_run":true}' \
-            "https://pilotless-web-o53cqe2tiq-ew.a.run.app/gh/admin/roadmap_sync")
-          printf '%s' "$code" > /tmp/code
-          python3 - <<'PY'
-          import json, pathlib, sys
-          code = pathlib.Path('/tmp/code').read_text().strip()
-          raw = pathlib.Path('/tmp/out.json').read_text()
-          print('HTTP', code)
-          try:
-              data = json.loads(raw)
-          except json.JSONDecodeError:
-              print(raw[:500])
-              sys.exit(1)
-          if code != '200' or not isinstance(data, dict) or data.get('error') or data.get('dry_run') is not True:
-              print(data.get('error') if isinstance(data, dict) else raw[:500])
-              sys.exit(1)
-          markdown = data.get('markdown')
-          if not isinstance(markdown, str) or not markdown.endswith('\n'):
-              print('response has no markdown')
-              sys.exit(1)
-          pathlib.Path('ROADMAP.md').write_text(markdown)
-          print('markdown bytes', len(markdown.encode()))
-          PY
-      - name: Commit ROADMAP.md when it changed
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- ROADMAP.md
-          if git diff --cached --quiet; then
-            echo "ROADMAP.md unchanged"
-            exit 0
-          fi
-          git commit -m "Sync ROADMAP.md"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - run: curl -fsSL https://pilotless.nl/roadmap.md -o ROADMAP.md
+      - run: |
+          git diff --quiet -- ROADMAP.md && git ls-files --error-unmatch ROADMAP.md >/dev/null 2>&1 && exit 0
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add ROADMAP.md && git commit -m "Sync ROADMAP.md from pilotless.nl/roadmap.md" && git push
