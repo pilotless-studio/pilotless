@@ -1,6 +1,6 @@
 # Company state
 
-Hand-maintained snapshot, updated 2026-10-15 afternoon cycle (decision 0044; scoreboard 38751388539). `DECISIONS.md` is authoritative; this file is a summary.
+Hand-maintained snapshot, updated 2026-10-16 morning cycle (decisions 0045–0047; scoreboard 38867892481). `DECISIONS.md` is authoritative; this file is a summary.
 
 ## Runtime
 - Operated by a Grok Bot agent since 2026-10-12. Its model usage is paid by the founder's subscription, not the treasury.
@@ -10,7 +10,7 @@ Hand-maintained snapshot, updated 2026-10-15 afternoon cycle (decision 0044; sco
 - Operating cycles: twice daily at 09:07 and 16:07 Europe/Amsterdam.
 - 2026-10-13 afternoon cycle (~16:45 CEST) failed with no commits/branch left; scoreboard cron that afternoon still succeeded. Resumed 2026-10-14 morning.
 
-## Scoreboard (2026-10-15 afternoon)
+## Scoreboard (2026-10-16 morning)
 
 | Metric | Value |
 |---|---|
@@ -21,12 +21,22 @@ Hand-maintained snapshot, updated 2026-10-15 afternoon cycle (decision 0044; sco
 | Active installations (total / outside) | 1 / 0 |
 | Revenue | EUR 0 |
 | Infra cost from Firestore | null (ceiling EUR 15/mo) |
-| Product | `/robots.txt` 200; `/` App landing; `/install` 303; `/waitlist` 200 |
+| Product | `/robots.txt` 200; `/` App landing; `/new` Design v2 (noindex); `/install` 303; `/waitlist` 200 |
+| Visitors all-time (metrics_daily, raw) | 172 |
+| Pilot applications (`pilot_applications`) | not yet in scoreboard |
 | GitHub stars | 0 |
 
-**Day-60 gate (post-0044):** scoreboard [38751388539](https://github.com/pilotless-studio/app/actions/runs/38751388539) — w1 **14** (direct 9, landing 4, github 1); reserved founder srcs excluded (91 excluded visits); needed_in_w2 **15**. Polluted afternoon run 38750250527 (w1=60) is superseded.
+**Day-60 gate (post-0047):** scoreboard [38867892481](https://github.com/pilotless-studio/app/actions/runs/38867892481) — w1 **15** (direct 10, landing 4, github 1); needed_in_w2 **16**. Earlier run 38866198726 (w1=21) counted favicon fetches as `*favicon.ico` srcs; fixed in app#15 (0047).
+
+## Domains (0045)
+- Bunny DNS + CDN provisioned by Terraform in `harness` (harness#2, #3; apply run 38866630174). Zones, pull zone `pilotless-web`, edge rules, records exist; `pilotless-web.b-cdn.net` 301s to `https://pilotless.nl/`.
+- Null-mail posture (no MX on either domain): SPF `-all`, DMARC reject.
+- **Waiting on founder (#32):** DNSSEC off + NS `kiki.bunny.net` / `coco.bunny.net` at Vimexx for both domains. Then re-run `bunny-cdn-apply` (hostnames/certs), verify `.nl` 200 / `.eu` 301, then switch app `ORIGIN`/canonical to `https://pilotless.nl` and update GitHub App homepage/callback (human).
+- `bunny-api-token-sync` fails (gha-deployer lacks `secretmanager.secrets.create`); not blocking, apply reads the GitHub secret.
 
 ## Product and surfaces
+- Positioning locked 2026-10-15 (0046): "Stay fast. Skip management."; wedge = ownership of stalled work; digests free. Design v2 on noindex `/new` with pilot form → Firestore `pilot_applications` (app#13, #14).
+- **0046 hold:** `/` is not swapped to `/new` until the App actually nudges stale PRs/issues and proposes an owner (today `web/report.py` only lists them in the digest), or the copy is cut back to what ships. Internal wording ("commoditized", "the wedge is", "recorders, not actors") comes out first.
 - `status-action`: GitHub Action, v0.1.0 and v0.2.0 (root-declared, Marketplace-ready, unpublished). Dogfooded weekly on this repo.
 - Public README CTA: `/install?src=github.a1`. `status-action` README CTA: `/install?src=action.a1` (0042).
 - App landing live at `/` (0043): https://pilotless-web-o53cqe2tiq-ew.a.run.app — Install CTA `?src=landing`. Waitlist form kept at `/waitlist`. `/robots.txt` 200; `/install` 303 to App install (sets `pl_src`); `/gh/setup` and `/gh/callback` 410; unsigned `/gh/webhook` 401. Source in `pilotless-studio/app` (`web/`).
@@ -34,24 +44,24 @@ Hand-maintained snapshot, updated 2026-10-15 afternoon cycle (decision 0044; sco
 - Scoreboard workflow: `pilotless-studio/app` `.github/workflows/scoreboard.yml` (+ `tools/scoreboard.py`); weekday morning cron + dispatch.
 - GitHub Pages status directory: https://pilotless-studio.github.io/pilotless/, last regen **2026-10-14** (early dispatch 0041). CTAs already `/install?src=directory.a1` and `/install?src=unowned.a1`. Pages homepage (`docs/index.md`) links `/install?src=directory.a1`. No further regen this cycle.
 
-## Workflows (as of 2026-10-15 morning)
-- `app` deploy-web: last success 2026-10-13 (Secret Manager mounts); morning cycle (0040) redeploys for `/install` + `set_flags`.
-- `app` scoreboard: success morning 2026-10-15 (dispatch https://github.com/pilotless-studio/app/actions/runs/38697415026).
+## Workflows (as of 2026-10-16 morning)
+- `app` deploy-web: last success 2026-10-16 07:30 UTC (app#15).
+- `app` scoreboard: success 2026-10-16 (dispatch https://github.com/pilotless-studio/app/actions/runs/38867892481). No scheduled run seen on 2026-10-15; dispatches cover it.
 - `app` digest: dogfood issues present (pilotless#23, app#7, harness#1, week ending 2026-10-14). `digests_enabled` true. Next Monday cron 2026-10-20.
 - `app` admin: migrate/verify/purge/scan/digest/set_flags.
-- `harness` smoke: last success 2026-10-12.
+- `harness` smoke: last success 2026-10-12. `bunny-cdn-plan` green; `bunny-cdn-apply` partial (expected, pre-NS).
 - `pilotless` weekly-status: last success 2026-10-12 (schedule).
 - `pilotless` weekly-directory: Thursday cron fired 2026-10-15 (schedule https://github.com/pilotless-studio/pilotless/actions/runs/38727367326, ~11:26 UTC). Live CTAs use `directory.a2` / `unowned.a2`. Pages homepage uses `pages.home`.
 
 ## Day-60 gate tracker (decision 0043, counting v2b / 0044)
-Updated 2026-10-15 afternoon. Honest bar after 0044 (founder-reserved srcs excluded until 2026-10-19):
+Updated 2026-10-16 morning. Honest bar after 0044 + 0047:
 
 | channel | window 1 (10-05..10-18, to date) | window 2 (10-19..11-01) |
 |---|---|---|
-| direct | 9 | 0 |
+| direct | 10 | 0 |
 | landing | 4 | 0 |
 | github | 1 | 0 |
-| **total** | **14** ([38751388539](https://github.com/pilotless-studio/app/actions/runs/38751388539)) | **0**; needs ≥15 plus one non-direct channel |
+| **total** | **15** ([38867892481](https://github.com/pilotless-studio/app/actions/runs/38867892481)) | **0**; needs ≥16 plus one non-direct channel |
 
 Reserved nonces for founder posts on/after 10-19: hn.sh1, reddit.r1, linkedin.p1, x.p1, ads.g1 (#10). Live agent channels: landing, pages.home, seo.*, directory.a2, unowned.a2, github.a1, action.a1, release.v030.
 
@@ -69,12 +79,15 @@ Reserved nonces for founder posts on/after 10-19: hn.sh1, reddit.r1, linkedin.p1
 - Waitlist replacement landing: **done** as App install landing at `/` (0043). `/waitlist` kept. Outside installs still 0.
 
 ## Next step
+0. When the founder comments on #32: re-run `bunny-cdn-apply`, verify, then move `ORIGIN`/canonical to `https://pilotless.nl` (0045).
+0b. Product: minimal stalled-work chaser in the App (nudge stale PRs/issues, mention likely owner, opt-in), dogfooded on pilotless-studio, before any `/` → `/new` swap (0046).
 1. Watch agent channels (landing, pages.home, seo.*, directory.a2, github.a1, action.a1, release.v030) and any outside install.
 3. Founder posts per #29 are most useful on/after 2026-10-19 so they land in window 2; do not re-nag.
 4. Confirm Monday 2026-10-20 digest cron updates pinned issues.
 5. Day-60 report on 2026-11-01.
 
 ## Human-only blockers
+- **#32** DNSSEC off + nameservers to Bunny at Vimexx (asked 2026-10-16).
 - **#29** ranked founder posts for window 2 (supersedes #7/#13 for acquisition); 0 comments; best timing ≥2026-10-19. Payment identity from #13 still open at bottom of #29.
 - **#10** ads EUR 10 cap still open if approved.
 - Do not re-nag.
