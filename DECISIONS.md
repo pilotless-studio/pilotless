@@ -1474,3 +1474,105 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Exclude founder-reserved src probes from day-60 window 1 until window 2"
 }
 ```
+
+## 0045-domains-on-bunny-dns-and-cdn
+
+```json
+{
+  "context": "Morning cycle 2026-10-16. Escalation #32 originally proposed Cloud Run domain mappings with manual Vimexx records. The founder pushed back on 2026-10-15 and asked that DNS be managed by the company itself, preferably via Bunny CDN, provisioned with Terraform in CI; he supplied Bunny API tokens (GitHub secrets BUNNY_API_TOKEN / TF_VAR_BUNNY_API_KEY on harness). harness#2 (Terraform module + held apply workflow) merged 2026-10-15; apply was held pending an export of Vimexx mail records.",
+  "date": "2026-10-16",
+  "decision": [
+    "pilotless.nl / pilotless.eu are served through one Bunny Standard pull zone (EU+US only, cache/optimizer/shield/logs off, cookies kept) in front of Cloud Run pilotless-web, with Bunny DNS authoritative. .eu and both www names 301 to https://pilotless.nl at the edge. Cloud Run domain mappings and the GCP global load balancer are not used.",
+    "Mail: public DNS (dns.google, 2026-10-16) shows no MX and no DKIM on either domain; SPF 'a mx -all' and DMARC p=reject. The zones publish a null-mail posture (SPF '-all', DMARC unchanged) via harness#3, so the NS cutover loses nothing.",
+    "Applied (harness run 38866630174): zones, pull zone, edge rules and records exist; the four custom hostnames fail certificate issuance until nameservers point at Bunny, as the module README predicted.",
+    "Human step on #32: founder turns DNSSEC off and sets NS to kiki.bunny.net / coco.bunny.net at Vimexx for both domains. Then re-run bunny-cdn-apply, verify, and switch app ORIGIN/canonical to https://pilotless.nl in a separate change."
+  ],
+  "reasoning": [
+    "Founder direction on #32 (Bunny + Terraform in CI) and lower cost than a global LB (~EUR 17/mo, over the EUR 15 ceiling).",
+    "Applying before cutover is reversible (terraform destroy) and not authoritative until the NS change, and it turns the human step into one precise action with known nameservers.",
+    "Checking public DNS removed the 'export Vimexx mail records' blocker without needing the founder."
+  ],
+  "expectations": [
+    "Within 24 h of the NS change: https://pilotless.nl/robots.txt 200 via Bunny, https://pilotless.eu/ 301 to .nl, visitor cookies intact (Set-Cookie passes through).",
+    "Bunny invoice at the USD 1/month minimum while traffic stays under a few GB."
+  ],
+  "falsifiable_by": [
+    "Re-apply after NS change still fails hostname creation for more than 24 h.",
+    "Visitor counting breaks behind Bunny (scoreboard shows no new visits after cutover while Cloud Run logs show requests)."
+  ],
+  "evidence": [
+    "https://github.com/pilotless-studio/pilotless/issues/32",
+    "https://github.com/pilotless-studio/harness/pull/2",
+    "https://github.com/pilotless-studio/harness/pull/3",
+    "https://github.com/pilotless-studio/harness/actions/runs/38866630174"
+  ],
+  "cost": "Bunny account minimum USD 1/month plus USD 0.01/GB (EU/US). DNS free. Within the EUR 15/month ceiling; founder-provided account.",
+  "supersedes": "Cloud Run domain-mapping plan in the #32 body",
+  "status": "decided",
+  "title": "Serve pilotless.nl/.eu via Bunny DNS + CDN (Terraform in CI); null-mail records; one registrar step left"
+}
+```
+
+## 0046-design-v2-on-new-held-until-product-matches
+
+```json
+{
+  "context": "On 2026-10-15 the positioning was locked: hero 'Stay fast. Skip management.', the vaccination / turn-left idea in the body, product wedge = ownership of stalled work (chase stale PRs/issues, assign blockers), digests free. Design v2 shipped on noindex /new (app#13) with a pilot form storing applications in Firestore pilot_applications (app#14). / is still the GitHub App install landing (0043). Neither change was logged here.",
+  "date": "2026-10-16",
+  "decision": [
+    "Record the positioning and Design v2 as above.",
+    "CEO review of /new (2026-10-16): the page says Pilotless chases stale PRs and issues, puts each blocker on an owner and follows up until the loop closes. The shipped App does not do that yet: web/report.py lists stalled PRs and unowned issues in the weekly digest ('Needs a decision or a nudge') but sends no nudges and assigns nobody. The page also leaks internal strategy wording ('digests alone are commoditized', 'the wedge is', 'recorders, not actors').",
+    "/ is not cut over to /new until either (a) the App actually nudges stale PRs/issues and proposes or sets an owner, or (b) the copy is rewritten to describe only what ships today plus an explicit 'in the pilot' line for what does not. Internal wording is removed before any cutover.",
+    "Highest-value product work after the domain cutover: a minimal stalled-work chaser in the App (comment on PRs/issues past a staleness threshold, mention the likely owner, opt-in per repo), dogfooded on pilotless-studio first."
+  ],
+  "reasoning": [
+    "Selling a capability that does not exist is invented proof; the CEO standard is to ship only what we would stand behind.",
+    "The digest already computes the stalled/unowned lists, so the chaser is a small step from existing code."
+  ],
+  "expectations": [
+    "A chaser change lands in app before / is swapped; pilot applications (if any) are answered honestly about what exists."
+  ],
+  "falsifiable_by": [
+    "If / is swapped to /new while the App still only reports, this decision was ignored."
+  ],
+  "evidence": [
+    "https://github.com/pilotless-studio/app/pull/13",
+    "https://github.com/pilotless-studio/app/pull/14",
+    "https://pilotless-web-o53cqe2tiq-ew.a.run.app/new"
+  ],
+  "cost": "EUR 0.",
+  "status": "decided",
+  "title": "Log locked positioning + Design v2 on /new; hold cutover until the product does what the page says"
+}
+```
+
+## 0047-favicon-pollution-excluded-from-counting
+
+```json
+{
+  "context": "Morning cycle 2026-10-16. Scoreboard run https://github.com/pilotless-studio/app/actions/runs/38866198726 showed day-60 w1 = 21 with srcs like x.p1favicon.ico, ads.g1favicon.ico, hn.sh1favicon.ico mapped to x/ads/hn/linkedin/reddit channels, although no founder post or ad exists. This tripped the 0044 falsifier ('reserved srcs still appear in gate w1').",
+  "date": "2026-10-16",
+  "decision": [
+    "Root cause (app#15): a tagged view of /?src=x.p1 is followed by the browser fetching /?src=x.p1/favicon.ico; the src cleaner deleted the '/' and stored 'x.p1favicon.ico' as a new src on path '/'.",
+    "Counting v2c: static-asset paths are never recorded; src must be nonce-shaped (a-z0-9.-, max 32) and is rejected, not stripped, when it carries a path or file extension; the gate recompute drops asset paths and file-extension srcs; reserved founder nonces match by prefix before 2026-10-19. Raw visit log unchanged."
+  ],
+  "reasoning": [
+    "A favicon fetch is not a visitor; letting it through inflated w1 by 6 and raised the window-2 bar for no real reason.",
+    "Same principle as 0044: measurement errors are fixed at count time, raw data kept for audit."
+  ],
+  "expectations": [
+    "Post-fix scoreboard: w1 = 15 (direct 10, landing 4, github 1), needed_in_w2 = 16. Confirmed in run 38867892481.",
+    "No *favicon.ico or reserved-channel srcs in w1 on later runs."
+  ],
+  "falsifiable_by": [
+    "Any later scoreboard showing a src with a file-extension suffix in w1 or w2."
+  ],
+  "evidence": [
+    "https://github.com/pilotless-studio/app/pull/15",
+    "https://github.com/pilotless-studio/app/actions/runs/38867892481"
+  ],
+  "cost": "Agent time; one Cloud Run deploy.",
+  "status": "decided",
+  "title": "Stop counting favicon fetches as visitors (counting v2c); w1 restated to 15"
+}
+```
