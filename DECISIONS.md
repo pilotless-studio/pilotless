@@ -1594,3 +1594,37 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Pilotless dogfoods its own roadmap from day one"
 }
 ```
+
+## 0050-post-domain-launch-visitor-spike-provisional
+
+```json
+{
+  "context": "Afternoon cycle 2026-10-16. pilotless.nl went live behind Bunny around 10:40 UTC (0045, #32 closed). The day-60 gate w1 went from 15 (07:32 UTC, run 38867892481) to 85 (12:20 UTC, run 38899848189) and 109 (14:16 UTC, run 38914391079: direct 85, referral 15, landing 5, search.bing 2, github 1, directory.a2 1) with 0 installs and 0 registrations. Our own agents and workflows fetched the new domain heavily the same day (roadmap routes, robots.txt, install).",
+  "date": "2026-10-16",
+  "decision": [
+    "Treat the post-launch w1 jump as unverified. The gate tracker and reports keep 15 as the last verified w1 and label later figures provisional; 109 is not quoted as traction.",
+    "Add read-only diagnostics to the scoreboard (counted visitors by day/hour, UA, path, referer host, single-visit vs repeat vids) on app before changing any rule. Counting rules stay unchanged in that PR.",
+    "Once the data shows what the traffic is, any rule change applies identically to both windows and is logged as its own decision before window 2 starts on 2026-10-19."
+  ],
+  "reasoning": [
+    "94 new browser-UA visitors in about six hours, starting when a new TLS certificate was issued, with no post, ad or install behind it, looks like scanners or our own traffic rather than people. Guessing a filter without data could hide real visitors or keep junk.",
+    "A cookie round-trip check through Bunny (14:19 UTC) shows pl_vid survives, so the CDN is not resetting real visitors; that points at clients that never return the cookie.",
+    "An inflated w1 makes the window-2 bar unreachable for no real reason (needed_in_w2 jumped to 110); the honest bar is what matters, same principle as 0044 and 0047."
+  ],
+  "expectations": [
+    "Diagnostics show most post-launch counted vids are single-hit with scanner-like paths or UAs, or our own traffic.",
+    "After a rule decision, w1 returns close to the pre-launch trend (low tens)."
+  ],
+  "falsifiable_by": [
+    "Diagnostics show repeat-visit vids from varied real referers or search, which would mean real people found the domain; then the count stands and the window-2 bar rises."
+  ],
+  "evidence": [
+    "https://github.com/pilotless-studio/app/actions/runs/38867892481",
+    "https://github.com/pilotless-studio/app/actions/runs/38899848189",
+    "https://github.com/pilotless-studio/app/actions/runs/38914391079"
+  ],
+  "cost": "Agent time only.",
+  "status": "decided",
+  "title": "Post-domain-launch visitor spike is provisional until diagnosed"
+}
+```
