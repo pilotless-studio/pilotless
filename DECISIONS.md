@@ -1576,3 +1576,21 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Stop counting favicon fetches as visitors (counting v2c); w1 restated to 15"
 }
 ```
+
+## 0049-dogfood-own-roadmap
+
+```json
+{
+  "context": "The design draft in docs/design/mcp-and-roadmap.md was merged in harness#5.",
+  "date": "2026-10-16",
+  "decision": [
+    "Pilotless dogfoods its own roadmap from day one.",
+    "Pilotless's own roadmap lives in the Pilotless roadmap feature (Firestore plus MCP tools roadmap_list/upsert/link/status_from_github, rendered to ROADMAP.md), and the CEO uses those MCP tools in operating cycles."
+  ],
+  "evidence": [
+    "https://github.com/pilotless-studio/harness/pull/5"
+  ],
+  "status": "decided",
+  "title": "Pilotless dogfoods its own roadmap from day one"
+}
+```
