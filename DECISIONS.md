@@ -1628,3 +1628,51 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Post-domain-launch visitor spike is provisional until diagnosed"
 }
 ```
+
+## 0051-count-confirmed-visitors-only
+
+```json
+{
+  "context": "Follow-up to 0050. Diagnostics (app#28, scoreboard run 38916691843) showed 103 of 118 w1 vids first seen on 2026-10-16 from 10:00 UTC, when the domain went live; 110 vids with a single visit; 95 visits with no referrer, 103 to /; browser-like UAs including AppEngine-Google. That pattern is new-domain scanners and crawlers that never return the first-party pl_vid cookie. Window 2 opened on 2026-10-19 under the old counting rule.",
+  "date": "2026-10-21",
+  "decision": [
+    "A visitor id (vid) counts only after a request sends the pl_vid cookie back (a later request carrying pl_vid; no beacon, no third party). The visit stores returned=true and the vid stores confirmed=true. Unconfirmed vids stay visible in diagnostics but are excluded from visitors, by_src, by_channel and needed_in_w2.",
+    "Historical rows have no returned field; a historical vid is confirmed only when the same vid has another visit with a strictly earlier timestamp. A single row or a timestamp tie stays unconfirmed.",
+    "AppEngine-Google is added to the bot UA list.",
+    "The rule applies identically to both windows. Window 1 and window 2 (so far) were both recomputed under it with the idempotent admin action recompute_visitors, so neither window is counted under the old rule.",
+    "needed_in_w2 = confirmed w1 vids + 1 - confirmed w2 vids. No cookie-banner change: pl_vid stays a first-party functional cookie."
+  ],
+  "reasoning": [
+    "A cookie round-trip is the cheapest honest signal that a client is a browser that came back, with no fingerprinting and no third party, and it can be reconstructed from stored rows so both windows get the same rule.",
+    "Counting scanner hits made the window-2 bar unreachable for no real reason; the honest bar is what matters (0044, 0047, 0050)."
+  ],
+  "measured": {
+    "w1": {
+      "total_vids": 223,
+      "confirmed_vids": 16
+    },
+    "w2_so_far": {
+      "total_vids": 49,
+      "confirmed_vids": 2
+    },
+    "needed_in_w2": 15,
+    "as_of": "2026-10-21 ~09:55 UTC"
+  },
+  "expectations": [
+    "w1 returns to the pre-launch trend (confirmed 16, close to the last verified 15 in 0050).",
+    "Future scanner bursts do not move the confirmed counts."
+  ],
+  "falsifiable_by": [
+    "Real people who visit once without returning are undercounted; if installs or registrations arrive from sources with no confirmed vid, revisit the rule (e.g. a same-origin beacon)."
+  ],
+  "evidence": [
+    "https://github.com/pilotless-studio/app/pull/28",
+    "https://github.com/pilotless-studio/app/actions/runs/38916691843",
+    "https://github.com/pilotless-studio/app/pull/29",
+    "https://github.com/pilotless-studio/app/actions/runs/39580079324"
+  ],
+  "cost": "Agent time only.",
+  "status": "decided",
+  "title": "Count a visitor only after the first-party cookie comes back, in both windows"
+}
+```
