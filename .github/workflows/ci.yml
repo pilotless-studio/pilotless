@@ -1,0 +1,41 @@
+name: ci
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: py_compile
+        run: |
+          set -euo pipefail
+          files=$(find . -name '*.py' -not -path './.git/*' | sort)
+          if [ -z "$files" ]; then echo "No .py files"; exit 0; fi
+          echo "$files"
+          python -m py_compile $files
+      - name: unittest
+        run: |
+          set -euo pipefail
+          dirs=$(find . -name 'test_*.py' -not -path './.git/*' -exec dirname {} \; | sort -u)
+          if [ -z "$dirs" ]; then echo "No test_*.py files found yet"; exit 0; fi
+          for d in $dirs; do
+            echo "::group::$d"
+            python -m unittest discover -s "$d" -t "$d" -p 'test_*.py' -v
+            echo "::endgroup::"
+          done
+      - name: action.yml parses as YAML
+        run: |
+          set -euo pipefail
+          python -m pip install pyyaml
+          find . \( -name 'action.yml' -o -name 'action.yaml' \) -not -path './.git/*' -print0 \
+            | xargs -0 -r python -c 'import sys, yaml
+          for f in sys.argv[1:]:
+              with open(f) as fh:
+                  doc = yaml.safe_load(fh)
+              assert isinstance(doc, dict), f + ": not a mapping"
+              print("OK", f)'
