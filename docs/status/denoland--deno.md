@@ -1,33 +1,33 @@
 ---
 title: "denoland/deno weekly status: stalled PRs and unowned issues"
-description: "denoland/deno this week: 0 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "denoland/deno this week: 4 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
 
 # Weekly status: denoland/deno
 
-_2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-14 to 2026-10-20 (7 full days, UTC). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**0 commits** by 0 people, **at least 0 pull requests merged**, **100 open pull requests**, **51 open issues** on this page of results.
+**4 commits** to `main` by 2 people, **4 pull requests merged**, **100 open pull requests**, **52 open issues** on this page of results.
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#28002](https://github.com/denoland/deno/pull/28002) perf(ext/canvas): remove static link `lcms2` - last touched 525 days ago
-- [#29737](https://github.com/denoland/deno/pull/29737) feat(pm): support ‎`http(s):` specifiers and aliases for ‎`deno add` - last touched 485 days ago
-- [#29811](https://github.com/denoland/deno/pull/29811) support deno resolution as a fallback in require - last touched 483 days ago
-- [#30376](https://github.com/denoland/deno/pull/30376) feat: unstable feature async-dns-resolver - last touched 428 days ago
-- [#30221](https://github.com/denoland/deno/pull/30221) feat: Replace spawn_blocking with spawn_blocking_optional and spawn_blocking_always - last touched 428 days ago
+- [#28002](https://github.com/denoland/deno/pull/28002) perf(ext/canvas): remove static link `lcms2` - last touched 531 days ago
+- [#29811](https://github.com/denoland/deno/pull/29811) support deno resolution as a fallback in require - last touched 489 days ago
+- [#30376](https://github.com/denoland/deno/pull/30376) feat: unstable feature async-dns-resolver - last touched 434 days ago
+- [#30221](https://github.com/denoland/deno/pull/30221) feat: Replace spawn_blocking with spawn_blocking_optional and spawn_blocking_always - last touched 434 days ago
+- [#31899](https://github.com/denoland/deno/pull/31899) feat(ext/image): support AVIF for `createImageBitmap` - last touched 270 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#37025](https://github.com/denoland/deno/issues/37025) deno_core: use-after-free of fast-call CFunction overloads during isolate teardown (deno l - opened 0 days ago
-- [#37023](https://github.com/denoland/deno/issues/37023) bug: polluting signal will lead an internal deno error - opened 0 days ago
-- [#37022](https://github.com/denoland/deno/issues/37022) npm dedup drops a required dependency edge in a retained peer-only package - opened 0 days ago
-- [#37021](https://github.com/denoland/deno/issues/37021) desktop: page-triggered downloads should ask where to save - opened 0 days ago
-- [#37018](https://github.com/denoland/deno/issues/37018) Cached 404 from an unauthenticated request ignores `DENO_AUTH_TOKENS` for 15 minutes - opened 1 days ago
+- [#37050](https://github.com/denoland/deno/issues/37050) Deno.serve (HTTP/1.1): an application `Connection: close` header is either doubled or igno - opened 0 days ago
+- [#37049](https://github.com/denoland/deno/issues/37049) Deno.serve (HTTP/1.1): the unread request body is read in full after the response, even wh - opened 0 days ago
+- [#37045](https://github.com/denoland/deno/issues/37045) Intermittent SIGSEGV at startup on macOS arm64: sqlite3_initialize race between parallel C - opened 0 days ago
+- [#37042](https://github.com/denoland/deno/issues/37042) WebGPU: GPUBuffer.mapAsync() and GPUQueue.onSubmittedWorkDone() always take >= ~10 ms, eve - opened 1 days ago
+- [#37041](https://github.com/denoland/deno/issues/37041) node:child_process: forked child's IPC socket (NODE_CHANNEL_FD) is not close-on-exec, gran - opened 2 days ago
 
 ---
 

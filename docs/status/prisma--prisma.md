@@ -7,27 +7,27 @@ description: "prisma/prisma this week: 49 commits, 5 stalled pull requests and 5
 
 # Weekly status: prisma/prisma
 
-_2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-14 to 2026-10-20 (7 full days, UTC). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**49 commits** by 2 people, **at least 38 pull requests merged**, **100 open pull requests**, **54 open issues** on this page of results.
+**49 commits** to `main` by 2 people, **49 pull requests merged**, **100 open pull requests**, **51 open issues** on this page of results.
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#29666](https://github.com/prisma/orm/pull/29666) fix(conversion): add TIMESTAMPTZ support for date formatting - last touched 79 days ago
-- [#29655](https://github.com/prisma/orm/pull/29655) perf(client): expose Prisma Client performance branch - last touched 79 days ago
-- [#29658](https://github.com/prisma/orm/pull/29658) perf(client-engine): split render and data-mapper prerequisites - last touched 79 days ago
-- [#29586](https://github.com/prisma/orm/pull/29586) feat(migrate): add --no-hints flag to migrate deploy and migrate status - last touched 79 days ago
-- [#29491](https://github.com/prisma/orm/pull/29491) fix(adapter-mssql): surface socket errors as typed MappedError instead of throwing raw - last touched 79 days ago
+- [#29666](https://github.com/prisma/orm/pull/29666) fix(conversion): add TIMESTAMPTZ support for date formatting - last touched 85 days ago
+- [#29655](https://github.com/prisma/orm/pull/29655) perf(client): expose Prisma Client performance branch - last touched 85 days ago
+- [#29658](https://github.com/prisma/orm/pull/29658) perf(client-engine): split render and data-mapper prerequisites - last touched 85 days ago
+- [#29586](https://github.com/prisma/orm/pull/29586) feat(migrate): add --no-hints flag to migrate deploy and migrate status - last touched 85 days ago
+- [#29491](https://github.com/prisma/orm/pull/29491) fix(adapter-mssql): surface socket errors as typed MappedError instead of throwing raw - last touched 85 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#30722](https://github.com/prisma/orm/issues/30722) Postgres unbound namespace with tables loses search_path resolution when contract.json is  - opened 0 days ago
-- [#30713](https://github.com/prisma/orm/issues/30713) Prisma 7: Accelerate requests are no longer retried on transient failures (regression from - opened 1 days ago
-- [#30688](https://github.com/prisma/orm/issues/30688) orm init: say where to get a Postgres database and how to deploy - opened 3 days ago
-- [#30645](https://github.com/prisma/orm/issues/30645) Large schemas: `new PrismaClient()` eagerly deserializes the full ParamGraph, so construct - opened 7 days ago
-- [#30640](https://github.com/prisma/orm/issues/30640) Since 7.4.0, PostgreSQL migrations are no longer applied atomically (each statement commit - opened 7 days ago
+- [#30763](https://github.com/prisma/orm/issues/30763) `migrate deploy` passes the datasource URL (with password) to schema-engine in argv — read - opened 2 days ago
+- [#30761](https://github.com/prisma/orm/issues/30761) Query compiler: relation `include`/`select` still runs child queries when no parent row ha - opened 3 days ago
+- [#30760](https://github.com/prisma/orm/issues/30760) Prisma 7: every PrismaClient decodes its own copy of the parameterization schema (~31 MB h - opened 3 days ago
+- [#30758](https://github.com/prisma/orm/issues/30758) updateMany with relationMode = "prisma" drops the where filter from the UPDATE, breaking o - opened 3 days ago
+- [#30757](https://github.com/prisma/orm/issues/30757) Prisma 7.10.0 schema-engine checksum download denied with Cloudflare 1010 - opened 4 days ago
 
 ---
 

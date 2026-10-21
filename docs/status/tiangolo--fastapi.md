@@ -1,24 +1,24 @@
 ---
 title: "tiangolo/fastapi weekly status: stalled PRs and unowned issues"
-description: "tiangolo/fastapi this week: 34 commits, 5 stalled pull requests and 0 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "tiangolo/fastapi this week: 102 commits, 5 stalled pull requests and 0 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
 
 # Weekly status: tiangolo/fastapi
 
-_2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-14 to 2026-10-20 (7 full days, UTC). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**34 commits** by 4 people, **at least 18 pull requests merged**, **81 open pull requests**, **1 open issues** on this page of results.
+**102 commits** to `master` by 7 people, **62 pull requests merged**, **69 open pull requests**, **1 open issues** on this page of results.
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#11782](https://github.com/fastapi/fastapi/pull/11782) 📝 Add documentation on how to use the Django ORM inside FastAPI - last touched 357 days ago
-- [#10647](https://github.com/fastapi/fastapi/pull/10647) fix: respect call localns at get_typed_signature - last touched 312 days ago
-- [#14655](https://github.com/fastapi/fastapi/pull/14655) Add support for Sentinel values - last touched 280 days ago
-- [#14089](https://github.com/fastapi/fastapi/pull/14089) ✨ Improve JSON Parsing Error Messages - last touched 252 days ago
-- [#14574](https://github.com/fastapi/fastapi/pull/14574) Fix: Preserve model_fields_set for Form models (issue #13399) - last touched 250 days ago
+- [#11782](https://github.com/fastapi/fastapi/pull/11782) 📝 Add documentation on how to use the Django ORM inside FastAPI - last touched 363 days ago
+- [#14089](https://github.com/fastapi/fastapi/pull/14089) ✨ Improve JSON Parsing Error Messages - last touched 258 days ago
+- [#14952](https://github.com/fastapi/fastapi/pull/14952) Add regression test for Annotated + ForwardRef OpenAPI ( #13056 ) - last touched 242 days ago
+- [#14883](https://github.com/fastapi/fastapi/pull/14883) 🐛 Fix implicit path params with converters - last touched 241 days ago
+- [#14115](https://github.com/fastapi/fastapi/pull/14115) 📝 Fix CORS tutorial inconsistency with `allow_credentials=True` and wildcard values in `al - last touched 230 days ago
 
 ### Issues nobody has picked up
 None on this page of results.
