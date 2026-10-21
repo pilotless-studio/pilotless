@@ -11,9 +11,6 @@ _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's
 
 **34 commits** by 4 people, **at least 18 pull requests merged**, **81 open pull requests**, **1 open issues** on this page of results.
 
-### Who moved code
-latest-changes[bot] (16), pr-submit[bot] (14), dependabot[bot] (2), tiangolo (2)
-
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 

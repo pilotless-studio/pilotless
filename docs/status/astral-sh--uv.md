@@ -11,9 +11,6 @@ _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's
 
 **100+ commits** by 12 people, **at least 47 pull requests merged**, **100 open pull requests**, **25 open issues** on this page of results.
 
-### Who moved code
-astral-automations-bot[bot] (40), charliermarsh (22), renovate[bot] (16), woodruffw (7), konstin (6)
-
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
