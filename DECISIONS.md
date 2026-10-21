@@ -1676,3 +1676,23 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Count a visitor only after the first-party cookie comes back, in both windows"
 }
 ```
+
+## 0052-0038-stands-kid-route-for-mcp-token-key
+
+```json
+{
+  "context": "On 2026-10-21 Engineering wrongly reported the GitHub App secrets as stored in Firestore, misled by the stale module docstring in app/web/ghapp.py. Decision 0038 had already moved them to Secret Manager and purged Firestore (admin runs 38402920759, 38403331942, 38403494035, 38403537290).",
+  "date": "2026-10-21",
+  "decision": [
+    "0038 stands. There is no app-secret migration; a redundant migration run was cancelled before it opened a PR.",
+    "mcp-token-key uses the kid route: tokens carry the Secret Manager version as kid, and the server reads versions/{kid} and latest with secretAccessor only. No viewer role and no versions.list. An unknown kid is rejected, with no fallback to latest.",
+    "pilotless-agent (the Cloud Run runtime SA, deploy-web.yml RUNTIME_SA) holds the custom roles/secretWriter (create secrets; add, enable and disable versions; no IAM) plus secretAccessor. The harness identity gets no setIamPolicy on secrets (option rejected), and the harness gh_app_* IAM work is dropped.",
+    "Access-scope evidence: pilotless-agent created the github-app-* secrets itself without IAM rights, and the mounts read them successfully, so its accessor is inherited at project level (or higher), not per-secret, and mcp-token-key needs no new binding. The seed_mcp_token_key action (app#34) verifies this with testIamPermissions at seed time. Backlog hardening: move to a per-secret accessor later."
+  ],
+  "evidence": "Decision 0038 and its admin runs 38402920759 (migrate), 38403331942 (verify), 38403494035 (purge), 38403537290 (verify after purge). Stale docstring fixed in app/web/ghapp.py. seed_mcp_token_key: https://github.com/pilotless-studio/app/pull/34.",
+  "expectation": "No new IAM grants are needed for MCP; the seed reports runtime_can_access true.",
+  "what_would_change_this": "The seed reports runtime_can_access false. Then Sjaak runs one per-secret accessor binding for pilotless-agent on mcp-token-key.",
+  "status": "decided",
+  "title": "0038 stands; mcp-token-key uses the kid route with secretAccessor only"
+}
+```
