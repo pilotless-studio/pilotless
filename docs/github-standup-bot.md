@@ -9,7 +9,7 @@ Most standup bots post a question in chat and wait for people to type answers. F
 
 ## What a GitHub-native standup contains
 
-- **Who moved code**: merged work per person, from commits and pull requests.
+- **Who moved code**: commit counts per author for the week.
 - **In flight**: open pull requests and who owns them.
 - **Blocked**: pull requests untouched for a week, issues nobody has picked up.
 - **Decisions waiting**: anything that needs a maintainer's yes or no.
