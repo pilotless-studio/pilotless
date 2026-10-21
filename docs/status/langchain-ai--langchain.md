@@ -11,9 +11,6 @@ _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's
 
 **22 commits** by 5 people, **at least 14 pull requests merged**, **100 open pull requests**, **77 open issues** on this page of results.
 
-### Who moved code
-ccurme (11), langchain-oss-model-profiles[bot] (4), richardscarrott (4), byhow (2), gethin-langchain (1)
-
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 

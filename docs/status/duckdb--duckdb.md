@@ -11,9 +11,6 @@ _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's
 
 **100+ commits** by 12 people, **at least 33 pull requests merged**, **100 open pull requests**, **18 open issues** on this page of results.
 
-### Who moved code
-Sander Mathijs van Veen (36), Robinho-MR (15), Mytherin (12), kryonix (9), hannes (8)
-
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 

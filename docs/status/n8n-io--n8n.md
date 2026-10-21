@@ -11,9 +11,6 @@ _2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's
 
 **100+ commits** by 40 people, **at least 47 pull requests merged**, **100 open pull requests**, **6 open issues** on this page of results.
 
-### Who moved code
-Flexicon (10), CharlieKolb (9), Cadiac (7), luigigubello (6), JoseBra (6)
-
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
