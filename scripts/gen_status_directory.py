@@ -7,7 +7,7 @@ Extra repositories can be added to docs/status/requested.json (a JSON list of
 "owner/name" strings) - that file is how a repository claimed on the landing
 page gets a page here.
 """
-import os, json, datetime, pathlib, urllib.request
+import os, re, json, datetime, pathlib, urllib.parse, urllib.request
 
 TOKEN = os.environ.get('GH_TOKEN') or os.environ.get('GITHUB_TOKEN') or ''
 API = 'https://api.github.com'
@@ -23,17 +23,43 @@ BASE = ['sveltejs/svelte', 'vitejs/vite', 'withastro/astro', 'prisma/prisma', 's
         'immich-app/immich', 'zed-industries/zed']
 
 
-def get(path, q=''):
-    req = urllib.request.Request(API + path + q, headers={
+UNAVAILABLE = 'commit data unavailable this week'
+MAX_PAGES = 10  # up to 1000 commits / closed PRs per repository per week
+
+
+def fetch(url):
+    """One API request. Returns (parsed json, next-page url) or (None, None) on any error."""
+    req = urllib.request.Request(url, headers={
         'Authorization': 'Bearer ' + TOKEN,
         'Accept': 'application/vnd.github+json',
-        'User-Agent': 'pilotless-status/0.4'})
+        'User-Agent': 'pilotless-status/0.5'})
     try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            return json.loads(r.read().decode())
+        with urllib.request.urlopen(req, timeout=60) as r:
+            m = re.search(r'<([^>]+)>;\s*rel="next"', r.headers.get('Link') or '')
+            return json.loads(r.read().decode()), (m.group(1) if m else None)
     except Exception as e:
-        print('WARN', path, repr(e)[:120])
-        return None
+        print('WARN', url.replace(API, '')[:100], repr(e)[:120])
+        return None, None
+
+
+def get(path, q=''):
+    return fetch(API + path + q)[0]
+
+
+def get_all(path, q='', stop=None):
+    """Follow Link: rel=next up to MAX_PAGES. Returns a list, or None if any page failed
+    (a partial count would be presented as a real number, so it is treated as missing).
+    stop(item) -> True ends paging early once results are past the window."""
+    url, items = API + path + q, []
+    for _ in range(MAX_PAGES):
+        page, nxt = fetch(url)
+        if not isinstance(page, list):
+            return None
+        items += page
+        if not nxt or (stop and page and stop(page[-1])):
+            return items
+        url = nxt
+    return items
 
 
 def main():
@@ -49,8 +75,12 @@ def main():
         except Exception as e:
             print('WARN requested.json', repr(e)[:80])
     now = datetime.datetime.now(datetime.timezone.utc)
-    since = now - datetime.timedelta(days=7)
+    # Fixed window: the seven whole UTC days before today's 00:00 UTC. Anchoring to the
+    # run time made counts depend on when (and how often) the workflow ran.
+    end = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    since = end - datetime.timedelta(days=7)
     sincez = since.strftime('%Y-%m-%dT%H:%M:%SZ')
+    endz = end.strftime('%Y-%m-%dT%H:%M:%SZ')
 
     def age(ts):
         try:
@@ -60,35 +90,52 @@ def main():
 
     index, written, failed = [], 0, []
     for full in repos:
-        commits = get('/repos/' + full + '/commits', '?since=' + sincez + '&per_page=100')
+        meta = get('/repos/' + full)
+        branch = (meta or {}).get('default_branch') or ''
+        # Commits are counted on the default branch only (that is what the commits API
+        # returns without sha=). Name it on the page so work on other branches is not
+        # mistaken for "nothing happened". If any page of commits fails (rate limit,
+        # timeout, API error) the count is unknown and the page says so - never 0.
+        commits = get_all('/repos/' + full + '/commits', '?since=' + sincez + '&until=' + endz + '&per_page=100' + ('&sha=' + urllib.parse.quote(branch, safe='') if branch else ''))
         pulls = get('/repos/' + full + '/pulls', '?state=open&sort=updated&direction=asc&per_page=100')
-        closed = get('/repos/' + full + '/pulls', '?state=closed&sort=updated&direction=desc&per_page=50')
+        closed = get_all('/repos/' + full + '/pulls', '?state=closed&sort=updated&direction=desc&per_page=100',
+                         stop=lambda p: (p.get('updated_at') or '') < sincez)
         issues = get('/repos/' + full + '/issues', '?state=open&sort=created&direction=desc&per_page=100')
-        if not isinstance(commits, list) or not isinstance(pulls, list):
+        if not isinstance(pulls, list):
             failed.append(full)
             continue
-        closed = closed if isinstance(closed, list) else []
         issues = issues if isinstance(issues, list) else []
         # Only the number of distinct authors is published. Per-person names and
         # commit counts are deliberately not written to these public pages (CEO
         # privacy decision); per-person activity stays in the private digest the
         # status-action writes inside the installer's own repository.
         authors = {}
-        for c in commits:
+        for c in commits or []:
             a = (c.get('author') or {}).get('login') or ((c.get('commit') or {}).get('author') or {}).get('name') or 'unknown'
             authors[a] = authors.get(a, 0) + 1
-        merged = [p for p in closed if p.get('merged_at') and p['merged_at'] >= sincez]
+        merged = [p for p in closed or [] if p.get('merged_at') and sincez <= p['merged_at'] < endz]
         stalled = [p for p in pulls if (p.get('updated_at') or '') < sincez][:5]
         unowned = [i for i in issues if not i.get('assignee') and not i.get('pull_request') and (i.get('comments') or 0) == 0][:5]
-        ncommits = '100+' if len(commits) >= 100 else str(len(commits))
-        nmerged = ('at least ' + str(len(merged))) if len(closed) >= 50 else str(len(merged))
-        desc = (full + ' this week: ' + ncommits + ' commits, ' + str(len(stalled)) + ' stalled pull requests and ' + str(len(unowned)) + ' unowned issues, from public GitHub activity. Unofficial weekly status report.')
+        on = ('`' + branch + '`') if branch else 'the default branch'
+        if commits is None:
+            ncommits, summary = UNAVAILABLE, '**' + UNAVAILABLE + '**'
+        else:
+            capped = len(commits) >= MAX_PAGES * 100
+            ncommits = (str(len(commits)) + '+' if capped else str(len(commits))) + ' commits'
+            summary = ('**' + ncommits + '** to ' + on + ' by ' + str(len(authors)) + (' person' if len(authors) == 1 else ' people')) if commits else ('**No commits** to ' + on)
+            if not commits:
+                ncommits = 'no commits to ' + (branch or 'the default branch')
+        if closed is None:
+            nmerged = 'merged pull request count unavailable'
+        else:
+            nmerged = ('at least ' if len(closed) >= MAX_PAGES * 100 else '') + str(len(merged)) + ' pull requests merged'
+        desc = (full + ' this week: ' + ncommits + ', ' + str(len(stalled)) + ' stalled pull requests and ' + str(len(unowned)) + ' unowned issues, from public GitHub activity. Unofficial weekly status report.')
         L = ['---', 'title: "' + full + ' weekly status: stalled PRs and unowned issues"', 'description: "' + desc.replace('"', "'") + '"', '---', '',
              '[All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)', '',
              '# Weekly status: ' + full, '']
-        L.append('_' + since.date().isoformat() + ' to ' + now.date().isoformat() + " (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](" + REPO + '). Not affiliated with the project, and no information here that GitHub does not publish._')
+        L.append('_' + since.date().isoformat() + ' to ' + (end - datetime.timedelta(days=1)).date().isoformat() + " (7 full days, UTC). Unofficial: generated from this repository's public GitHub activity by [pilotless status](" + REPO + '). Not affiliated with the project, and no information here that GitHub does not publish._')
         L.append('')
-        L.append('**' + ncommits + ' commits** by ' + str(len(authors)) + ' people, **' + nmerged + ' pull requests merged**, **' + str(len(pulls)) + ' open pull requests**, **' + str(len([i for i in issues if not i.get('pull_request')])) + ' open issues** on this page of results.')
+        L.append(summary + ', **' + nmerged + '**, **' + str(len(pulls)) + ' open pull requests**, **' + str(len([i for i in issues if not i.get('pull_request')])) + ' open issues** on this page of results.')
         L.append('')
         L.append('### Stalled pull requests')
         if stalled:
@@ -114,7 +161,7 @@ def main():
         slug = full.replace('/', '--').lower()
         (out / (slug + '.md')).write_text('\n'.join(L) + '\n')
         written += 1
-        index.append('- [' + full + '](' + slug + '.md) - ' + ncommits + ' commits, ' + str(len(stalled)) + ' stalled PRs, ' + str(len(unowned)) + ' unowned issues')
+        index.append('- [' + full + '](' + slug + '.md) - ' + ncommits + ', ' + str(len(stalled)) + ' stalled PRs, ' + str(len(unowned)) + ' unowned issues')
     I = ['---', 'title: "Weekly status reports for ' + str(written) + ' open source GitHub repositories"',
          'description: "What shipped, which pull requests stalled and which issues nobody picked up, for ' + str(written) + ' popular open source repositories. Regenerated weekly from public GitHub data."', '---', '',
          '# Weekly status pages', '']

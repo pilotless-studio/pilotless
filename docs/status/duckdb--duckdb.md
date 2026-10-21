@@ -1,33 +1,33 @@
 ---
 title: "duckdb/duckdb weekly status: stalled PRs and unowned issues"
-description: "duckdb/duckdb this week: 100+ commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "duckdb/duckdb this week: 757 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
 
 # Weekly status: duckdb/duckdb
 
-_2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-14 to 2026-10-20 (7 full days, UTC). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**100+ commits** by 12 people, **at least 33 pull requests merged**, **100 open pull requests**, **18 open issues** on this page of results.
+**757 commits** to `main` by 50 people, **275 pull requests merged**, **100 open pull requests**, **45 open issues** on this page of results.
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#25900](https://github.com/duckdb/duckdb/pull/25900) [v2.1][Explain] Control the default FORMAT to use for EXPLAIN through a setting - last touched 25 days ago
-- [#25940](https://github.com/duckdb/duckdb/pull/25940) fix: prevent integer to bignum truncation near powers of two - last touched 25 days ago
-- [#25897](https://github.com/duckdb/duckdb/pull/25897) Add regression test for QUALIFY above a filtered aggregate subquery - last touched 24 days ago
-- [#25349](https://github.com/duckdb/duckdb/pull/25349) Add operator-owned sub-plans to EXPLAIN - last touched 24 days ago
-- [#24942](https://github.com/duckdb/duckdb/pull/24942) Support multi-index scans with full filter coverage - last touched 24 days ago
+- [#25897](https://github.com/duckdb/duckdb/pull/25897) Add regression test for QUALIFY above a filtered aggregate subquery - last touched 30 days ago
+- [#25349](https://github.com/duckdb/duckdb/pull/25349) Add operator-owned sub-plans to EXPLAIN - last touched 30 days ago
+- [#24942](https://github.com/duckdb/duckdb/pull/24942) Support multi-index scans with full filter coverage - last touched 29 days ago
+- [#26060](https://github.com/duckdb/duckdb/pull/26060) Fix CSV heap OOB read from over-value that shares a longer value's prefix with the null st - last touched 27 days ago
+- [#26087](https://github.com/duckdb/duckdb/pull/26087) Parquet: decompress pages directly from the prefetch buffer - last touched 27 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#27269](https://github.com/duckdb/duckdb/issues/27269) v2 quack connect: INTERNAL Error: PREPARE succeeded but the prepared statement was not reg - opened 0 days ago
-- [#27265](https://github.com/duckdb/duckdb/issues/27265) Parsing a list literal costs ~5 KB of heap per element: a 13 MB statement with a 2.1 M-ele - opened 0 days ago
-- [#27262](https://github.com/duckdb/duckdb/issues/27262) Arrow import: dictionary-encoded child of a fixed-size list binds as the index type (wrong - opened 0 days ago
-- [#27247](https://github.com/duckdb/duckdb/issues/27247) `&&` (`ST_Intersects_Extent`) on CRS-parameterized `GEOMETRY('<crs>')` is not pushed down  - opened 0 days ago
-- [#27224](https://github.com/duckdb/duckdb/issues/27224) Shell sets active_grammar_extensions=['shell'] wholesale, disabling grammar extensions reg - opened 1 days ago
+- [#27601](https://github.com/duckdb/duckdb/issues/27601) Parquet reader reads whole row groups when filtering on a small field of a large struct - opened 0 days ago
+- [#27591](https://github.com/duckdb/duckdb/issues/27591) Window DISTINCT aggregate livelocks (100 % CPU, never returns) when a build task hits the  - opened 0 days ago
+- [#27586](https://github.com/duckdb/duckdb/issues/27586) ST_Intersects/ST_Contains/ST_Within lose row-group pruning with an IN or OR filter on 2.0 - opened 0 days ago
+- [#27583](https://github.com/duckdb/duckdb/issues/27583) append_metadata.cmake silently generates a truncated extension footer with CMake 3.17.5 - opened 0 days ago
+- [#27573](https://github.com/duckdb/duckdb/issues/27573) When reading an xlsx file using duckdb read_xlsx, a text value of 0.07 is returned as 7.00 - opened 0 days ago
 
 ---
 

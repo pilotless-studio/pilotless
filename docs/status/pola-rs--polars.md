@@ -1,33 +1,33 @@
 ---
 title: "pola-rs/polars weekly status: stalled PRs and unowned issues"
-description: "pola-rs/polars this week: 81 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
+description: "pola-rs/polars this week: 90 commits, 5 stalled pull requests and 5 unowned issues, from public GitHub activity. Unofficial weekly status report."
 ---
 
 [All status pages](./) · [Unowned issues across all projects](unowned.html) · [How to write a weekly status report from GitHub](../weekly-status-report.html)
 
 # Weekly status: pola-rs/polars
 
-_2026-10-08 to 2026-10-15 (7 days). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
+_2026-10-14 to 2026-10-20 (7 full days, UTC). Unofficial: generated from this repository's public GitHub activity by [pilotless status](https://github.com/pilotless-studio/pilotless). Not affiliated with the project, and no information here that GitHub does not publish._
 
-**81 commits** by 16 people, **at least 42 pull requests merged**, **100 open pull requests**, **57 open issues** on this page of results.
+**90 commits** to `main` by 13 people, **90 pull requests merged**, **100 open pull requests**, **55 open issues** on this page of results.
 
 ### Stalled pull requests
 Open, and untouched for seven days or more:
 
-- [#27169](https://github.com/pola-rs/polars/pull/27169) refactor(rust): Sortedness propagation in order optimizer - last touched 195 days ago
-- [#27503](https://github.com/pola-rs/polars/pull/27503) try remove AExpr `_name_last` iter variants - last touched 163 days ago
-- [#27438](https://github.com/pola-rs/polars/pull/27438) refactor(rust): Reuse allocations in IR / AExpr deep copying - last touched 163 days ago
-- [#27932](https://github.com/pola-rs/polars/pull/27932) refactor: Remove `POLARS_AUTO_STREAMING` in favor of using `POLARS_FORCE_STREAMING` - last touched 50 days ago
-- [#28203](https://github.com/pola-rs/polars/pull/28203) test(python): Test for lazy schema correctness - last touched 50 days ago
+- [#27169](https://github.com/pola-rs/polars/pull/27169) refactor(rust): Sortedness propagation in order optimizer - last touched 201 days ago
+- [#27503](https://github.com/pola-rs/polars/pull/27503) try remove AExpr `_name_last` iter variants - last touched 169 days ago
+- [#27438](https://github.com/pola-rs/polars/pull/27438) refactor(rust): Reuse allocations in IR / AExpr deep copying - last touched 169 days ago
+- [#27932](https://github.com/pola-rs/polars/pull/27932) refactor: Remove `POLARS_AUTO_STREAMING` in favor of using `POLARS_FORCE_STREAMING` - last touched 56 days ago
+- [#28203](https://github.com/pola-rs/polars/pull/28203) test(python): Test for lazy schema correctness - last touched 56 days ago
 
 ### Issues nobody has picked up
 Open, unassigned, and with no replies yet:
 
-- [#29979](https://github.com/pola-rs/polars/issues/29979) Invert pure maps during filter pushdown - opened 0 days ago
-- [#29977](https://github.com/pola-rs/polars/issues/29977) Allow defining the comparison operators of foreign types against `pl.Expr` - opened 0 days ago
-- [#29976](https://github.com/pola-rs/polars/issues/29976) Constant folding of `pl.Expr.dt.replace_time_unit` - opened 0 days ago
-- [#29974](https://github.com/pola-rs/polars/issues/29974) `slice` does not pushdown `n_rows` into IO plugins. - opened 0 days ago
-- [#29969](https://github.com/pola-rs/polars/issues/29969) SQL: read_csv() does not accept a list of paths, unlike scan_csv - opened 0 days ago
+- [#30127](https://github.com/pola-rs/polars/issues/30127) GPU rejects covariance in a group aggregation with `corr` and `ErrorExpr` diagnostics - opened 0 days ago
+- [#30116](https://github.com/pola-rs/polars/issues/30116) GPU duplicate sort keys followed by a projection fail with an `ExceptionGroup` - opened 0 days ago
+- [#30112](https://github.com/pola-rs/polars/issues/30112) Streaming right join raises `DuplicateError` when a left column already uses the default s - opened 0 days ago
+- [#30111](https://github.com/pola-rs/polars/issues/30111) `dt.offset_by` keeps the sorted flag when the result overflows and wraps around - opened 0 days ago
+- [#30109](https://github.com/pola-rs/polars/issues/30109) docs: Document Redis connectivity through ADBC - opened 0 days ago
 
 ---
 
