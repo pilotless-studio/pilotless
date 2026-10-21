@@ -50,7 +50,7 @@ action makes no outbound call other than to `api.github.com`.
 
 - It reads GitHub only. Work that happens in a chat app or a spreadsheet is invisible to it.
 - It is deterministic, not clever. It will not tell you *why* a PR stalled, only that it did.
-- The first 100 pull requests and issues by recent activity, and 100 commits in the window.
+- Commits, merged pull requests, and opened or closed issues are paged up to 1000 in the window. A failed page is reported as unavailable, not as a count. Stalled pull requests are capped at the pull requests fetched for that window. Unowned issues are paged oldest-first, up to 1000.
 
 ## Why this exists
 
