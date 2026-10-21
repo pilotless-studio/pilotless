@@ -9,8 +9,12 @@ OUT = (os.environ.get('OUT') or 'summary').lower()
 PREFIX = (os.environ.get('TITLE_PREFIX') or 'Weekly status').strip()
 API = 'https://api.github.com'
 NOW = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
-SINCE = NOW - datetime.timedelta(days=DAYS)
+# Fixed window: the DAYS whole UTC days before today's 00:00 UTC, so two runs on the
+# same day report the same numbers regardless of the time they ran.
+END = NOW.replace(hour=0, minute=0, second=0)
+SINCE = END - datetime.timedelta(days=DAYS)
 SINCE_S = SINCE.strftime('%Y-%m-%dT%H:%M:%SZ')
+END_S = END.strftime('%Y-%m-%dT%H:%M:%SZ')
 WARN = []
 
 def call(path, params=None, method='GET', body=None):
@@ -34,6 +38,23 @@ def safe(path, params=None):
     except Exception as e:
         WARN.append(path + ' -> ' + str(e))
         return []
+
+def safe_all(path, params, pages=10):
+    # Page through results (up to pages*100). None means the count is unknown: a failed
+    # page must not be reported as a real, smaller number.
+    out = []
+    for n in range(1, pages + 1):
+        try:
+            page = call(path, dict(params, per_page=100, page=n))
+        except Exception as e:
+            WARN.append(path + ' -> ' + str(e))
+            return None
+        if not isinstance(page, list):
+            return None
+        out += page
+        if len(page) < 100:
+            break
+    return out
 
 def when(s):
     try:
@@ -60,27 +81,29 @@ def link(x):
 if not REPO:
     raise SystemExit('GH_REPO is empty: set it to owner/name')
 
-commits = safe('/repos/' + REPO + '/commits', {'since': SINCE_S, 'per_page': 100})
+commits = safe_all('/repos/' + REPO + '/commits', {'since': SINCE_S, 'until': END_S})
+commits_ok = commits is not None
+commits = commits or []
 pulls = safe('/repos/' + REPO + '/pulls', {'state': 'all', 'sort': 'updated', 'direction': 'desc', 'per_page': 100})
 recent = safe('/repos/' + REPO + '/issues', {'state': 'all', 'sort': 'updated', 'direction': 'desc', 'per_page': 100, 'since': SINCE_S})
 openish = safe('/repos/' + REPO + '/issues', {'state': 'open', 'sort': 'updated', 'direction': 'asc', 'per_page': 100})
 
 authors = collections.Counter(who(c) for c in commits)
-merged = [p for p in pulls if p.get('merged_at') and when(p['merged_at']) >= SINCE]
+merged = [p for p in pulls if p.get('merged_at') and SINCE <= when(p['merged_at']) < END]
 open_pr = [p for p in pulls if p.get('state') == 'open']
 inflight = [p for p in open_pr if age(p.get('updated_at')) < 7]
 stalled = [p for p in open_pr if age(p.get('updated_at')) >= 7]
 issues = [i for i in recent if 'pull_request' not in i]
-opened_i = [i for i in issues if when(i.get('created_at')) >= SINCE]
-closed_i = [i for i in issues if i.get('closed_at') and when(i['closed_at']) >= SINCE]
+opened_i = [i for i in issues if SINCE <= when(i.get('created_at')) < END]
+closed_i = [i for i in issues if i.get('closed_at') and SINCE <= when(i['closed_at']) < END]
 unowned = [i for i in openish if 'pull_request' not in i and not i.get('assignees') and age(i.get('updated_at')) >= 14]
 
 L = []
 L.append('## ' + PREFIX + ': ' + REPO)
 L.append('')
-L.append('_' + SINCE.strftime('%Y-%m-%d') + ' to ' + NOW.strftime('%Y-%m-%d') + ' (' + str(DAYS) + ' days). Written from repository activity by [pilotless status](https://github.com/pilotless-studio/pilotless). No model, no API key, no signup._')
+L.append('_' + SINCE.strftime('%Y-%m-%d') + ' to ' + (END - datetime.timedelta(days=1)).strftime('%Y-%m-%d') + ' (' + str(DAYS) + ' full days, UTC). Written from repository activity by [pilotless status](https://github.com/pilotless-studio/pilotless). No model, no API key, no signup._')
 L.append('')
-L.append('**' + str(len(commits)) + ' commits** by ' + str(len(authors)) + ' people, **' + str(len(merged)) + ' PRs merged**, **' + str(len(closed_i)) + ' issues closed**, ' + str(len(opened_i)) + ' opened.')
+L.append(('**' + str(len(commits)) + ' commits** by ' + str(len(authors)) + ' people' if commits_ok else '**commit data unavailable this week**') + ', **' + str(len(merged)) + ' PRs merged**, **' + str(len(closed_i)) + ' issues closed**, ' + str(len(opened_i)) + ' opened.')
 L.append('')
 if merged:
     L.append('### Shipped')
@@ -110,7 +133,7 @@ if authors:
     L.append('### Who moved code')
     L.append(', '.join(a + ' (' + str(n) + ')' for a, n in authors.most_common()))
     L.append('')
-if not (commits or merged or open_pr or issues):
+if commits_ok and not (commits or merged or open_pr or issues):
     L.append('Nothing moved in this window. No commits, no pull requests, no issue activity.')
     L.append('')
 L.append('---')
