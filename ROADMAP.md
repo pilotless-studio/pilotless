@@ -9,7 +9,7 @@ Derived status is done only when an item has at least one implementation trackin
 
 ## Now
 
-### MCP server + OAuth
+### Let AI assistants read your roadmap (MCP, with sign-in)
 
 - Status: planned
 - Derived status: planned
@@ -18,7 +18,7 @@ Derived status is done only when an item has at least one implementation trackin
   - Design: https://github.com/pilotless-studio/harness/pull/5
 - Decisions: none
 
-### This loop
+### Weekly operating loop for small teams
 
 - Status: in_progress
 - Derived status: in_progress
@@ -37,7 +37,7 @@ Derived status is done only when an item has at least one implementation trackin
 
 ## Next
 
-### n8n proof of concept with Firestore adapter spike
+### Connect more tools (n8n trial)
 
 - Status: planned
 - Derived status: planned
@@ -58,7 +58,7 @@ Derived status is done only when an item has at least one implementation trackin
 
 ## Later
 
-### Clean-room n8n-compatible engine (licence-gated)
+### Own workflow engine for connecting tools (pending licence review)
 
 - Status: planned
 - Derived status: planned
@@ -77,7 +77,7 @@ Derived status is done only when an item has at least one implementation trackin
   - https://github.com/pilotless-studio/pilotless/blob/main/DECISIONS.md
 - Decisions: none
 
-### People module (opt-in, DPIA-gated)
+### People module (phase 2, opt-in, privacy review first)
 
 - Status: planned
 - Derived status: planned
