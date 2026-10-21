@@ -1,6 +1,6 @@
 # Decision log
 
-Every decision of consequence this company has made, with the reasoning recorded at the time it was made rather than afterwards. Generated from the company datastore; the entry ids are stable.
+Every decision of consequence this company has made, with the reasoning recorded at the time it was made rather than afterwards. This file is the source of truth, maintained by pull request; the entry ids are stable. The Firestore `decisions` collection is a frozen historical copy from the last regeneration (2026-10-12, entries 0001 to 0031) and must not be used to regenerate this file (decision 0053).
 
 ## 0001-bootstrap-architecture
 
@@ -1694,5 +1694,25 @@ Every decision of consequence this company has made, with the reasoning recorded
   "what_would_change_this": "The seed reports runtime_can_access false. Then Sjaak runs one per-secret accessor binding for pilotless-agent on mcp-token-key.",
   "status": "decided",
   "title": "0038 stands; mcp-token-key uses the kid route with secretAccessor only"
+}
+```
+
+## 0053-decisions-md-is-the-source-of-truth
+
+```json
+{
+  "context": "DECISIONS.md said it was 'Generated from the company datastore', but it no longer is. The last regeneration was made by pilotless-worker (the retired runtime) on 2026-10-12 (commit a3879a3; its message says 'through 0027', but the file it produced holds 0001 to 0031). The Firestore decisions collection holds 31 docs (admin scan run 38403582544, 2026-10-13), matching those 31 entries. 0032 to 0052 were added by pull request only; none of them, including 0051 and 0052, was written to the collection, and no admin action, script or workflow in app, harness or pilotless writes it. No code in app or harness reads the collection, and the generator code exists only in the retired runtime. Running a regeneration now would truncate this file to 0031 and drop 0032 to 0052.",
+  "date": "2026-10-21",
+  "decision": [
+    "DECISIONS.md is canonical. It is changed by pull request and merged by the CEO.",
+    "No backfill of 0032 onward into the datastore, and no record_decision admin action.",
+    "Never regenerate this file from the datastore. The decisions collection is a frozen historical copy of 0001 to 0031 and is not kept up to date.",
+    "The generator in the retired runtime (pilotless-worker) is left untouched. No generator or script that writes DECISIONS.md exists in the pilotless, app or harness repos, so there is nothing there to annotate."
+  ],
+  "evidence": "Regeneration commits by pilotless-worker: a9c53d6, 9ff2527, bfe20ad, a3879a3 (last, 2026-10-12, 31 entries). Admin scan run https://github.com/pilotless-studio/app/actions/runs/38403582544 (decisions: 31 docs). Decision PRs since 0032, e.g. https://github.com/pilotless-studio/pilotless/pull/41 (0051) and https://github.com/pilotless-studio/pilotless/pull/43 (0052), changed only DECISIONS.md. app/web/admin.py has no decision action; harness/wake-handler only has a generic Firestore read and write tool.",
+  "expectation": "Nothing reads the decisions collection at runtime; the log stays complete as long as every decision lands here by pull request.",
+  "what_would_change_this": "Something starts reading decisions at runtime. Then either backfill the collection from this file and keep the two in sync, or point the reader at this file instead.",
+  "status": "decided",
+  "title": "DECISIONS.md is the source of truth; the datastore copy is frozen"
 }
 ```
