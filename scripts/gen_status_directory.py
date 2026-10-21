@@ -69,11 +69,14 @@ def main():
             continue
         closed = closed if isinstance(closed, list) else []
         issues = issues if isinstance(issues, list) else []
+        # Only the number of distinct authors is published. Per-person names and
+        # commit counts are deliberately not written to these public pages (CEO
+        # privacy decision); per-person activity stays in the private digest the
+        # status-action writes inside the installer's own repository.
         authors = {}
         for c in commits:
             a = (c.get('author') or {}).get('login') or ((c.get('commit') or {}).get('author') or {}).get('name') or 'unknown'
             authors[a] = authors.get(a, 0) + 1
-        top = sorted(authors.items(), key=lambda kv: -kv[1])[:5]
         merged = [p for p in closed if p.get('merged_at') and p['merged_at'] >= sincez]
         stalled = [p for p in pulls if (p.get('updated_at') or '') < sincez][:5]
         unowned = [i for i in issues if not i.get('assignee') and not i.get('pull_request') and (i.get('comments') or 0) == 0][:5]
@@ -87,8 +90,6 @@ def main():
         L.append('')
         L.append('**' + ncommits + ' commits** by ' + str(len(authors)) + ' people, **' + nmerged + ' pull requests merged**, **' + str(len(pulls)) + ' open pull requests**, **' + str(len([i for i in issues if not i.get('pull_request')])) + ' open issues** on this page of results.')
         L.append('')
-        if top:
-            L += ['### Who moved code', ', '.join(a + ' (' + str(n) + ')' for a, n in top), '']
         L.append('### Stalled pull requests')
         if stalled:
             L += ['Open, and untouched for seven days or more:', '']
