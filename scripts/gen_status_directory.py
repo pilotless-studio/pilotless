@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Regenerate docs/status/: one weekly status page per tracked public repository.
 
-Reads only what GitHub publishes, through the documented API. Run weekly by
-.github/workflows/weekly-directory.yml with the repository's own GITHUB_TOKEN.
+Reads only what GitHub publishes, through the documented API. The weekly
+status directory workflow runs this on the runner and publishes the Jekyll
+site to GitHub Pages. It does not commit the pages.
 Extra repositories can be added to docs/status/requested.json (a JSON list of
 "owner/name" strings) - that file is how a repository claimed on the landing
 page gets a page here.
