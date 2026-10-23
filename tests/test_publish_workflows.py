@@ -28,7 +28,8 @@ class PublishWorkflowTests(unittest.TestCase):
         text = read(".github/workflows/ci.yml")
         self.assertNotIn("workflow_dispatch", text)
         self.assertIn("pull_request:", text)
-        self.assertIn("name: tests", text)
+        # The required check context is this job id. There is no job-level name.
+        self.assertIn("\n  tests:\n", text)
 
     def test_weekly_directory_deploys_pages_and_does_not_push(self):
         text = read(".github/workflows/weekly-directory.yml")
