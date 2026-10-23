@@ -1716,3 +1716,41 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "DECISIONS.md is the source of truth; the datastore copy is frozen"
 }
 ```
+
+## 0054-generated-commits-pass-tests-before-main
+
+```json
+{
+  "context": "main is protected. The public branch object requires the GitHub Actions check tests (app_id 15368) and enforcement is non_admins, so the actions bot is not exempt. The rulesets list is empty. This token got 403 on the protection-detail endpoints, so the strict flag was not re-read here; it is strict, and the failing hook did not demand a pull request. ci.yml's only job is named tests and, before this change, ran only on pull_request. roadmap.yml and weekly-directory.yml committed and pushed straight to main with GITHUB_TOKEN. A GITHUB_TOKEN push does not start other workflows, so the new SHA never got a tests check. GitHub rejected it with GH006: Required status check \"tests\" is expected. roadmap run 39960922574 (2026-10-23T13:24Z, message 'Sync ROADMAP.md from pilotless.nl/roadmap.md') and weekly-directory run 39773512114 (2026-10-22T11:49Z) failed that way. Earlier roadmap runs the same day stayed green only because ROADMAP.md had not changed, so they exited before the push.",
+  "date": "2026-10-23",
+  "decision": [
+    "Generated commits land on main only when the GitHub Actions check named tests (app id 15368) is success on that exact SHA. The tests job name stays tests. Branch protection is not changed. No PAT, no GitHub App, no new secret.",
+    "Both generators call one composite action, .github/actions/land-on-main. It regenerates, and if nothing changed it stops (no commit, no dispatch). Otherwise it pushes a land/<slug>/<run_id>/<attempt> branch, dispatches ci.yml on that ref, waits until the tests check on that SHA is success, and fast-forwards main to that SHA.",
+    "ci.yml gains a workflow_dispatch trigger and keeps contents: read, so the dispatched run can execute tests and cannot push. The caller workflows have contents: write, actions: write, and checks: read.",
+    "If main moves during the wait or the fast-forward is not a fast-forward, the action regenerates on the new main and tries once more. A second race fails the run. It does not force-push. A GH006 that still says the check is expected, after the check is success and main has not moved, is a hard failure (one short re-push for API lag, then stop)."
+  ],
+  "reasoning": [
+    "GITHUB_TOKEN pushes and ordinary events do not start workflows. workflow_dispatch and repository_dispatch are the documented exceptions. A pull request opened with GITHUB_TOKEN creates pull_request runs only in an approval-required state, which puts a human in the loop, so that path is out.",
+    "The required check is a classic branch-protection check (context tests, app 15368), not a ruleset. Ruleset docs say workflow_dispatch job checks are ignored for ruleset required checks and do not show in a pull request's checks list. This repo has no rulesets, and a fast-forward pushes the same SHA the check ran on, so there is no merge-commit SHA for the hook to look at instead. Protection matches context, app, and conclusion on the commit being pushed.",
+    "Posting a fabricated tests check through the Checks API would satisfy the name without running ci.yml. That weakens the check. Running the existing tests job is the whole point.",
+    "A PAT or GitHub App token would make a normal push or pull_request event fire, which is the usual workaround, and it is rejected here because it needs a new secret."
+  ],
+  "expectations": [
+    "A generated commit reaches main only with a successful tests check from app 15368 on that SHA, the same bar as any other change.",
+    "A commit that fails py_compile or unittest does not move main. The bot branch is left in place for the log.",
+    "Hours where ROADMAP.md is unchanged stay green and do not dispatch ci.yml.",
+    "If main moves once during a run, one regenerate plus a new tests run still lands. A second move fails the run rather than force-pushing.",
+    "After this is on main, the next roadmap run that changes ROADMAP.md goes green, and the next Thursday weekly-directory run (cron 17 6 * * 4, 2026-10-29 06:17 UTC) goes green. Dispatching weekly-directory before Thursday refreshes the directory the same way."
+  ],
+  "falsifiable_by": "A run where the tests check is success on the bot-branch SHA and the fast-forward still returns GH006 'Required status check tests is expected'. That means this protection does not accept workflow_dispatch checks. The next step is a GitHub App token that can open a real pull_request, which is a new secret and a new decision. Do not bypass the check.",
+  "evidence": [
+    "https://github.com/pilotless-studio/pilotless/actions/runs/39960922574",
+    "https://github.com/pilotless-studio/pilotless/actions/runs/39773512114",
+    "Public branch object: required_status_checks.checks = [{context: tests, app_id: 15368}], enforcement_level non_admins. GET /rulesets returned [].",
+    "Earlier green roadmap runs the same day, with no diff: 39918144812 and 39884301442."
+  ],
+  "cost": "One ci.yml run per generated commit. No new secrets. No change to branch protection.",
+  "status": "decided",
+  "title": "Generated commits reach main only after the tests check passes on that SHA"
+}
+```
