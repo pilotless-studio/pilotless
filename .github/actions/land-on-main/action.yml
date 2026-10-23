@@ -1,0 +1,37 @@
+name: Land generated commit on main
+description: >-
+  Regenerate files, commit them on a short-lived branch, dispatch ci.yml so the
+  tests check runs on that commit, then fast-forward main. No-op when nothing
+  changed. If main moves, regenerate once and try again.
+inputs:
+  slug:
+    description: Short lowercase token used in the bot branch name.
+    required: true
+  commit-message:
+    description: Commit message for the generated change.
+    required: true
+  paths:
+    description: Newline-separated paths to stage.
+    required: true
+  git-name:
+    description: Git author name.
+    required: true
+  git-email:
+    description: Git author email.
+    required: true
+  regenerate:
+    description: Shell command that regenerates the paths. Re-run when main moves.
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        LAND_SLUG: ${{ inputs.slug }}
+        LAND_COMMIT_MESSAGE: ${{ inputs.commit-message }}
+        LAND_PATHS: ${{ inputs.paths }}
+        LAND_GIT_NAME: ${{ inputs.git-name }}
+        LAND_GIT_EMAIL: ${{ inputs.git-email }}
+        LAND_REGENERATE: ${{ inputs.regenerate }}
+        GH_TOKEN: ${{ github.token }}
+      run: python3 "$GITHUB_ACTION_PATH/land_on_main.py"

@@ -1,6 +1,7 @@
 name: ci
 on:
   pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -28,11 +29,11 @@ jobs:
             python -m unittest discover -s "$d" -t "$d" -p 'test_*.py' -v
             echo "::endgroup::"
           done
-      - name: action.yml parses as YAML
+      - name: action and workflow YAML parses
         run: |
           set -euo pipefail
           python -m pip install pyyaml
-          find . \( -name 'action.yml' -o -name 'action.yaml' \) -not -path './.git/*' -print0 \
+          find . \( -name 'action.yml' -o -name 'action.yaml' -o \( -path './.github/workflows/*' \( -name '*.yml' -o -name '*.yaml' \) \) \) -not -path './.git/*' -print0 \
             | xargs -0 -r python -c 'import sys, yaml
           for f in sys.argv[1:]:
               with open(f) as fh:
