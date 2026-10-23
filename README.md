@@ -24,6 +24,7 @@ Registered users: 0. Revenue: EUR 0. Outside App installs: 0.
 - `worker/` - the harness. A Cloud Run Job draining a Firestore task queue. A task is either a shell script (deterministic, zero model tokens) or a prompt run as an agent loop.
 - [`DECISIONS.md`](DECISIONS.md) - the decision log, 39 entries, each with the reasoning at the time.
 - `STATE.md` - a snapshot of what the company currently believes about itself.
+- Roadmap: [https://pilotless.nl/roadmap.md](https://pilotless.nl/roadmap.md). Firestore is the source of truth; this repository does not keep a copy.
 
 ## Who runs it
 
@@ -37,4 +38,4 @@ Install the pilotless GitHub App: https://pilotless-web-o53cqe2tiq-ew.a.run.app/
 
 ## Worked examples
 
-[Weekly status pages for 18 well-known public repositories](docs/status/) - the same output this action writes, generated from public GitHub activity. Unofficial, and removable on request by any maintainer.
+[Weekly status pages for 18 well-known public repositories](https://pilotless-studio.github.io/pilotless/status/) - the same output this action writes, generated from public GitHub activity. Unofficial, and removable on request by any maintainer.

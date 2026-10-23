@@ -1754,3 +1754,43 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Generated commits reach main only after the tests check passes on that SHA"
 }
 ```
+
+## 0055-publish-directory-delete-roadmap-mirror
+
+```json
+{
+  "context": "Decision 0054 tried to land generated commits by pushing a land/* branch, dispatching ci.yml, waiting until the tests check was success on that SHA, and fast-forwarding main. Production falsified it. Roadmap run 39970392512 (workflow_dispatch, 2026-10-23) committed 674309ee124db82fe238ccb3e37013a631ae58e5. ci run 39970436530 finished its tests job with success on that SHA. The fast-forward was classified as a checks rejection, waited 15s, and was rejected again. The second remote message was GH006: Protected branch update failed for refs/heads/main. Required status check \"tests\" is expected. The action did not force-push. Classic protection still requires tests from app id 15368, enforcement non_admins, and the ruleset list is empty. A success check created by workflow_dispatch is not accepted on this protection. Both the roadmap and weekly status directory workflows were then disabled, and the stale land branch was deleted. The live status directory is GitHub Pages at https://pilotless-studio.github.io/pilotless/ (GET pages: build_type legacy, source branch main path /docs, cname null; the status index returns 200 from server GitHub.com). pilotless.nl is Bunny in front of the app: https://pilotless.nl/roadmap.md and https://pilotless.nl/roadmap return 200, and https://pilotless.nl/status/ returns 404. The github-pages environment allows deployments from main and gh-pages. There is no gh-pages branch. A GITHUB_TOKEN push does not start pages-build-deployment.",
+  "date": "2026-10-23",
+  "decision": [
+    "Supersedes 0054. Remove .github/actions/land-on-main, its tests, and the workflow_dispatch trigger on ci.yml. Do not fast-forward main from a bot branch. Do not fabricate a tests check. Do not change branch protection. No PAT, no new secret, no IAM grant.",
+    "Remove the roadmap mirror from this repository. Delete the roadmap workflow and ROADMAP.md. The roadmap stays the product from 0049: Firestore, rendered by the app at https://pilotless.nl/roadmap and https://pilotless.nl/roadmap.md. Links in this repo point there.",
+    "The weekly status directory workflow keeps its file name and its Thursday 06:17 UTC cron, and it stays disabled until someone re-enables it. It checks out main, regenerates the status pages, the unowned page, and the sitemap in the runner, builds the existing Jekyll site, and deploys the artifact with actions/upload-pages-artifact and actions/deploy-pages. The workflow token can read contents, write Pages, and request the GitHub Pages OIDC token. That OIDC request is for GitHub Pages only. This repository has no Google auth step, and this decision grants no IAM. The job does not commit or push. The committed files under docs/status on main stay as the 2026-10-21 snapshot so this change does not empty the branch-built site.",
+    "One repo setting, not a secret and not an IAM change: Pages source must be GitHub Actions before deploy-pages will accept a deployment. This agent cannot set it (the token has no admin). Until that setting is flipped, pages-build-deployment keeps publishing the snapshot on main, and a dispatch of the new job fails its preflight on purpose.",
+    "Public URLs do not change. The directory remains https://pilotless-studio.github.io/pilotless/status/ and the other pages under that host. After the source flip, a docs edit on main is published by the next run of this workflow (a push to the watched paths, the Thursday cron, or a dispatch), because that run rebuilds the whole site from the checkout plus a fresh directory."
+  ],
+  "reasoning": [
+    "0054's own falsifiable_by fired. The tests check was success on the SHA being pushed and the hook still said the check was expected. Repeating that design will not land a commit.",
+    "Opening a pull request with the workflow GITHUB_TOKEN does not start pull_request workflows, so the tests check would still be missing. A GitHub App installation token or a PAT would start them, and that needs a new secret or an IAM path into Secret Manager. gha-deployer must not receive secret-create. That route is rejected while deploy-pages works with the token the runner already has.",
+    "The directory's public host is GitHub Pages, not Bunny. Deploying a Pages artifact keeps those URLs and does not touch main, so the required tests check stays as it is. Pushing the built site to another branch would not publish it either: Pages is still sourced from main:/docs, and a GITHUB_TOKEN push does not trigger pages-build-deployment.",
+    "The github-pages environment already lists main as a deployment branch, so the deploy job does not need an environment rule change."
+  ],
+  "expectations": [
+    "After merge, the roadmap workflow is gone and weekly status directory is still disabled_manually. Nothing is force-pushed. Branch protection is unchanged.",
+    "After an admin sets Pages source to GitHub Actions, re-enables weekly status directory, and dispatches it on main, the run is green, it does not push a commit, and https://pilotless-studio.github.io/pilotless/status/ shows Last regenerated on the run date. The same URLs keep answering.",
+    "A docs change merged while the workflow is still disabled does not by itself refresh the directory. After the workflow is enabled and the Pages source is GitHub Actions, a push that touches docs or the generator publishes a fresh build without a generated commit on main.",
+    "Dispatching before the Pages source is GitHub Actions fails the preflight and does not push."
+  ],
+  "falsifiable_by": "A run that deploys with actions/deploy-pages and the github.io status index does not change, or a run that pushes to main and hits GH006, or a need for a new secret or an IAM grant to publish these same URLs.",
+  "evidence": [
+    "https://github.com/pilotless-studio/pilotless/actions/runs/39970392512",
+    "https://github.com/pilotless-studio/pilotless/actions/runs/39970436530",
+    "Commit 674309ee124db82fe238ccb3e37013a631ae58e5. tests job success. Fast-forward rejected, 15s wait, rejected again with GH006 Required status check \"tests\" is expected.",
+    "GET /repos/pilotless-studio/pilotless/pages on 2026-10-23: build_type legacy, source branch main path /docs, cname null, html_url https://pilotless-studio.github.io/pilotless/.",
+    "github-pages environment deployment branch policies: gh-pages and main. No gh-pages branch exists.",
+    "https://pilotless.nl/roadmap.md 200 via BunnyCDN; https://pilotless.nl/status/ 404; https://pilotless-studio.github.io/pilotless/status/ 200 via GitHub.com. The live index matches the 2026-10-21 snapshot (Last regenerated 2026-10-21, window 2026-10-14 to 2026-10-20)."
+  ],
+  "cost": "One Pages deploy per Thursday run, per manual dispatch, and per later push to the watched paths. No new secret. No IAM change. No branch-protection change. One admin setting: Pages source GitHub Actions.",
+  "status": "decided",
+  "title": "Publish the status directory with GitHub Pages; delete the roadmap mirror"
+}
+```

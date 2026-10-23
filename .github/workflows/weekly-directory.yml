@@ -1,26 +1,105 @@
 name: weekly status directory
+
+# Publishes https://pilotless-studio.github.io/pilotless/ from a checkout of
+# main plus a freshly generated docs/status. It does not create a commit and
+# it does not push. main still requires the tests check (0055).
+#
+# An admin sets Settings -> Pages -> Build and deployment -> Source to
+# GitHub Actions before the first successful run. This file does not change
+# that setting. The github-pages environment already allows deployments from
+# main. Leave this workflow disabled until that source is saved.
+
 on:
   schedule:
     - cron: '17 6 * * 4'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'scripts/gen_status_directory.py'
+      - 'scripts/gen_unowned.py'
+      - 'scripts/gen_sitemap.py'
+      - 'scripts/ping_indexnow.py'
+      - '.github/workflows/weekly-directory.yml'
+
 permissions:
-  contents: write
-  actions: write
-  checks: read
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-  regenerate:
+  build:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: true
-      - uses: ./.github/actions/land-on-main
+          persist-credentials: false
+      - name: Pages source must be GitHub Actions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if ! build_type=$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq .build_type); then
+            echo "Could not read Pages settings. Not deploying."
+            exit 1
+          fi
+          echo "pages build_type=${build_type}"
+          if [ "$build_type" != "workflow" ]; then
+            echo "Pages source is still ${build_type} (Deploy from a branch)."
+            echo "An admin sets Settings -> Pages -> Build and deployment -> Source to GitHub Actions, then re-runs."
+            echo "This job does not change that setting and does not push."
+            exit 1
+          fi
+      - name: Regenerate the status directory
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test -n "$GH_TOKEN"
+          python3 scripts/gen_status_directory.py
+          python3 scripts/gen_unowned.py
+          python3 scripts/gen_sitemap.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/jekyll-build-pages@v1
         with:
-          slug: weekly-directory
-          commit-message: 'docs: weekly refresh of the status directory'
-          paths: docs
-          git-name: pilotless-bot
-          git-email: agent@pilotless.ai
-          regenerate: python3 scripts/gen_status_directory.py && python3 scripts/gen_unowned.py && python3 scripts/gen_sitemap.py
+          source: ./docs
+          destination: ./_site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+      - uses: actions/upload-artifact@v4
+        with:
+          name: directory-urls
+          path: docs/urls.txt
+          if-no-files-found: error
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: directory-urls
+          path: indexnow
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
       - name: Tell IndexNow the pages changed
-        run: python3 scripts/ping_indexnow.py
+        run: |
+          set -euo pipefail
+          cp indexnow/urls.txt docs/urls.txt
+          python3 scripts/ping_indexnow.py
