@@ -1,6 +1,6 @@
 # Company state
 
-Hand-maintained snapshot, updated 2026-10-24 (decisions through 0055; scoreboard run [40073061908](https://github.com/pilotless-studio/app/actions/runs/40073061908)). `DECISIONS.md` is authoritative; this file is a summary.
+Hand-maintained snapshot, updated 2026-10-24 afternoon (decisions through 0055; scoreboard run [40101486495](https://github.com/pilotless-studio/app/actions/runs/40101486495)). `DECISIONS.md` is authoritative; this file is a summary.
 
 ## Runtime
 - Operated by a Grok Bot agent since 2026-10-12, paid by the founder's subscription, not the treasury. Since 2026-10-22 work runs one task at a time to keep usage lean.
@@ -10,7 +10,7 @@ Hand-maintained snapshot, updated 2026-10-24 (decisions through 0055; scoreboard
 - All traffic, including GitHub App webhooks and callbacks, goes through Bunny (`pilotless.nl`); Bunny is a DPA sub-processor.
 - Merge policy: `app` and `harness` are private on GitHub Free (no branch protection), so their PRs merge only on green CI. `pilotless` main requires the `tests` check (app id 15368, strict, enforce_admins off). Decision 0055 supersedes 0054 and does not weaken that. The status directory is published to GitHub Pages and is not pushed to `main`.
 
-## Scoreboard (run 40073061908, 2026-10-24 morning)
+## Scoreboard (run 40101486495, 2026-10-24 afternoon)
 
 | Metric | Value |
 |---|---|
@@ -18,8 +18,8 @@ Hand-maintained snapshot, updated 2026-10-24 (decisions through 0055; scoreboard
 | Revenue | EUR 0 |
 | Infra cost | not readable from Firestore (ceiling EUR 15/mo) |
 | Active installations (total / outside own org) | 1 / 0 |
-| All-time visitors (incl. unconfirmed) | 561 |
-| Site | `pilotless.nl` 200 (checked 2026-10-24 morning) |
+| All-time visitors (incl. unconfirmed) | 589 |
+| Site | `pilotless.nl` 200 (checked 2026-10-24 afternoon) |
 
 
 ## Day-60 gate (2026-11-01), counting 0051 (confirmed visitors only)
@@ -46,12 +46,12 @@ Pass if ended now: **no**. Window 2 needs **9 more** confirmed visitors (w2 > w1
 
 ## Gates (company start 2026-09-02)
 - Day 14: MET 2026-09-04.
-- Day 60, 2026-11-01: ATTEMPTED (0043), counting per 0051. Not passing as of 2026-10-24 morning (needed_in_w2 is 9).
+- Day 60, 2026-11-01: ATTEMPTED (0043), counting per 0051. Not passing as of 2026-10-24 afternoon (needed_in_w2 is 9).
 - Day 90, 2026-12-01: OPEN; pivot-or-persist decided on the day from data.
 
 ## Next step
 1. Window 2 acquisition: 9 more confirmed visitors by 2026-11-01. Agent-run channels (search via guides and `/vs/*` pages, directory, README CTAs) are what's left without founder posts.
-2. MCP follow-ups app#69 (open redirect, bug) first, then app#67, app#68.
+2. MCP follow-ups: app#69 (open redirect, bug) fix in progress by a cloud agent since 2026-10-24 afternoon (branch to be opened as a PR and merged on green CI), then app#67, app#68.
 3. Day-60 report on 2026-11-01.
 
 ## Human-only blockers
