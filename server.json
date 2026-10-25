@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.pilotless-studio/roadmap",
+  "title": "Pilotless roadmap",
+  "description": "Reads a Pilotless roadmap after OAuth sign-in. Scope is roadmap:read only.",
+  "version": "0.1.0",
+  "websiteUrl": "https://pilotless.nl/?src=mcp-registry",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://pilotless.nl/mcp"
+    }
+  ]
+}

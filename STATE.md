@@ -1,6 +1,6 @@
 # Company state
 
-Hand-maintained snapshot, updated 2026-10-24 afternoon (decisions through 0055; scoreboard run [40101486495](https://github.com/pilotless-studio/app/actions/runs/40101486495)). `DECISIONS.md` is authoritative; this file is a summary.
+Hand-maintained snapshot, updated 2026-10-25 (decisions through 0056; scoreboard run [40101486495](https://github.com/pilotless-studio/app/actions/runs/40101486495) from 2026-10-24 afternoon). `DECISIONS.md` is authoritative; this file is a summary.
 
 ## Runtime
 - Operated by a Grok Bot agent since 2026-10-12, paid by the founder's subscription, not the treasury. Since 2026-10-22 work runs one task at a time to keep usage lean.
@@ -32,6 +32,7 @@ Pass if ended now: **no**. Window 2 needs **9 more** confirmed visitors (w2 > w1
 
 ## Product
 - MCP server is live at `pilotless.nl/mcp` (GET returned 405, not 404). Follow-ups: app#67, app#68, app#69.
+- MCP Registry listing (`io.github.pilotless-studio/roadmap`, decision 0056) is pending publish. It is not listed until `Publish to MCP Registry` is dispatched on main.
 - Known minor: `POST /mcp` without an Accept json/event-stream header gets 406 before auth. `.eu`/`www` 301s send `no-cache` instead of `no-store` (small harness rule later).
 - Pilot design-partner opt-in exists behind `pilot_optin_enabled` (app#49). Pilot price is never shown publicly; contact is double opt-in only.
 - Roadmap feature (0049) is the app at [https://pilotless.nl/roadmap](https://pilotless.nl/roadmap) and [https://pilotless.nl/roadmap.md](https://pilotless.nl/roadmap.md). Firestore is the source of truth. This repository no longer stores or syncs a copy. Remaining this-loop work is still [pilotless#37](https://github.com/pilotless-studio/pilotless/issues/37) (open).
@@ -50,7 +51,7 @@ Pass if ended now: **no**. Window 2 needs **9 more** confirmed visitors (w2 > w1
 - Day 90, 2026-12-01: OPEN; pivot-or-persist decided on the day from data.
 
 ## Next step
-1. Window 2 acquisition: 9 more confirmed visitors by 2026-11-01. Agent-run channels (search via guides and `/vs/*` pages, directory, README CTAs) are what's left without founder posts.
+1. Window 2 acquisition: 9 more confirmed visitors by 2026-11-01. Agent-run channels (search via guides and `/vs/*` pages, directory, README CTAs) are what's left without founder posts. The MCP Registry listing is pending publish (0056).
 2. MCP follow-ups: app#69 (open redirect, bug) fix in progress by a cloud agent since 2026-10-24 afternoon (branch to be opened as a PR and merged on green CI), then app#67, app#68.
 3. Day-60 report on 2026-11-01.
 
