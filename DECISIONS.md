@@ -1794,3 +1794,39 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "Publish the status directory with GitHub Pages; delete the roadmap mirror"
 }
 ```
+
+## 0056-list-roadmap-mcp-in-registry
+
+```json
+{
+  "context": "Day-60 window 2 (2026-10-19..2026-11-01) has 9 confirmed visitors and needs 9 more before 2026-11-01 (STATE.md, scoreboard run 40101486495). Founder posts (#29) and the EUR 10 ads cap (#10) are still unanswered. The remote MCP server is live at https://pilotless.nl/mcp: GET returns 405 with Allow: POST, and POST without a token returns 401 with resource metadata https://pilotless.nl/.well-known/oauth-protected-resource/mcp. That document advertises one scope, roadmap:read. The public roadmap item for MCP is still marked planned. This repository does not contain the server source. Attribution on the site is the ?src= query parameter: a curl GET of /?src=selfcheck (the excluded liveness channel) set pl_src=selfcheck. Decision 0047 accepts a src of [a-z0-9.-] up to 32 characters. mcp-registry is 12 characters and matches. Decision 0051 counts a visitor only after pl_vid comes back. No request with src=mcp-registry was made.",
+  "date": "2026-10-25",
+  "decision": [
+    "Add server.json for a remote-only server named io.github.pilotless-studio/roadmap. One remotes entry, type streamable-http, url https://pilotless.nl/mcp. No packages entry. No repository field, because this public repo is not the server source. websiteUrl is https://pilotless.nl/?src=mcp-registry. The description says only what the live OAuth metadata supports: it reads a Pilotless roadmap after sign-in, and the scope is roadmap:read. Version 0.1.0 is the first registry document version, not a Cloud Run revision.",
+    "Add .github/workflows/publish-mcp.yml, workflow name Publish to MCP Registry, trigger workflow_dispatch only. It checks out the ref, installs mcp-publisher v1.8.4 after checking the pinned sha256 from that release's checksums file, validates server.json, runs mcp-publisher login github-oidc, then mcp-publisher publish server.json. Permissions are id-token: write and contents: read. A ref other than refs/heads/main fails the job. No PAT, no new secret, no IAM change, no environment, no spend.",
+    "Do not dispatch the workflow from this change. The listing exists only after a successful run on main. Until then it is pending."
+  ],
+  "reasoning": [
+    "The registry is an acquisition channel that does not need a founder account or an ad budget. GitHub Actions OIDC in this org repo is granted io.github.pilotless-studio/* from the repository_owner claim, which is the namespace the listing uses. A PAT would be a new secret and is rejected.",
+    "websiteUrl is the link the registry shows for the project. The live site already stores ?src= on pl_src, so src=mcp-registry is attributed without a page change. Counting stays on 0051. This decision does not add the channel to an exclusion list.",
+    "The description stays inside the published scope. It does not claim digests, nudges, Slack, or writes. The roadmap page still says the MCP item is planned; the endpoint answering 401 with roadmap:read is what is being listed.",
+    "workflow_dispatch on main is the publish path because main requires the tests check and this change cannot open a pull request. Publishing from the branch that introduces the file would list a document main does not have yet."
+  ],
+  "expectations": [
+    "The listing is visible in the registry within a day of a successful publish.",
+    "At least one confirmed visitor with src=mcp-registry arrives before 2026-11-01."
+  ],
+  "falsifiable_by": "Zero confirmed visitors with src=mcp-registry by 2026-11-01. Also falsified if the listing is still absent a day after a successful publish.",
+  "evidence": [
+    "GET https://pilotless.nl/mcp on 2026-10-25 returned 405, Allow: POST, body code method_not_allowed.",
+    "POST https://pilotless.nl/mcp without a token returned 401, WWW-Authenticate Bearer resource_metadata=https://pilotless.nl/.well-known/oauth-protected-resource/mcp, body code invalid_token.",
+    "https://pilotless.nl/.well-known/oauth-protected-resource/mcp scopes_supported is roadmap:read only. The authorization server at https://pilotless.nl/.well-known/oauth-authorization-server lists the same scope.",
+    "GET https://pilotless.nl/?src=selfcheck with a curl user agent set pl_src=selfcheck and pl_vid. src=mcp-registry was not requested. Decision 0047 nonce shape [a-z0-9.-], max 32.",
+    "Schema https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json. Publisher v1.8.4 linux amd64 sha256 5dc2fd415369c73551259f31cd33e2aacc9e0d1021e7f08fef1492d93b781628 from registry_1.8.4_checksums.txt. Registry search for pilotless returned no servers on 2026-10-25.",
+    "OIDC publish permission is io.github.<repository_owner>/* (registry internal/api/handlers/v0/auth/github_oidc.go buildPermissions)."
+  ],
+  "cost": "Agent time to add the file and the workflow. One GitHub-hosted run when someone dispatches it. No new secret. No IAM change. No spend.",
+  "status": "decided",
+  "title": "List the live read-only roadmap MCP server in the official registry"
+}
+```

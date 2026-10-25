@@ -1,0 +1,65 @@
+name: Publish to MCP Registry
+
+# Manual publish of server.json to the official MCP Registry.
+# Dispatch on main after this file is merged:
+#   gh workflow run publish-mcp.yml --repo pilotless-studio/pilotless --ref main
+# GitHub OIDC grants io.github.pilotless-studio/*. No PAT, no repository secret.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Publish only from main
+        run: |
+          set -euo pipefail
+          if [ "${GITHUB_REF}" != "refs/heads/main" ]; then
+            echo "Refusing to publish from ${GITHUB_REF}. Dispatch this workflow on main after merge."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install mcp-publisher
+        env:
+          MCP_PUBLISHER_VERSION: v1.8.4
+          # Digests from registry_1.8.4_checksums.txt on the v1.8.4 release.
+          MCP_PUBLISHER_SHA256_LINUX_AMD64: 5dc2fd415369c73551259f31cd33e2aacc9e0d1021e7f08fef1492d93b781628
+          MCP_PUBLISHER_SHA256_LINUX_ARM64: e3a943d0e7d2f0ae5147905da751298b11d2135930b9e981a497b24112fe0e12
+        run: |
+          set -euo pipefail
+          os="$(uname -s | tr '[:upper:]' '[:lower:]')"
+          arch="$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')"
+          if [ "$os" != "linux" ]; then
+            echo "Checksums are pinned for linux only (got ${os})."
+            exit 1
+          fi
+          case "$arch" in
+            amd64) expect="$MCP_PUBLISHER_SHA256_LINUX_AMD64" ;;
+            arm64) expect="$MCP_PUBLISHER_SHA256_LINUX_ARM64" ;;
+            *) echo "No pinned checksum for ${arch}."; exit 1 ;;
+          esac
+          archive="mcp-publisher_${os}_${arch}.tar.gz"
+          base_url="https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}"
+          curl --fail --location --silent --show-error --output "$archive" "$base_url/$archive"
+          echo "${expect}  ${archive}" | sha256sum -c -
+          tar xzf "$archive" mcp-publisher
+          rm -f "$archive"
+
+      - name: Validate server.json
+        run: ./mcp-publisher validate server.json
+
+      - name: Authenticate to MCP Registry
+        run: ./mcp-publisher login github-oidc
+
+      - name: Publish server to MCP Registry
+        run: ./mcp-publisher publish server.json
