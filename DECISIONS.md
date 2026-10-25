@@ -1830,3 +1830,24 @@ Every decision of consequence this company has made, with the reasoning recorded
   "title": "List the live read-only roadmap MCP server in the official registry"
 }
 ```
+
+## 0057-every-capability-serves-the-manager-replacement-mission
+
+```json
+{
+  "author": "Sjaak (founder), relayed by the Pilotless CEO",
+  "context": "Founder instruction on 2026-10-25, relayed by the Pilotless CEO. It sets a standing principle for all Pilotless work.",
+  "date": "2026-10-25",
+  "decision": [
+    "Standing principle, critical, applies to all Pilotless work: everything we build must move Pilotless toward replacing what managers do in a business, so small businesses run efficiently and scale with minimal overhead.",
+    "Every capability must work through Pilotless's own tooling directly (UI, connectors), through agents (MCP), or a mix, and the business decides which. No path is exclusive to people or to agents. The pattern is one shared service layer with thin adapters (web UI, MCP tools, connectors) that hold no duplicated logic.",
+    "Pilotless fits into the tools a business already uses (Slack, Linear, Jira/Confluence, GitHub, Miro, and so on) rather than replacing them."
+  ],
+  "consequence": [
+    "New PR designs are checked against this principle.",
+    "The CEO owns the roadmap and tests roadmap items against the mission."
+  ],
+  "status": "decided",
+  "title": "Every capability serves the manager-replacement mission, via UI, agents or connectors"
+}
+```
