@@ -41,7 +41,7 @@ Pass if ended now: **no**. Window 2 needs **6 more** confirmed visitors (w2 > w1
 ## Workflows (2026-10-28)
 - `app` weekly digest 2026-10-26 ([run 40335760268](https://github.com/pilotless-studio/app/actions/runs/40335760268)) failed: curl exit 28, the POST to `/gh/admin/digest` hit its 280 s timeout. The dogfood digest issues were still updated at 14:01 UTC, so posting worked but the call did not return in time (likely the second installation adding time). Fix before the next Monday run (2026-11-02).
 - app#90 (fixes app#87, setup redirect to `pilotless.nl`) merged 2026-10-28 as b3240a7; deploy-web ran on it. app#91 (fixes app#88) conflicted after that and is being rebased; merge on green CI.
-- `app` scoreboard run 39954459689 is this cycle's source for users, revenue, and cost.
+- `app` scoreboard run 40701401202 is this cycle's source for users, revenue, and cost.
 - `pilotless` roadmap sync: removed (0055). Last failure before that was 2026-10-23 13:24 UTC ([run 39960922574](https://github.com/pilotless-studio/pilotless/actions/runs/39960922574)), GH006. A later dispatch ([run 39970392512](https://github.com/pilotless-studio/pilotless/actions/runs/39970392512)) committed `674309ee` and was still rejected after `tests` succeeded ([run 39970436530](https://github.com/pilotless-studio/pilotless/actions/runs/39970436530)). The workflow file is deleted. Do not re-enable it.
 - `pilotless` weekly status directory: re-enabled 2026-10-23 after Pages source was switched to GitHub Actions (0055). Verification dispatch [run 39974928549](https://github.com/pilotless-studio/pilotless/actions/runs/39974928549) green, no commit to `main`.
 - `harness` bunny-cdn-apply: green 2026-10-22 19:28 UTC (4 edge rules). Not re-checked for this edit.
@@ -49,7 +49,7 @@ Pass if ended now: **no**. Window 2 needs **6 more** confirmed visitors (w2 > w1
 
 ## Gates (company start 2026-09-02)
 - Day 14: MET 2026-09-04.
-- Day 60, 2026-11-01: ATTEMPTED (0043), counting per 0051. Not passing as of 2026-10-24 afternoon (needed_in_w2 is 9).
+- Day 60, 2026-11-01: ATTEMPTED (0043), counting per 0051. Not passing as of 2026-10-28 afternoon (needed_in_w2 is 6).
 - Day 90, 2026-12-01: OPEN; pivot-or-persist decided on the day from data.
 
 ## Next step
