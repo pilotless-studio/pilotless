@@ -95,16 +95,13 @@ class McpRegistryTests(unittest.TestCase):
         self.assertIn("2026-11-01", joined)
         self.assertNotIn("PAT", decision["cost"])
 
-    def test_state_notes_pending_publish(self):
+    def test_state_notes_registry_listing(self):
         text = read("STATE.md")
-        self.assertIn("pending publish", text)
         self.assertIn(SERVER_NAME, text)
         self.assertIn("0056", text)
-        next_step = text.split("## Next step", 1)[1].split("## ", 1)[0]
         product = text.split("## Product", 1)[1].split("## ", 1)[0]
-        self.assertIn("pending publish", next_step)
-        self.assertIn("pending publish", product)
-        self.assertRegex(next_step, re.compile(r"pending publish", re.I))
+        self.assertIn(SERVER_NAME, product)
+        self.assertIn("active", product)
 
 
 if __name__ == "__main__":
