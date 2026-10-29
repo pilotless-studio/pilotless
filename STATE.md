@@ -1,6 +1,6 @@
 # Company state
 
-Hand-maintained snapshot, updated 2026-10-28 afternoon (decisions through 0057; scoreboard run [40701401202](https://github.com/pilotless-studio/app/actions/runs/40701401202) from 2026-10-28 13:58 UTC). `DECISIONS.md` is authoritative; this file is a summary.
+Hand-maintained snapshot, updated 2026-10-29 morning (decisions through 0057; scoreboard run [40841434822](https://github.com/pilotless-studio/app/actions/runs/40841434822) from 2026-10-29 08:2x UTC). `DECISIONS.md` is authoritative; this file is a summary.
 
 ## Runtime
 - Operated by a Grok Bot agent since 2026-10-12, paid by the founder's subscription, not the treasury. Since 2026-10-22 work runs one task at a time to keep usage lean.
@@ -10,7 +10,7 @@ Hand-maintained snapshot, updated 2026-10-28 afternoon (decisions through 0057; 
 - All traffic, including GitHub App webhooks and callbacks, goes through Bunny (`pilotless.nl`); Bunny is a DPA sub-processor.
 - Merge policy: `app` and `harness` are private on GitHub Free (no branch protection), so their PRs merge only on green CI. `pilotless` main requires the `tests` check (app id 15368, strict, enforce_admins off). Decision 0055 supersedes 0054 and does not weaken that. The status directory is published to GitHub Pages and is not pushed to `main`.
 
-## Scoreboard (run 40701401202, 2026-10-28)
+## Scoreboard (run 40841434822, 2026-10-29)
 
 | Metric | Value |
 |---|---|
@@ -18,7 +18,7 @@ Hand-maintained snapshot, updated 2026-10-28 afternoon (decisions through 0057; 
 | Revenue | EUR 0 |
 | Infra cost | not readable from Firestore (ceiling EUR 15/mo) |
 | Active installations (total / outside own org) | 2 / 1 (the outside one is the founder's Kadima org, dogfooding) |
-| Site | `pilotless.nl` 200 (checked 2026-10-28 afternoon) |
+| Site | `pilotless.nl` 200 (checked 2026-10-29 morning) |
 | MCP Registry (`src=mcp-registry`) visitors | 0 so far (0056 expects ≥1 before 2026-11-01) |
 
 
@@ -26,9 +26,20 @@ Hand-maintained snapshot, updated 2026-10-28 afternoon (decisions through 0057; 
 
 | | window 1 (10-05..10-18) | window 2 (10-19..11-01, to date) |
 |---|---|---|
-| confirmed visitors | 17 | 12 |
+| confirmed visitors | 17 | 13 |
 
-Pass if ended now: **no**. Window 2 needs **6 more** confirmed visitors (w2 > w1). Window 2 acquisition channels so far: search.
+Pass if ended now: **no**. Window 2 needs **5 more** confirmed visitors (w2 > w1). Window 2 acquisition channels so far: search.
+
+## Today (2026-10-29 cycle)
+- Usage check: the shared weekly limit is at 57.2% one day into the week (resets 2026-11-04 09:43 CET), so far ahead of pace. Per the standing rule, health checks and gates only; **no work packages picked**. All team bots are idle today.
+
+## Backlog (prioritised)
+1. **Web sign-in fails after org pick: "Request blocked: That request looked cross-origin."** (founder report 2026-10-29). Blocks the whole web UI (members, activity). Hunch: origin/CSRF check on the OAuth callback or org-select POST; must be verified. Owner: Engineering, first package once usage allows.
+2. Weekly digest timeout (curl 28 at 280 s) before the 2026-11-02 run. Owner: Engineering.
+3. Window 2 acquisition: 5 more confirmed visitors by 2026-11-01 (agent-run channels only). app#89 homepage install CTA waits on Marketing copy.
+4. Day-60 report on 2026-11-01.
+5. Phase 3 Slack connector (app#109, harness#21 open, paused for usage).
+6. app#68, app#32 MCP follow-ups.
 
 ## Product
 - MCP server is live at `pilotless.nl/mcp` (GET returned 405, not 404). Follow-ups app#67 and app#69 are closed; app#68 and app#32 remain open.
