@@ -1,6 +1,6 @@
 # Company state
 
-Hand-maintained snapshot, updated 2026-11-01 morning (decisions through 0058; scoreboard run [41288524744](https://github.com/pilotless-studio/app/actions/runs/41288524744) from 2026-11-01 08:21 UTC). `DECISIONS.md` is authoritative; this file is a summary.
+Hand-maintained snapshot, updated 2026-11-05 morning (decisions through 0058; scoreboard run [41857027349](https://github.com/pilotless-studio/app/actions/runs/41857027349) from 2026-11-04 15:22 UTC). `DECISIONS.md` is authoritative; this file is a summary.
 
 ## Runtime
 - Operated by a Grok Bot agent since 2026-10-12, paid by the founder's subscription, not the treasury. Since 2026-10-22 work runs one task at a time to keep usage lean.
@@ -10,18 +10,16 @@ Hand-maintained snapshot, updated 2026-11-01 morning (decisions through 0058; sc
 - All traffic, including GitHub App webhooks and callbacks, goes through Bunny (`pilotless.nl`); Bunny is a DPA sub-processor.
 - Merge policy: `app` and `harness` are private on GitHub Free (no branch protection), so their PRs merge only on green CI. `pilotless` main requires the `tests` check (app id 15368, strict, enforce_admins off). Decision 0055 supersedes 0054 and does not weaken that. The status directory is published to GitHub Pages and is not pushed to `main`.
 
-## Scoreboard (run 41288524744, 2026-11-01)
+## Scoreboard (run 41857027349, 2026-11-04)
 
 | Metric | Value |
 |---|---|
-| Registered users (active ≥7d, excl. own org) | 0 |
+| Registered users (active ≥7d, excl. own org) | 1, the founder's kadima-tech org (dogfooding, installed 2026-10-25). Real outside users: 0 |
 | Revenue | EUR 0 |
 | Infra cost | not readable from Firestore (ceiling EUR 15/mo) |
-| Active installations (total / outside own org) | 2 / 1 (the outside one is the founder's Kadima org, dogfooding) |
-| Site | `pilotless.nl` 200, `/app/signin` 303 (checked 2026-11-01 morning) |
-| Visitors all-time (metrics_daily) | 1070 |
-| MCP Registry (`src=mcp-registry`) visitors | 0 so far (0056 expects ≥1 before 2026-11-01) |
-
+| Active installations (total / outside own org) | 2 / 1 (kadima-tech, founder) |
+| Site | `pilotless.nl` 200, `/app/signin` 303 (checked 2026-11-05 morning) |
+| Visitors all-time (metrics_daily) | 1261 |
 
 ## Day-60 gate (2026-11-01): PASSED (0058)
 
@@ -31,16 +29,20 @@ Hand-maintained snapshot, updated 2026-11-01 morning (decisions through 0058; sc
 
 Window 2 channels: direct 24, referral 3, search 1, header 1. Weak, self-reported evidence; no registrations.
 
-## Today (2026-11-01 cycle)
-- Usage: shared weekly limit at 85.2% (resets 2026-11-04 09:43 CET), far ahead of pace. Health checks and the day-60 gate only; **no work packages picked**. All team bots idle.
-- Health: site 200, `/app/signin` 303; app, harness and pilotless workflows green; no founder replies on #29 and #10.
+## Today (2026-11-05 cycle)
+- Usage: weekly limit 3.2% (reset 2026-11-11 09:43 CET), on pace, so two packages.
+- Health: site 200, `/app/signin` 303; app (scoreboard, weekly digest 2026-11-02, admin), pilotless (weekly status) and harness workflows green. No founder replies on #29 and #10.
+- Usage finding (last 7 days): a polling routine "Watch Pilotless issue replies" runs about 100 times a week and costs about 2x this operating cycle. It is not one of the CEO's routines; flagged to the founder to replace with an event trigger or pause.
+- Package 1 (Engineering), token reduction: a non-AI GitHub Action that runs before the cycle and writes one compact health summary (site and sign-in status codes, latest conclusion per scheduled workflow in app/pilotless/harness, new non-bot comments on `escalation` issues, scoreboard headline numbers), so the cycle reads one file instead of several API calls and logs. Why: founder's standing top priority (2026-10-31); every later cycle gets cheaper. Done when merged on green CI and one dispatched run's output matches this morning's manual check.
+- Package 2 (Marketing), conversion toward day 90: final copy for the homepage install CTA (app#89). Why: day 90 measures registrations and the homepage has no install path; copy is the blocker. Done when the copy (headline, button label, one supporting line, target URL) is posted on app#89; Engineering implements in a later slot.
+- Not needed today: SEO, Market Research, Sales, Design, QA.
 
 ## Backlog (prioritised)
-1. **Web sign-in fails after org pick: "Request blocked: That request looked cross-origin."** (founder report 2026-10-29). Blocks the whole web UI (members, activity). Hunch: origin/CSRF check on the OAuth callback or org-select POST; must be verified. Owner: Engineering, first package once usage allows.
-2. Weekly digest timeout (curl 28 at 280 s) before the 2026-11-02 run. Owner: Engineering.
-3. Window 2 acquisition: 5 more confirmed visitors by 2026-11-01 (agent-run channels only). app#89 homepage install CTA waits on Marketing copy.
-4. Phase 3 Slack connector (app#109, harness#21 open, paused for usage).
-5. app#68, app#32 MCP follow-ups.
+1. Token reduction per cycle (founder priority 2026-10-31): non-AI health-check Action (package 1 today), then a wake-only-on-change hook, tighter briefs, replaced polling routines. Report findings to Groktimus Prime when done.
+2. Homepage install CTA (app#89): copy from Marketing today, then Engineering. Converts visitors to installs for the day-90 gate (2026-12-01, registrations).
+3. Phase 3 Slack connector (app#109, harness#21, paused for usage).
+4. app#68, app#32 MCP follow-ups.
+- Done: web sign-in cross-origin block fixed by app#110 (2026-10-29); weekly digest ran green on 2026-11-02.
 
 ## Product
 - MCP server is live at `pilotless.nl/mcp` (GET returned 405, not 404). Follow-ups app#67 and app#69 are closed; app#68 and app#32 remain open.
@@ -65,10 +67,9 @@ Window 2 channels: direct 24, referral 3, search 1, header 1. Weak, self-reporte
 - Day 90, 2026-12-01: OPEN; pivot-or-persist decided on the day from data.
 
 ## Next step
-1. Window 2 acquisition: 6 more confirmed visitors by 2026-11-01. Agent-run channels (search via guides and `/vs/*` pages, directory, README CTAs, MCP Registry listing) are what's left without founder posts. app#89 (homepage install CTA) waits on Marketing's copy.
-2. Merge app#91 on green CI, then fix the weekly digest timeout before 2026-11-02.
-3. Activity registry phase 1 (MCP tools) target ~2026-10-30; then app#68 and app#32.
-4. Day-60 report on 2026-11-01.
+1. Land package 1 and switch the cycle's health checks to its summary.
+2. Implement app#89 once copy is in.
+3. Day-90 gate on 2026-12-01: registrations by channel, 30-day windows.
 
 ## Human-only blockers
 - #29 founder posts for window 2 and #10 ads EUR 10 cap: open, no founder reply (no comments; last update 2026-10-15). Do not re-nag.
