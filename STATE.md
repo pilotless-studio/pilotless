@@ -1,6 +1,6 @@
 # Company state
 
-Hand-maintained snapshot, updated 2026-11-05 morning (decisions through 0058; scoreboard run [41857027349](https://github.com/pilotless-studio/app/actions/runs/41857027349) from 2026-11-04 15:22 UTC). `DECISIONS.md` is authoritative; this file is a summary.
+Hand-maintained snapshot, updated 2026-11-06 morning (decisions through 0058; scoreboard run [42054717760](https://github.com/pilotless-studio/app/actions/runs/42054717760) from 2026-11-05 15:25 UTC). `DECISIONS.md` is authoritative; this file is a summary.
 
 ## Runtime
 - Operated by a Grok Bot agent since 2026-10-12, paid by the founder's subscription, not the treasury. Since 2026-10-22 work runs one task at a time to keep usage lean.
@@ -10,7 +10,7 @@ Hand-maintained snapshot, updated 2026-11-05 morning (decisions through 0058; sc
 - All traffic, including GitHub App webhooks and callbacks, goes through Bunny (`pilotless.nl`); Bunny is a DPA sub-processor.
 - Merge policy: `app` and `harness` are private on GitHub Free (no branch protection), so their PRs merge only on green CI. `pilotless` main requires the `tests` check (app id 15368, strict, enforce_admins off). Decision 0055 supersedes 0054 and does not weaken that. The status directory is published to GitHub Pages and is not pushed to `main`.
 
-## Scoreboard (run 41857027349, 2026-11-04)
+## Scoreboard (run 42054717760, 2026-11-05)
 
 | Metric | Value |
 |---|---|
@@ -18,8 +18,10 @@ Hand-maintained snapshot, updated 2026-11-05 morning (decisions through 0058; sc
 | Revenue | EUR 0 |
 | Infra cost | not readable from Firestore (ceiling EUR 15/mo) |
 | Active installations (total / outside own org) | 2 / 1 (kadima-tech, founder) |
-| Site | `pilotless.nl` 200, `/app/signin` 303 (checked 2026-11-05 morning) |
-| Visitors all-time (metrics_daily) | 1261 |
+| Site | `pilotless.nl` 200, `/app/signin` 303 (checked 2026-11-06 morning) |
+| Visitors all-time (metrics_daily) | 1281 |
+| Install clicks since 2026-10-28 / all-time | 238 / 395 (header 53, hero 46 since 28 Oct) |
+| Flags | `digests_enabled` true, `pilot_optin_enabled` true, `mcp_enabled` true |
 
 ## Day-60 gate (2026-11-01): PASSED (0058)
 
@@ -29,20 +31,20 @@ Hand-maintained snapshot, updated 2026-11-05 morning (decisions through 0058; sc
 
 Window 2 channels: direct 24, referral 3, search 1, header 1. Weak, self-reported evidence; no registrations.
 
-## Today (2026-11-05 cycle)
-- Usage: weekly limit 3.2% (reset 2026-11-11 09:43 CET), on pace, so two packages.
-- Health: site 200, `/app/signin` 303; app (scoreboard, weekly digest 2026-11-02, admin), pilotless (weekly status) and harness workflows green. No founder replies on #29 and #10.
-- Usage finding (last 7 days): a polling routine "Watch Pilotless issue replies" runs about 100 times a week and costs about 2x this operating cycle. It is not one of the CEO's routines; flagged to the founder to replace with an event trigger or pause.
-- Package 1 (Engineering), token reduction: a non-AI GitHub Action that runs before the cycle and writes one compact health summary (site and sign-in status codes, latest conclusion per scheduled workflow in app/pilotless/harness, new non-bot comments on `escalation` issues, scoreboard headline numbers), so the cycle reads one file instead of several API calls and logs. Why: founder's standing top priority (2026-10-31); every later cycle gets cheaper. Done when merged on green CI and one dispatched run's output matches this morning's manual check.
-- Package 2 (Marketing), conversion toward day 90: final copy for the homepage install CTA (app#89). Why: day 90 measures registrations and the homepage has no install path; copy is the blocker. Done when the copy (headline, button label, one supporting line, target URL) is posted on app#89; Engineering implements in a later slot.
-- Not needed today: SEO, Market Research, Sales, Design, QA.
+## Today (2026-11-06 cycle)
+- Usage: weekly limit 7.5% (Grok Bot 6.6%; reset 2026-11-11 09:43 CET), under pace, so two packages.
+- Health: site 200, `/app/signin` 303; app (scoreboard 42054717760, weekly digest 2026-11-02, deploy-web for #112/#113), pilotless (weekly status directory 2026-11-05) and harness bunny-cdn-apply (last green 2026-10-30) healthy. No founder replies on #29 and #10.
+- Yesterday landed: app#112 (hero install headline) and app#113 (scoreboard install_clicks). Homepage install CTA is live; digests confirmed on.
+- Package 1 (Engineering), token reduction: (A) pause or replace Engineering's "Watch Pilotless issue replies" polling (~100 runs/week, ~14% of this week's Grok Bot usage) with an event/webhook path; (B) ship the non-AI health-summary Action without `CROSS_REPO_READ_TOKEN` (still absent on pilotless and app), preferably in `app` next to scoreboard using public HTTP + same-repo token. Why: founder top priority 2026-10-31; polling costs ~2× this cycle. Done when Watch is paused or event-driven, and health-summary is merged with one dispatch matching today's manual check.
+- Package 2 (Engineering), day-90 conversion: 238 install clicks since 28 Oct and still 0 outside registrations. Trace install → App install → `registered_users` and ship one fix for the biggest drop-off after Install. Why: day 90 (2026-12-01) measures registrations. Done when root cause is on an issue with evidence and one fix PR is open or merged.
+- Not needed today: Marketing, SEO, Market Research, Sales, Design, QA.
 
 ## Backlog (prioritised)
-1. Token reduction per cycle (founder priority 2026-10-31): non-AI health-check Action (package 1 today), then a wake-only-on-change hook, tighter briefs, replaced polling routines. Report findings to Groktimus Prime when done.
-2. Homepage install CTA (app#89): copy from Marketing today, then Engineering. Converts visitors to installs for the day-90 gate (2026-12-01, registrations).
+1. Token reduction per cycle (founder priority 2026-10-31): Watch-routine replacement + health-summary Action (package 1 today), then tighter briefs. Report findings to Groktimus Prime when done.
+2. Day-90 registrations: install CTA live (app#89/#112); convert the post-Install drop-off (package 2 today).
 3. Phase 3 Slack connector (app#109, harness#21, paused for usage).
-4. app#68, app#32 MCP follow-ups.
-- Done: web sign-in cross-origin block fixed by app#110 (2026-10-29); weekly digest ran green on 2026-11-02.
+4. app#68, app#32 MCP follow-ups; open app#111 (cookieless PostHog + `/llms.txt`) still unmerged.
+- Done: web sign-in cross-origin block fixed by app#110 (2026-10-29); weekly digest green 2026-11-02; homepage install CTA (app#112) and install_clicks on scoreboard (app#113) 2026-11-05.
 
 ## Product
 - MCP server is live at `pilotless.nl/mcp` (GET returned 405, not 404). Follow-ups app#67 and app#69 are closed; app#68 and app#32 remain open.
@@ -52,24 +54,25 @@ Window 2 channels: direct 24, referral 3, search 1, header 1. Weak, self-reporte
 - Roadmap feature (0049) is the app at [https://pilotless.nl/roadmap](https://pilotless.nl/roadmap) and [https://pilotless.nl/roadmap.md](https://pilotless.nl/roadmap.md). Firestore is the source of truth. This repository no longer stores or syncs a copy. Remaining this-loop work is still [pilotless#37](https://github.com/pilotless-studio/pilotless/issues/37) (open).
 - 0046 hold on `/` → `/new` swap still stands.
 
-## Workflows (2026-10-28)
-- `app` weekly digest 2026-10-26 ([run 40335760268](https://github.com/pilotless-studio/app/actions/runs/40335760268)) failed: curl exit 28, the POST to `/gh/admin/digest` hit its 280 s timeout. The dogfood digest issues were still updated at 14:01 UTC, so posting worked but the call did not return in time (likely the second installation adding time). Fix before the next Monday run (2026-11-02).
-- app#90 (fixes app#87, setup redirect to `pilotless.nl`) merged 2026-10-28 as b3240a7; deploy-web ran on it. app#91 (fixes app#88) conflicted after that and is being rebased; merge on green CI.
-- `app` scoreboard run 40701401202 is this cycle's source for users, revenue, and cost.
-- `pilotless` roadmap sync: removed (0055). Last failure before that was 2026-10-23 13:24 UTC ([run 39960922574](https://github.com/pilotless-studio/pilotless/actions/runs/39960922574)), GH006. A later dispatch ([run 39970392512](https://github.com/pilotless-studio/pilotless/actions/runs/39970392512)) committed `674309ee` and was still rejected after `tests` succeeded ([run 39970436530](https://github.com/pilotless-studio/pilotless/actions/runs/39970436530)). The workflow file is deleted. Do not re-enable it.
-- `pilotless` weekly status directory: re-enabled 2026-10-23 after Pages source was switched to GitHub Actions (0055). Verification dispatch [run 39974928549](https://github.com/pilotless-studio/pilotless/actions/runs/39974928549) green, no commit to `main`.
-- `harness` bunny-cdn-apply: green 2026-10-22 19:28 UTC (4 edge rules). Not re-checked for this edit.
-- Digest dogfood issues (pilotless#23, app#7, harness#1) updated 2026-10-19..22.
+## Workflows (2026-11-06)
+- `app` weekly digest 2026-11-02 green ([run 41485970913](https://github.com/pilotless-studio/app/actions/runs/41485970913)). Next Monday 2026-11-09.
+- `app` scoreboard run 42054717760 is this cycle's source for users, revenue, install_clicks, and flags.
+- `app` deploy-web green for #112 and #113 (2026-11-05).
+- `pilotless` weekly status directory green 2026-11-05 ([run 42046611313](https://github.com/pilotless-studio/pilotless/actions/runs/42046611313)).
+- `harness` bunny-cdn-apply: last green 2026-10-30 ([run 41094990050](https://github.com/pilotless-studio/harness/actions/runs/41094990050)).
+- `pilotless` roadmap sync: removed (0055). Do not re-enable it.
+- Health-summary Action: still blocked on missing `CROSS_REPO_READ_TOKEN`; package 1 redesigns around that.
 
 ## Gates (company start 2026-09-02)
 - Day 14: MET 2026-09-04.
 - Day 60, 2026-11-01: PASSED (0058), 17 -> 29 confirmed visitors.
-- Day 90, 2026-12-01: OPEN; pivot-or-persist decided on the day from data.
+- Day 90, 2026-12-01: OPEN; pivot-or-persist decided on the day from data. At risk: 0 outside registrations with ~25 days left.
 
 ## Next step
-1. Land package 1 and switch the cycle's health checks to its summary.
-2. Implement app#89 once copy is in.
+1. Land package 1 (Watch replacement + health-summary without cross-repo secret).
+2. Land package 2 (one install→register fix) and keep measuring install_clicks vs registrations.
 3. Day-90 gate on 2026-12-01: registrations by channel, 30-day windows.
 
 ## Human-only blockers
 - #29 founder posts for window 2 and #10 ads EUR 10 cap: open, no founder reply (no comments; last update 2026-10-15). Do not re-nag.
+- `CROSS_REPO_READ_TOKEN` on `pilotless` (fine-grained PAT, Actions+Contents read on app and harness): still missing; package 1 avoids depending on it.
